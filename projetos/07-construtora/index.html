@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brask — Engenharia &amp; Reformas | Obra no prazo, no orçamento, sem dor de cabeça</title>
+<meta name="description" content="Construtora e reformas com equipe própria. Construção, retrofit e reformas entregues no prazo e no orçamento, com garantia em contrato. Solicite seu orçamento." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --navy:#14213D; --navy-2:#1E3055; --navy-deep:#0D1729;
+  --orange:#FB8500; --orange-2:#E36414;
+  --concrete:#3A3F47; --gray:#6B7280; --gray-light:#E5E5E5;
+  --bg:#FFFFFF; --surface:#F3F4F6; --ink:#14213D; --ink-soft:#4B5563; --muted:#9099A8;
+  --line:#E2E5EA;
+  --display:'Oswald',sans-serif; --body:'Work Sans',system-ui,sans-serif;
+  --maxw:1200px; --ease:cubic-bezier(.16,.84,.44,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.05;text-transform:uppercase;letter-spacing:.01em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--display);font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);font-weight:600}
+.or{color:var(--orange)}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:15px 32px;font-family:var(--display);font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:.3s var(--ease);border:2px solid var(--navy);color:var(--navy);background:transparent}
+.btn:hover{transform:translateY(-2px)}
+.btn--orange{background:var(--orange);border-color:var(--orange);color:#fff}.btn--orange:hover{background:var(--orange-2);border-color:var(--orange-2)}
+.btn--light{border-color:#fff;color:#fff}.btn--light:hover{background:#fff;color:var(--navy)}
+
+.pf-bar{background:var(--navy-deep);color:#8a96ad;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.pf-bar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
+.pf-bar a{color:var(--orange)}
+
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--maxw);margin:0 auto}
+.logo{font-family:var(--display);font-weight:700;font-size:1.6rem;letter-spacing:.04em;display:flex;align-items:center;gap:.4em}
+.logo .blk{background:var(--orange);color:#fff;padding:0 8px;clip-path:polygon(0 0,100% 0,90% 100%,0 100%)}
+.nav-links{display:flex;gap:28px;list-style:none;font-family:var(--display);font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.nav-links a{color:var(--ink-soft);transition:.3s}.nav-links a:hover{color:var(--orange)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2.5px;background:var(--navy);transition:.3s}
+
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden;padding:80px 0 90px}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;opacity:.12;background-image:linear-gradient(var(--orange) 1px,transparent 1px),linear-gradient(90deg,var(--orange) 1px,transparent 1px);background-size:48px 48px}
+.hero::after{content:"";position:absolute;top:0;right:0;width:46%;height:100%;background:linear-gradient(120deg,transparent,rgba(251,133,0,.12));z-index:0}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.8rem,6.4vw,5rem);color:#fff;margin:16px 0 20px}
+.hero h1 .or{color:var(--orange)}
+.hero p{font-size:clamp(1.05rem,1.6vw,1.22rem);color:#c3cad8;max-width:480px;margin-bottom:32px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.hero-trust{display:flex;gap:40px;margin-top:46px;flex-wrap:wrap}
+.hero-trust .n{font-family:var(--display);font-size:2.4rem;color:var(--orange);line-height:1}
+.hero-trust span{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:#8a96ad}
+.hero-img{position:relative;aspect-ratio:4/3;overflow:hidden;border:4px solid var(--orange);background:var(--navy-2)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-badge{position:absolute;bottom:-1px;right:-1px;background:var(--orange);color:#fff;padding:14px 22px;font-family:var(--display);text-transform:uppercase;letter-spacing:.05em}
+.hero-badge b{font-size:1.6rem;display:block}
+
+.reveal{opacity:0;transform:translateY(30px);transition:.85s var(--ease)}
+.reveal.in-view{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto!important}}
+
+section{padding:clamp(64px,8vw,110px) 0;position:relative}
+.section-head{max-width:640px;margin-bottom:50px}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.section-head h2{font-size:clamp(2.2rem,5vw,3.6rem)}
+.section-head p{color:var(--ink-soft);margin-top:12px}
+
+/* services */
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.srv{background:var(--surface);padding:34px 30px;border-bottom:4px solid transparent;transition:.4s var(--ease)}
+.srv:hover{background:#fff;border-color:var(--orange);box-shadow:0 24px 50px -28px rgba(20,33,61,.4);transform:translateY(-5px)}
+.srv .ic{width:54px;height:54px;background:var(--navy);display:grid;place-items:center;color:var(--orange);margin-bottom:18px}
+.srv .ic svg{width:28px}
+.srv h3{font-size:1.4rem;margin-bottom:8px}
+.srv p{font-size:.92rem;color:var(--ink-soft)}
+
+/* obras */
+.obras{background:var(--surface)}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.filters button{background:#fff;border:1px solid var(--line);padding:9px 22px;font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;font-size:.82rem;cursor:pointer;transition:.3s;color:var(--ink-soft)}
+.filters button.active,.filters button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.obras-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.obra{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:pointer}
+.obra img{width:100%;height:100%;object-fit:cover;transition:1s var(--ease)}
+.obra:hover img{transform:scale(1.08)}
+.obra::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(13,23,41,.85))}
+.obra .info{position:absolute;left:18px;right:18px;bottom:16px;z-index:1;color:#fff}
+.obra .cat{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:600}
+.obra h3{font-size:1.25rem;margin-top:4px}
+
+/* processo */
+.proc-timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:30px}
+.proc-timeline::before{content:"";position:absolute;top:28px;left:8%;right:8%;height:3px;background:var(--line);z-index:0}
+.pstep{text-align:center;position:relative;z-index:1;padding:0 8px}
+.pstep .dot{width:56px;height:56px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;margin:0 auto 18px;font-family:var(--display);font-size:1.4rem;border:4px solid var(--bg);transition:.4s}
+.pstep.in-view .dot{background:var(--orange)}
+.pstep h3{font-size:1.05rem;margin-bottom:6px}
+.pstep p{font-size:.84rem;color:var(--ink-soft)}
+
+/* garantias */
+.gar{background:var(--navy);color:#fff}
+.gar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.gcard{background:var(--navy-2);padding:30px 26px;border-top:4px solid var(--orange)}
+.gcard .ic{width:44px;color:var(--orange);margin-bottom:16px}
+.gcard h3{font-size:1.2rem;color:#fff;margin-bottom:8px}
+.gcard p{font-size:.88rem;color:#c3cad8}
+
+/* numbers */
+.nums{background:var(--orange);color:#fff;text-align:center}
+.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.nums .n{font-family:var(--display);font-size:clamp(2.4rem,5vw,3.8rem);line-height:1}
+.nums .lbl{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;opacity:.92;margin-top:4px}
+
+/* depo */
+.depo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.dcard{background:var(--surface);padding:34px;border-left:4px solid var(--orange)}
+.dcard .q{font-size:1.05rem;color:var(--ink);margin-bottom:18px}
+.dcard .who{display:flex;align-items:center;gap:12px}
+.dcard .av{width:46px;height:46px;background:var(--navy);display:grid;place-items:center;font-family:var(--display);color:#fff}
+.dcard .who strong{display:block}.dcard .who span{font-size:.82rem;color:var(--muted)}
+
+/* form */
+.contact{background:var(--navy-deep);color:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:start}
+.contact-info .eyebrow{color:var(--orange)}
+.contact-info h2{color:#fff;font-size:clamp(2.2rem,4.4vw,3.4rem);margin:14px 0 18px}
+.contact-info p{color:#aeb7c7;max-width:420px;margin-bottom:26px}
+.contact-info ul{list-style:none;display:grid;gap:14px}
+.contact-info li{display:flex;gap:12px;font-size:.95rem;color:#c3cad8}.contact-info li svg{width:22px;color:var(--orange);flex-shrink:0}
+form{background:#fff;color:var(--ink);padding:38px;display:grid;gap:18px}
+.field{display:grid;gap:7px}.field label{font-family:var(--display);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.field input,.field select{border:1.5px solid var(--line);padding:13px 16px;font-family:var(--body);font-size:.95rem;background:var(--surface);transition:.3s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--orange)}
+.field.err input,.field.err select{border-color:#d9534f}.field .msg{font-size:.74rem;color:#d9534f;display:none}.field.err .msg{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hp{position:absolute;left:-9999px}
+.form-ok{display:none;background:#fff;color:var(--ink);padding:44px;text-align:center}
+.form-ok.show{display:block}.form-ok .ic{width:60px;height:60px;background:var(--orange);display:grid;place-items:center;color:#fff;margin:0 auto 14px}.form-ok .ic svg{width:30px}.form-ok h3{font-size:1.6rem;margin-bottom:8px}
+
+footer{background:#000;color:#8a96ad;padding:60px 0 28px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:40px}
+.foot-grid .logo{color:#fff}.foot-grid p{font-size:.9rem;max-width:300px;margin-top:14px}
+.foot-col h4{font-family:var(--display);font-size:.95rem;letter-spacing:.08em;color:var(--orange);margin-bottom:14px}
+.foot-col a{display:block;padding:5px 0;font-size:.9rem}.foot-col a:hover{color:#fff}
+.foot-bot{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem}
+
+.wa{position:fixed;right:22px;bottom:22px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.3s}
+.wa:hover{transform:scale(1.08)}.wa svg{width:30px;color:#fff}
+
+@media(max-width:900px){
+  .nav-links{position:fixed;inset:0 0 0 auto;width:80%;max-width:320px;flex-direction:column;background:#fff;padding:90px 34px;gap:8px;transform:translateX(100%);transition:.4s var(--ease);box-shadow:-10px 0 40px rgba(20,33,61,.15)}
+  .nav-links.open{transform:none}.nav-links a{padding:13px 0;font-size:1.05rem}
+  .burger{display:flex}.nav-cta .btn{display:none}
+  .hero-grid,.contact-grid{grid-template-columns:1fr}
+  .srv-grid,.obras-grid,.gar-grid,.nums-grid,.depo-grid,.foot-grid{grid-template-columns:1fr}
+  .srv-grid,.obras-grid,.gar-grid,.nums-grid{grid-template-columns:1fr 1fr}
+  .proc-timeline{grid-template-columns:1fr 1fr;gap:30px 0}.proc-timeline::before{display:none}
+}
+</style>
+</head>
+<body>
+<div class="pf-bar"><div class="wrap"><span>Demonstração de portfólio · Projeto fictício</span><a href="../../index.html">← Voltar ao portfólio</a></div></div>
+
+<header id="top">
+  <nav class="nav">
+    <a href="#top" class="logo">BR<span class="blk">ASK</span></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#obras">Obras</a></li>
+      <li><a href="#processo">Processo</a></li>
+      <li><a href="#garantias">Garantias</a></li>
+      <li><a href="#orcamento">Orçamento</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#orcamento" class="btn btn--orange">Solicitar orçamento</a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow reveal">Engenharia &amp; Reformas</p>
+        <h1 class="reveal" style="transition-delay:.08s">Sua obra no prazo. No <span class="or">orçamento</span>. Sem dor de cabeça.</h1>
+        <p class="reveal" style="transition-delay:.16s">Construção, reforma e retrofit com equipe própria, contrato claro e acompanhamento do início à entrega das chaves.</p>
+        <div class="hero-actions reveal" style="transition-delay:.24s">
+          <a href="#orcamento" class="btn btn--orange">Solicitar orçamento grátis</a>
+          <a href="#obras" class="btn btn--light">Ver obras realizadas</a>
+        </div>
+        <div class="hero-trust reveal" style="transition-delay:.32s">
+          <div><div class="n" data-count="20">0</div><span>Anos no mercado</span></div>
+          <div><div class="n" data-count="480" data-suffix="+">0</div><span>Obras entregues</span></div>
+          <div><div class="n" data-count="100" data-suffix="%">0</div><span>Garantia em contrato</span></div>
+        </div>
+      </div>
+      <div class="hero-img reveal" style="transition-delay:.2s">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80" alt="Canteiro de obras" loading="eager" decoding="async" onerror="this.style.opacity=0" />
+        <div class="hero-badge"><b>NO PRAZO</b>ou avisamos antes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Serviços</p><h2>O que <span class="or">construímos</span> pra você</h2><p>Do projeto à entrega final, com mão de obra própria e qualificada.</p></div>
+    <div class="srv-grid">
+      <div class="srv reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div><h3>Construção</h3><p>Residências e obras comerciais do zero, com gestão completa de canteiro.</p></div>
+      <div class="srv reveal" style="transition-delay:.06s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l6-6M14 4l6 6L8 22H2v-6z"/></svg></div><h3>Reformas</h3><p>Reformas completas ou pontuais, com mínimo transtorno e máximo acabamento.</p></div>
+      <div class="srv reveal" style="transition-delay:.12s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg></div><h3>Retrofit</h3><p>Modernização de imóveis antigos com eficiência e valorização.</p></div>
+      <div class="srv reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l9 4v6c0 5-4 8-9 10-5-2-9-5-9-10V6z"/></svg></div><h3>Alvenaria &amp; Estrutura</h3><p>Fundações, lajes e estruturas executadas com rigor técnico.</p></div>
+      <div class="srv reveal" style="transition-delay:.06s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div><h3>Elétrica &amp; Hidráulica</h3><p>Instalações seguras, dentro das normas e prontas para o futuro.</p></div>
+      <div class="srv reveal" style="transition-delay:.12s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 16l5-5 4 4 8-8M21 7v6h-6"/></svg></div><h3>Acabamento</h3><p>Pisos, pintura e detalhes que fazem a diferença na entrega.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="obras" class="obras">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Portfólio</p><h2>Obras <span class="or">realizadas</span></h2><p>Projetos entregues que falam por nós.</p></div>
+    <div class="filters reveal">
+      <button class="active" data-f="all">Todas</button>
+      <button data-f="res">Residencial</button>
+      <button data-f="com">Comercial</button>
+      <button data-f="ref">Reforma</button>
+    </div>
+    <div class="obras-grid">
+      <div class="obra reveal" data-cat="res"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80" alt="Residência entregue" loading="lazy" onerror="this.style.opacity=0" /><div class="info"><div class="cat">Residencial</div><h3>Casa Alphaville</h3></div></div>
+      <div class="obra reveal" data-cat="com" style="transition-delay:.06s"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80" alt="Edifício comercial" loading="lazy" onerror="this.style.opacity=0" /><div class="info"><div class="cat">Comercial</div><h3>Edifício Vértice</h3></div></div>
+      <div class="obra reveal" data-cat="ref" style="transition-delay:.12s"><img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=700&q=80" alt="Reforma de apartamento" loading="lazy" onerror="this.style.opacity=0" /><div class="info"><div class="cat">Reforma</div><h3>Apto. Batel 1402</h3></div></div>
+      <div class="obra reveal" data-cat="res"><img src="https://images.unsplash.com/photo-1558036117-15d82a90b9b1?auto=format&fit=crop&w=700&q=80" alt="Casa moderna" loading="lazy" onerror="this.style.opacity=0" /><div class="info"><div class="cat">Residencial</div><h3>Residência Mata</h3></div></div>
+      <div class="obra reveal" data-cat="com" style="transition-delay:.06s"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80" alt="Escritório corporativo" loading="lazy" onerror="this.style.opacity=0" /><div class="info"><div class="cat">Comercial</div><h3>Sede Logix</h3></div></div>
+      <div class="obra reveal" data-cat="ref" style="transition-delay:.12s"><img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=700&q=80" alt="Cozinha reformada" loading="lazy" onerror="this.style.opacity=0" /><div class="info"><div class="cat">Reforma</div><h3>Cozinha Gourmet</h3></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="processo">
+  <div class="wrap">
+    <div class="section-head center reveal"><p class="eyebrow">Como trabalhamos</p><h2>Um processo <span class="or">sem surpresas</span></h2></div>
+    <div class="proc-timeline">
+      <div class="pstep reveal"><div class="dot">1</div><h3>Briefing</h3><p>Entendemos seu projeto, prazo e expectativas.</p></div>
+      <div class="pstep reveal" style="transition-delay:.08s"><div class="dot">2</div><h3>Projeto</h3><p>Planejamento técnico e cronograma detalhado.</p></div>
+      <div class="pstep reveal" style="transition-delay:.16s"><div class="dot">3</div><h3>Orçamento</h3><p>Proposta transparente, sem custos ocultos.</p></div>
+      <div class="pstep reveal" style="transition-delay:.24s"><div class="dot">4</div><h3>Execução</h3><p>Obra com equipe própria e acompanhamento constante.</p></div>
+      <div class="pstep reveal" style="transition-delay:.32s"><div class="dot">5</div><h3>Entrega</h3><p>Vistoria final e entrega das chaves com garantia.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="garantias" class="gar">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow" style="color:var(--orange)">Garantias</p><h2>Por que você pode <span class="or">confiar</span></h2></div>
+    <div class="gar-grid">
+      <div class="gcard reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l9 4v6c0 5-4 8-9 10-5-2-9-5-9-10V6z"/><path d="M9 12l2 2 4-4"/></svg><h3>Garantia de obra</h3><p>Garantia formal por escrito sobre a estrutura e o acabamento entregue.</p></div>
+      <div class="gcard reveal" style="transition-delay:.06s"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v14H4zM4 8h16M8 4v14"/></svg><h3>Contrato claro</h3><p>Escopo, prazos e valores definidos em contrato. Nada de surpresas.</p></div>
+      <div class="gcard reveal" style="transition-delay:.12s"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><h3>Prazo cumprido</h3><p>Cronograma com marcos e comunicação proativa em caso de ajustes.</p></div>
+      <div class="gcard reveal" style="transition-delay:.18s"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M15 7a3 3 0 0 1 0 6"/></svg><h3>Equipe própria</h3><p>Profissionais registrados e treinados. Responsabilidade técnica do CREA.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap">
+    <div class="nums-grid">
+      <div class="reveal"><div class="n" data-count="480" data-suffix="+">0</div><div class="lbl">Obras entregues</div></div>
+      <div class="reveal" style="transition-delay:.08s"><div class="n" data-count="120000" data-suffix=" m²">0</div><div class="lbl">Construídos</div></div>
+      <div class="reveal" style="transition-delay:.16s"><div class="n" data-count="96" data-suffix="%">0</div><div class="lbl">Entregues no prazo</div></div>
+      <div class="reveal" style="transition-delay:.24s"><div class="n" data-count="20">0</div><div class="lbl">Anos de mercado</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="depo">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Clientes</p><h2>Quem construiu com a Brask</h2></div>
+    <div class="depo-grid">
+      <div class="dcard reveal"><p class="q">“Entregaram nossa casa duas semanas antes do prazo e dentro do orçamento. Profissionalismo do começo ao fim.”</p><div class="who"><div class="av">F</div><div><strong>Fernando Dias</strong><span>Construção residencial</span></div></div></div>
+      <div class="dcard reveal" style="transition-delay:.08s"><p class="q">“Reformaram nosso escritório funcionando, sem parar a operação. Organização impecável e zero surpresa no preço.”</p><div class="who"><div class="av">A</div><div><strong>Ana Beatriz</strong><span>Reforma comercial</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="orcamento" class="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Orçamento grátis</p>
+        <h2>Vamos tirar seu projeto do papel</h2>
+        <p>Conte o que você precisa. Fazemos uma visita técnica e enviamos um orçamento detalhado, sem compromisso.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg> Visita técnica gratuita</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg> Orçamento detalhado e transparente</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg> Resposta em até 48h</li>
+        </ul>
+      </div>
+      <div>
+        <form id="lead" novalidate>
+          <div class="hp"><label>Não preencha<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+          <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" required /><span class="msg">Informe seu nome.</span></div>
+          <div class="row2">
+            <div class="field"><label for="tel">Telefone</label><input id="tel" name="tel" type="tel" required placeholder="(00) 00000-0000" /><span class="msg">Inválido.</span></div>
+            <div class="field"><label for="serv">Serviço</label><select id="serv" name="serv" required><option value="">Selecione</option><option>Construção</option><option>Reforma</option><option>Retrofit</option><option>Outro</option></select><span class="msg">Selecione.</span></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="area">Área (m²)</label><input id="area" name="area" type="number" min="1" placeholder="Ex: 120" /></div>
+            <div class="field"><label for="prazo">Prazo desejado</label><select id="prazo" name="prazo"><option value="">Selecione</option><option>O quanto antes</option><option>1 a 3 meses</option><option>3 a 6 meses</option><option>Mais de 6 meses</option></select></div>
+          </div>
+          <button type="submit" class="btn btn--orange" style="justify-content:center">Solicitar orçamento</button>
+        </form>
+        <div class="form-ok" id="ok"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div><h3>Solicitação enviada!</h3><p>Vamos agendar sua visita técnica e preparar o orçamento. Retornamos em até 48h.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="logo">BR<span class="blk">ASK</span></div><p>Engenharia, construção e reformas com equipe própria. Solidez, prazo e qualidade.</p></div>
+      <div class="foot-col"><h4>Serviços</h4><a href="#servicos">Construção</a><a href="#servicos">Reformas</a><a href="#servicos">Retrofit</a><a href="#obras">Obras</a></div>
+      <div class="foot-col"><h4>Empresa</h4><a href="#processo">Processo</a><a href="#garantias">Garantias</a><a href="#orcamento">Orçamento</a></div>
+    </div>
+    <div class="foot-bot"><span>CREA/PR 000000 · CNPJ 00.000.000/0001-00 · Projeto fictício para fins de portfólio</span><span>(41) 3000-0000</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5541996739803" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2a11.9 11.9 0 1 1 4.5 4.4zM6.6 20l.37.22a9.9 9.9 0 0 0 5.05 1.38 9.9 9.9 0 1 0-9.9-9.9c0 1.8.48 3.55 1.4 5.08l.24.4-1 3.65zM17.4 14.3c-.15-.25-.55-.4-1.15-.7s-1.77-.87-2.04-.97-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.1 8.1 0 0 1-2.4-1.48 9 9 0 0 1-1.65-2.06c-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5s.05-.37-.02-.52-.67-1.6-.92-2.2c-.24-.57-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.8.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08 2.1 3.2 5.08 4.48c.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42s.25-1.3.17-1.42z"/></svg></a>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
+  b&&b.addEventListener('click',function(){m.classList.toggle('open')});
+  m&&m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open')})});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  function animate(el){
+    var t=+el.dataset.count, suf=el.dataset.suffix||'', dec=(t%1!==0)?1:0, s=0, step=t/55;
+    var id=setInterval(function(){s+=step;if(s>=t){s=t;clearInterval(id)}el.textContent=(dec?s.toFixed(1):Math.floor(s).toLocaleString('pt-BR'))+suf},20);
+  }
+  var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animate(e.target);co.unobserve(e.target)}})},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el)});
+
+  var btns=document.querySelectorAll('.filters button');
+  btns.forEach(function(btn){btn.addEventListener('click',function(){
+    btns.forEach(function(x){x.classList.remove('active')});btn.classList.add('active');
+    var f=btn.dataset.f;
+    document.querySelectorAll('.obra').forEach(function(o){o.style.display=(f==='all'||o.dataset.cat===f)?'':'none'});
+  })});
+
+  var tel=document.getElementById('tel');
+  tel&&tel.addEventListener('input',function(){
+    var v=this.value.replace(/\D/g,'').slice(0,11);
+    if(v.length>6)v=v.replace(/(\d{2})(\d{5})(\d{0,4}).*/,'($1) $2-$3');
+    else if(v.length>2)v=v.replace(/(\d{2})(\d{0,5})/,'($1) $2');
+    else if(v.length>0)v=v.replace(/(\d{0,2})/,'($1');
+    this.value=v;
+  });
+
+  var f=document.getElementById('lead');
+  f&&f.addEventListener('submit',function(e){
+    e.preventDefault();if(f.website.value)return;var ok=true;
+    function check(id,cond){var fl=document.getElementById(id).closest('.field');fl.classList.toggle('err',!cond);if(!cond)ok=false}
+    check('nome',f.nome.value.trim().length>1);
+    check('tel',f.tel.value.replace(/\D/g,'').length>=10);
+    check('serv',f.serv.value!=='');
+    if(ok){f.style.display='none';document.getElementById('ok').classList.add('show')}
+  });
+})();
+</script>
+</body>
+</html>

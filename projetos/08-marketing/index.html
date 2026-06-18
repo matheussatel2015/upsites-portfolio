@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reverso — Agência Criativa | Marketing que vira o jogo</title>
+<meta name="description" content="Agência de marketing digital criativa. Tráfego pago, social media, branding e performance que geram resultado de verdade. Consultoria gratuita." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#111114; --surface:#1A1A1F; --ink:#F5F5F0; --ink-soft:#B5B5AE; --muted:#76766E;
+  --chartreuse:#D6FF3F; --coral:#FF5E5B; --cobalt:#3B5BFF; --lilac:#C9B6FF;
+  --line:rgba(245,245,240,.1);
+  --display:'Syne',system-ui,sans-serif; --body:'DM Sans',system-ui,sans-serif;
+  --maxw:1240px; --ease:cubic-bezier(.16,.84,.44,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none}
+@media(pointer:coarse){body{cursor:auto}.cursor{display:none}}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1;letter-spacing:-.02em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+.eyebrow{font-family:var(--display);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--chartreuse)}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:15px 30px;font-family:var(--display);font-size:.95rem;font-weight:700;border-radius:40px;cursor:none;transition:.3s var(--ease);border:2px solid var(--ink);color:var(--ink);background:transparent}
+.btn:hover{background:var(--chartreuse);color:#111;border-color:var(--chartreuse);transform:translateY(-3px) rotate(-1deg)}
+.btn--fill{background:var(--chartreuse);color:#111;border-color:var(--chartreuse)}.btn--fill:hover{background:var(--coral);border-color:var(--coral);color:#fff}
+
+.cursor{position:fixed;top:0;left:0;width:18px;height:18px;border-radius:50%;background:var(--chartreuse);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference}
+.cursor.big{width:60px;height:60px;background:var(--coral)}
+
+.pf-bar{background:#0A0A0C;color:var(--muted);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line)}
+.pf-bar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 26px}
+.pf-bar a{color:var(--chartreuse);cursor:none}
+
+header{position:sticky;top:0;z-index:50;background:rgba(17,17,20,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 26px;max-width:var(--maxw);margin:0 auto}
+.logo{font-family:var(--display);font-weight:800;font-size:1.5rem;display:flex;align-items:center;gap:.3em}
+.logo b{color:var(--chartreuse)}
+.nav-links{display:flex;gap:30px;list-style:none;font-family:var(--display);font-size:.9rem;font-weight:600}
+.nav-links a{color:var(--ink-soft);transition:.3s;cursor:none}.nav-links a:hover{color:var(--chartreuse)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2.5px;background:var(--chartreuse);transition:.3s}
+
+.hero{position:relative;padding:60px 0 40px;overflow:hidden}
+.hero .blob{position:absolute;width:480px;height:480px;border-radius:50%;filter:blur(80px);opacity:.4;z-index:0}
+.hero .b1{background:var(--cobalt);top:-120px;left:-80px}
+.hero .b2{background:var(--coral);bottom:-160px;right:-60px;opacity:.3}
+.hero .b3{background:var(--chartreuse);top:40%;left:55%;width:300px;height:300px;opacity:.18}
+.hero-inner{position:relative;z-index:1}
+.hero h1{font-size:clamp(3rem,10vw,8rem);max-width:13ch}
+.hero h1 .c1{color:var(--chartreuse)}.hero h1 .c2{color:var(--coral);font-style:italic}.hero h1 .c3{-webkit-text-stroke:2px var(--ink);color:transparent}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-top:30px;flex-wrap:wrap}
+.hero p{font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--ink-soft);max-width:440px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+.marq{background:var(--chartreuse);color:#111;overflow:hidden;padding:12px 0;margin-top:40px;border-top:2px solid #111;border-bottom:2px solid #111}
+.marq-track{display:flex;gap:30px;white-space:nowrap;animation:scroll 20s linear infinite;font-family:var(--display);font-weight:800;font-size:1.3rem;text-transform:uppercase}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marq-track{animation:none}}
+
+.reveal{opacity:0;transform:translateY(34px);transition:.85s var(--ease)}
+.reveal.in-view{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto!important}}
+
+section{padding:clamp(70px,9vw,120px) 0;position:relative}
+.section-head h2{font-size:clamp(2.4rem,6vw,4.6rem)}
+.section-head{margin-bottom:50px}
+
+/* services asymmetric */
+.srv-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.srv{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:34px;transition:.4s var(--ease);position:relative;overflow:hidden}
+.srv:hover{transform:translateY(-6px) rotate(-1deg)}
+.srv .tag{font-family:var(--display);font-size:.78rem;font-weight:700;color:var(--muted)}
+.srv h3{font-size:1.7rem;margin:8px 0 10px}
+.srv p{font-size:.92rem;color:var(--ink-soft)}
+.srv .arrow{position:absolute;top:30px;right:30px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:.3s}
+.srv:hover .arrow{background:var(--chartreuse);color:#111;border-color:var(--chartreuse);transform:rotate(45deg)}
+.srv.s1{grid-column:span 7;background:linear-gradient(135deg,var(--cobalt),#2942cc);border:0}
+.srv.s1 h3,.srv.s1 .tag{color:#fff}.srv.s1 p{color:rgba(255,255,255,.85)}
+.srv.s2{grid-column:span 5}
+.srv.s3{grid-column:span 5}
+.srv.s4{grid-column:span 7;background:var(--coral);border:0}
+.srv.s4 h3,.srv.s4 .tag{color:#fff}.srv.s4 p{color:rgba(255,255,255,.9)}
+.srv.s5{grid-column:span 4}
+.srv.s6{grid-column:span 4}
+.srv.s7{grid-column:span 4;background:var(--chartreuse);border:0}
+.srv.s7 h3,.srv.s7 .tag,.srv.s7 p{color:#111}
+
+/* cases */
+.cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:.4s var(--ease)}
+.case:hover{transform:translateY(-6px);border-color:var(--chartreuse)}
+.case .ph{aspect-ratio:16/9;overflow:hidden;position:relative}
+.case .ph img{width:100%;height:100%;object-fit:cover;transition:1s var(--ease)}
+.case:hover .ph img{transform:scale(1.06)}
+.case .bd{padding:28px}
+.case .res{font-family:var(--display);font-weight:800;font-size:2.4rem;color:var(--chartreuse)}
+.case h3{font-size:1.4rem;margin:6px 0 8px}
+.case p{font-size:.9rem;color:var(--ink-soft)}
+.case .tags{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.case .tags span{font-size:.74rem;padding:4px 12px;border-radius:20px;border:1px solid var(--line);color:var(--ink-soft)}
+
+/* numbers */
+.nums{background:var(--surface)}
+.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.nums .n{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,5.5vw,4.4rem);line-height:1}
+.nums .n.a{color:var(--chartreuse)}.nums .n.b{color:var(--coral)}.nums .n.c{color:var(--cobalt)}.nums .n.d{color:var(--lilac)}
+.nums .lbl{color:var(--ink-soft);font-size:.88rem;margin-top:6px}
+
+/* clientes marquee */
+.cli{overflow:hidden;padding:30px 0}
+.cli-track{display:flex;gap:50px;white-space:nowrap;animation:scroll 26s linear infinite;align-items:center}
+.cli-track span{font-family:var(--display);font-weight:800;font-size:1.6rem;color:var(--muted);transition:.3s}
+.cli-track span:hover{color:var(--ink)}
+
+/* processo */
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pcard{padding:30px;border:1px dashed var(--line);border-radius:22px}
+.pcard .num{font-family:var(--display);font-weight:800;font-size:2.6rem;color:var(--chartreuse)}
+.pcard h3{font-size:1.3rem;margin:6px 0 8px}.pcard p{font-size:.9rem;color:var(--ink-soft)}
+
+/* depo */
+.depo .q{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,3.6vw,2.8rem);line-height:1.3;max-width:14ch}
+.depo .grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.dq{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:34px}
+.dq p{font-size:1rem;color:var(--ink);margin-bottom:16px;font-style:italic}
+.dq .who{display:flex;align-items:center;gap:12px}
+.dq .av{width:46px;height:46px;border-radius:50%;background:var(--coral);display:grid;place-items:center;font-family:var(--display);color:#fff}
+.dq .who strong{display:block}.dq .who span{font-size:.8rem;color:var(--muted)}
+
+/* cta */
+.cta{position:relative;overflow:hidden}
+.cta-box{background:var(--chartreuse);color:#111;border-radius:34px;padding:64px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-box h2{color:#111;font-size:clamp(2.4rem,5.5vw,4.4rem)}
+.cta-box p{max-width:520px;margin:14px auto 28px;font-weight:500;font-size:1.05rem}
+.cta-box .btn{border-color:#111;color:#111}.cta-box .btn:hover{background:#111;color:var(--chartreuse)}
+
+/* form */
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.contact-info h2{font-size:clamp(2.2rem,4.6vw,3.6rem)}
+.contact-info p{color:var(--ink-soft);margin:14px 0 0;max-width:400px}
+form{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:38px;display:grid;gap:18px}
+.field{display:grid;gap:7px}
+.field label{font-family:var(--display);font-size:.82rem;font-weight:600;color:var(--ink-soft)}
+.field input,.field select{background:var(--bg);border:1.5px solid var(--line);border-radius:12px;color:var(--ink);padding:14px 16px;font-family:var(--body);font-size:.95rem;cursor:none;transition:.3s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--chartreuse)}
+.field.err input,.field.err select{border-color:var(--coral)}.field .msg{font-size:.74rem;color:var(--coral);display:none}.field.err .msg{display:block}
+.hp{position:absolute;left:-9999px}
+.form-ok{display:none;text-align:center;background:var(--surface);border:1px solid var(--chartreuse);border-radius:24px;padding:44px}
+.form-ok.show{display:block}.form-ok .ic{width:60px;height:60px;border-radius:50%;background:var(--chartreuse);display:grid;place-items:center;color:#111;margin:0 auto 14px}.form-ok .ic svg{width:30px}.form-ok h3{font-size:1.8rem}
+
+footer{background:#0A0A0C;border-top:1px solid var(--line);padding:60px 0 28px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:40px}
+.foot-grid .logo{color:var(--ink)}.foot-grid p{font-size:.9rem;color:var(--muted);max-width:300px;margin-top:14px}
+.foot-col h4{font-family:var(--display);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--chartreuse);margin-bottom:14px}
+.foot-col a{display:block;padding:5px 0;font-size:.9rem;color:var(--ink-soft);cursor:none}.foot-col a:hover{color:var(--ink)}
+.foot-bot{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+
+@media(max-width:900px){
+  .nav-links{position:fixed;inset:0 0 0 auto;width:80%;max-width:320px;flex-direction:column;background:var(--surface);padding:90px 34px;gap:8px;transform:translateX(100%);transition:.4s var(--ease);border-left:1px solid var(--line)}
+  .nav-links.open{transform:none}.nav-links a{padding:13px 0;font-size:1.1rem}
+  .burger{display:flex}.nav-cta .btn{display:none}
+  .srv-grid,.cases-grid,.proc-grid,.contact-grid,.foot-grid,.depo .grid{grid-template-columns:1fr}
+  .srv.s1,.srv.s2,.srv.s3,.srv.s4,.srv.s5,.srv.s6,.srv.s7{grid-column:span 1}
+  .nums-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="pf-bar"><div class="wrap"><span>Demonstração de portfólio · Projeto fictício</span><a href="../../index.html">← Voltar ao portfólio</a></div></div>
+
+<header id="top">
+  <nav class="nav">
+    <a href="#top" class="logo">Reverso<b>.</b></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#cases">Cases</a></li>
+      <li><a href="#numeros">Resultados</a></li>
+      <li><a href="#clientes">Clientes</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contato" class="btn btn--fill" data-hover>Consultoria grátis</a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow reveal">Agência criativa · performance + branding</p>
+    <h1 class="reveal" style="transition-delay:.08s"><span class="c1">Marketing</span> que <span class="c2">vira</span> <span class="c3">o jogo.</span></h1>
+    <div class="hero-row">
+      <p class="reveal" style="transition-delay:.16s">Criamos campanhas que não passam despercebidas — e que enchem seu funil de leads qualificados.</p>
+      <div class="hero-actions reveal" style="transition-delay:.24s">
+        <a href="#contato" class="btn btn--fill" data-hover>Quero meu diagnóstico</a>
+        <a href="#cases" class="btn" data-hover>Ver cases</a>
+      </div>
+    </div>
+  </div>
+  <div class="marq"><div class="marq-track"><span>TRÁFEGO PAGO ✦ SOCIAL MEDIA ✦ BRANDING ✦ SEO ✦ PERFORMANCE ✦ CONTEÚDO ✦ TRÁFEGO PAGO ✦ SOCIAL MEDIA ✦ BRANDING ✦ SEO ✦ PERFORMANCE ✦ CONTEÚDO ✦</span></div></div>
+</section>
+
+<section id="servicos">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">O que fazemos</p><h2>Serviços que<br />dão resultado</h2></div>
+    <div class="srv-grid">
+      <div class="srv s1 reveal" data-hover><span class="tag">01</span><div class="arrow">↗</div><h3>Tráfego Pago</h3><p>Campanhas no Google, Meta e TikTok com foco obsessivo em ROI. Cada real investido trabalhando por você.</p></div>
+      <div class="srv s2 reveal" data-hover style="transition-delay:.06s"><span class="tag">02</span><div class="arrow">↗</div><h3>Social Media</h3><p>Conteúdo que para o scroll e constrói comunidade de verdade.</p></div>
+      <div class="srv s3 reveal" data-hover><span class="tag">03</span><div class="arrow">↗</div><h3>Branding</h3><p>Identidades que ficam na memória e diferenciam você da concorrência.</p></div>
+      <div class="srv s4 reveal" data-hover style="transition-delay:.06s"><span class="tag">04</span><div class="arrow">↗</div><h3>Performance &amp; CRO</h3><p>Otimização de funil e conversão. Transformamos visitantes em clientes — e clientes em fãs.</p></div>
+      <div class="srv s5 reveal" data-hover><span class="tag">05</span><div class="arrow">↗</div><h3>SEO</h3><p>Apareça no topo do Google de forma orgânica e sustentável.</p></div>
+      <div class="srv s6 reveal" data-hover style="transition-delay:.06s"><span class="tag">06</span><div class="arrow">↗</div><h3>Conteúdo</h3><p>Storytelling e vídeo que engajam e vendem.</p></div>
+      <div class="srv s7 reveal" data-hover><span class="tag">07</span><div class="arrow">↗</div><h3>Estratégia</h3><p>O plano por trás de tudo. Dados + criatividade.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Cases</p><h2>Resultados que<br />falam alto</h2></div>
+    <div class="cases-grid">
+      <div class="case reveal" data-hover><div class="ph"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Case e-commerce" loading="lazy" onerror="this.style.opacity=0" /></div><div class="bd"><div class="res">+320%</div><h3>E-commerce de moda</h3><p>Em leads qualificados após reestruturação completa do funil de tráfego pago em 4 meses.</p><div class="tags"><span>Tráfego pago</span><span>CRO</span></div></div></div>
+      <div class="case reveal" data-hover style="transition-delay:.08s"><div class="ph"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80" alt="Case SaaS" loading="lazy" onerror="this.style.opacity=0" /></div><div class="bd"><div class="res">ROI 7x</div><h3>Startup B2B SaaS</h3><p>Retorno sobre investimento em mídia, escalando de R$ 20k para R$ 140k em receita atribuída.</p><div class="tags"><span>Performance</span><span>Conteúdo</span></div></div></div>
+      <div class="case reveal" data-hover style="transition-delay:.04s"><div class="ph"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=80" alt="Case rebranding" loading="lazy" onerror="this.style.opacity=0" /></div><div class="bd"><div class="res">+540%</div><h3>Rebranding de varejo</h3><p>Crescimento de seguidores e engajamento após reposicionamento de marca e nova estratégia social.</p><div class="tags"><span>Branding</span><span>Social</span></div></div></div>
+      <div class="case reveal" data-hover style="transition-delay:.12s"><div class="ph"><img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=900&q=80" alt="Case SEO" loading="lazy" onerror="this.style.opacity=0" /></div><div class="bd"><div class="res">1º lugar</div><h3>Clínica especializada</h3><p>Posição de topo no Google para 18 palavras-chave estratégicas em 6 meses de SEO.</p><div class="tags"><span>SEO</span><span>Conteúdo</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="numeros" class="nums">
+  <div class="wrap">
+    <div class="nums-grid">
+      <div class="reveal"><div class="n a" data-count="240" data-suffix="+">0</div><div class="lbl">Projetos entregues</div></div>
+      <div class="reveal" style="transition-delay:.08s"><div class="n b" data-count="38" data-prefix="R$ " data-suffix=" mi">0</div><div class="lbl">Em vendas geradas</div></div>
+      <div class="reveal" style="transition-delay:.16s"><div class="n c" data-count="5.2" data-suffix="x">0</div><div class="lbl">ROAS médio</div></div>
+      <div class="reveal" style="transition-delay:.24s"><div class="n d" data-count="96" data-suffix="%">0</div><div class="lbl">Clientes que renovam</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="clientes">
+  <div class="wrap"><div class="section-head reveal" style="margin-bottom:20px"><p class="eyebrow">Confiam na Reverso</p></div></div>
+  <div class="cli"><div class="cli-track"><span>NOVA</span><span>Quantix</span><span>Lúmina</span><span>Verzo</span><span>Òrbita</span><span>Maré</span><span>Pulse</span><span>Kairo</span><span>NOVA</span><span>Quantix</span><span>Lúmina</span><span>Verzo</span><span>Òrbita</span><span>Maré</span><span>Pulse</span><span>Kairo</span></div></div>
+</section>
+
+<section id="processo">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Como trabalhamos</p><h2>Método<br />Reverso</h2></div>
+    <div class="proc-grid">
+      <div class="pcard reveal" data-hover><div class="num">01</div><h3>Imersão</h3><p>Mergulhamos no seu negócio, mercado e público pra entender o que move a agulha.</p></div>
+      <div class="pcard reveal" data-hover style="transition-delay:.08s"><div class="num">02</div><h3>Estratégia</h3><p>Plano de jogo claro, com metas, canais e criativos definidos por dados.</p></div>
+      <div class="pcard reveal" data-hover style="transition-delay:.16s"><div class="num">03</div><h3>Execução &amp; Otimização</h3><p>Colocamos no ar, medimos tudo e otimizamos sem parar. Resultado é compromisso.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="depo">
+  <div class="wrap">
+    <div class="grid">
+      <div class="reveal"><p class="eyebrow">Depoimento</p><div class="q" style="margin-top:18px">“Eles entenderam nossa marca melhor que nós mesmos.”</div></div>
+      <div class="dq reveal" data-hover style="transition-delay:.1s"><p>“Em 90 dias, dobramos os leads e cortamos o custo de aquisição pela metade. A Reverso virou parte do nosso time.”</p><div class="who"><div class="av">M</div><div><strong>Mariana Alves</strong><span>CMO · NOVA Tech</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <h2>Bora virar o jogo?</h2>
+      <p>Receba um diagnóstico gratuito do seu marketing. Vamos te mostrar exatamente onde estão as oportunidades.</p>
+      <a href="#contato" class="btn" data-hover>Quero minha consultoria gratuita</a>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Diagnóstico gratuito</p>
+        <h2>Vamos conversar</h2>
+        <p>Preencha e nosso time entra em contato com uma análise inicial e ideias pro seu negócio. Sem enrolação.</p>
+      </div>
+      <div>
+        <form id="lead" novalidate>
+          <div class="hp"><label>Não preencha<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+          <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" required /><span class="msg">Informe seu nome.</span></div>
+          <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" required /><span class="msg">E-mail inválido.</span></div>
+          <div class="field"><label for="empresa">Empresa / site</label><input id="empresa" name="empresa" type="text" /></div>
+          <div class="field"><label for="obj">Seu principal objetivo</label><select id="obj" name="obj" required><option value="">Selecione</option><option>Gerar mais leads</option><option>Aumentar vendas</option><option>Construir marca</option><option>Escalar tráfego pago</option><option>Outro</option></select><span class="msg">Selecione.</span></div>
+          <button type="submit" class="btn btn--fill" data-hover style="justify-content:center">Quero meu diagnóstico gratuito</button>
+        </form>
+        <div class="form-ok" id="ok"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div><h3>Recebemos! 🚀</h3><p>Nosso time vai analisar e voltar com um diagnóstico e ideias pro seu marketing. Aguarde nosso contato!</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="logo">Reverso<b>.</b></div><p>Agência criativa de marketing digital. Performance, branding e conteúdo que viram o jogo.</p></div>
+      <div class="foot-col"><h4>Serviços</h4><a href="#servicos">Tráfego pago</a><a href="#servicos">Social media</a><a href="#servicos">Branding</a><a href="#servicos">SEO</a></div>
+      <div class="foot-col"><h4>Agência</h4><a href="#cases">Cases</a><a href="#processo">Método</a><a href="#contato">Contato</a></div>
+    </div>
+    <div class="foot-bot"><span>Reverso Agência Criativa · Projeto fictício para fins de portfólio</span><span>oi@reverso.studio · (41) 99673-9803</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // custom cursor
+  var cur=document.getElementById('cursor');
+  if(cur&&window.matchMedia('(pointer:fine)').matches){
+    var cx=0,cy=0,tx=0,ty=0;
+    window.addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY});
+    (function loop(){cx+=(tx-cx)*.2;cy+=(ty-cy)*.2;cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';requestAnimationFrame(loop)})();
+    document.querySelectorAll('[data-hover],a,button').forEach(function(el){
+      el.addEventListener('mouseenter',function(){cur.classList.add('big')});
+      el.addEventListener('mouseleave',function(){cur.classList.remove('big')});
+    });
+  }
+
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
+  b&&b.addEventListener('click',function(){m.classList.toggle('open')});
+  m&&m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open')})});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  function brl(n){return n.toLocaleString('pt-BR',{maximumFractionDigits:1})}
+  function animate(el){
+    var t=+el.dataset.count, pre=el.dataset.prefix||'', suf=el.dataset.suffix||'', dec=(t%1!==0)?1:0, s=0, step=t/55;
+    var id=setInterval(function(){s+=step;if(s>=t){s=t;clearInterval(id)}el.textContent=pre+(dec?s.toFixed(1).replace('.',','):Math.floor(s).toLocaleString('pt-BR'))+suf},20);
+  }
+  var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animate(e.target);co.unobserve(e.target)}})},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el)});
+
+  var f=document.getElementById('lead');
+  f&&f.addEventListener('submit',function(e){
+    e.preventDefault();if(f.website.value)return;var ok=true;
+    function check(id,cond){var fl=document.getElementById(id).closest('.field');fl.classList.toggle('err',!cond);if(!cond)ok=false}
+    check('nome',f.nome.value.trim().length>1);
+    check('email',/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value));
+    check('obj',f.obj.value!=='');
+    if(ok){f.style.display='none';document.getElementById('ok').classList.add('show')}
+  });
+})();
+</script>
+</body>
+</html>

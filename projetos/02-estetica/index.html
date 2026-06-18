@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vivá — Estética Avançada | Sua beleza, cuidada com ciência e carinho</title>
+<meta name="description" content="Clínica de estética avançada para mulheres. Limpeza de pele, harmonização, preenchimento, microagulhamento e mais. Agende sua avaliação gratuita." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#FFFBF8; --surface:#FBF1EC; --surface-2:#F6E6DE;
+  --ink:#4A3B3E; --ink-soft:#7A6A6C; --muted:#A89698;
+  --rose:#B76E79; --rose-deep:#6B4A52; --nude:#E8D5C4; --gold-rose:#D8A48F;
+  --line:rgba(183,110,121,.16);
+  --display:'Italiana',serif; --body:'Mulish',system-ui,sans-serif;
+  --maxw:1180px; --ease:cubic-bezier(.16,.84,.44,1);
+  --shadow:0 24px 60px -28px rgba(107,74,82,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.12;letter-spacing:.005em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--rose);font-weight:600}
+.rose{color:var(--rose)}
+.btn{display:inline-flex;align-items:center;gap:.55em;padding:15px 32px;font-family:var(--body);font-size:.86rem;font-weight:600;letter-spacing:.04em;border-radius:40px;cursor:pointer;transition:.4s var(--ease);border:1.5px solid var(--rose);color:var(--rose);background:transparent}
+.btn:hover{background:var(--rose);color:#fff;transform:translateY(-2px)}
+.btn--solid{background:linear-gradient(120deg,var(--rose),var(--gold-rose));color:#fff;border:0;box-shadow:0 12px 30px -12px rgba(183,110,121,.6)}
+.btn--solid:hover{filter:brightness(1.05);color:#fff}
+
+.pf-bar{background:var(--rose-deep);color:#f2e0e2;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.pf-bar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
+.pf-bar a{color:#fff}.pf-bar a:hover{opacity:.8}
+
+header{position:sticky;top:0;z-index:50;background:rgba(255,251,248,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:var(--maxw);margin:0 auto}
+.logo{font-family:var(--display);font-size:1.9rem;color:var(--rose-deep);display:flex;align-items:center;gap:.4em}
+.logo .dot{width:9px;height:9px;border-radius:50%;background:var(--rose)}
+.nav-links{display:flex;gap:32px;list-style:none;font-size:.88rem;font-weight:500}
+.nav-links a{color:var(--ink-soft);transition:.3s}.nav-links a:hover{color:var(--rose)}
+.nav-cta{display:flex;align-items:center;gap:16px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:24px;height:2px;background:var(--rose);border-radius:2px;transition:.3s}
+
+.hero{position:relative;padding:70px 0 90px;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-120px;right:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(216,164,143,.4),transparent 65%);z-index:0}
+.hero::after{content:"";position:absolute;bottom:-80px;left:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(232,213,196,.55),transparent 68%);z-index:0}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);margin:18px 0 22px}
+.hero h1 .it{color:var(--rose)}
+.hero p{font-size:clamp(1.02rem,1.6vw,1.18rem);color:var(--ink-soft);max-width:480px;margin-bottom:32px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.hero-badges{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap}
+.hero-badges .b .n{font-family:var(--display);font-size:2.2rem;color:var(--rose)}
+.hero-badges .b span{font-size:.78rem;color:var(--muted)}
+.hero-photo{position:relative;border-radius:200px 200px 24px 24px;overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow);background:linear-gradient(160deg,var(--nude),var(--gold-rose))}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-float{position:absolute;background:#fff;border-radius:18px;padding:14px 20px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;font-size:.82rem;font-weight:600}
+.hero-float.top{top:30px;left:-24px}.hero-float.bot{bottom:40px;right:-20px}
+.hero-float .ic{width:38px;height:38px;border-radius:50%;background:var(--surface);display:grid;place-items:center;color:var(--rose)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:.9s var(--ease)}
+.reveal.in-view{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto!important}}
+
+section{padding:clamp(64px,8vw,110px) 0;position:relative}
+.section-head{max-width:600px;margin:0 auto 56px;text-align:center}
+.section-head h2{font-size:clamp(2.1rem,4.2vw,3.4rem);margin:14px 0}
+.section-head p{color:var(--ink-soft)}
+
+.proc{background:var(--surface)}
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.proc-card{background:#fff;border-radius:24px;padding:34px 30px;transition:.45s var(--ease);border:1px solid transparent}
+.proc-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--line)}
+.proc-card .ic{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--nude),var(--gold-rose));display:grid;place-items:center;color:#fff;margin-bottom:20px}
+.proc-card .ic svg{width:28px}
+.proc-card h3{font-size:1.5rem;margin-bottom:8px}
+.proc-card p{font-size:.92rem;color:var(--ink-soft)}
+.proc-card .tag{margin-top:14px;display:inline-block;font-size:.74rem;color:var(--rose);font-weight:700;letter-spacing:.05em}
+
+/* before after */
+.ba-wrap{max-width:760px;margin:0 auto;display:grid;gap:40px}
+.ba{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:16/10;box-shadow:var(--shadow);user-select:none;touch-action:none;background:var(--surface-2)}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba .after{clip-path:inset(0 0 0 50%)}
+.ba .label{position:absolute;bottom:14px;padding:5px 14px;border-radius:20px;background:rgba(74,59,62,.78);color:#fff;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.ba .label.l{left:14px}.ba .label.r{right:14px;background:var(--rose)}
+.ba .handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);cursor:ew-resize;box-shadow:0 0 0 1px rgba(0,0,0,.05)}
+.ba .grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:var(--shadow);color:var(--rose)}
+.ba .grip svg{width:22px}
+
+.quotes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.quote{background:var(--surface);border-radius:24px;padding:34px 30px}
+.stars{color:var(--gold-rose);letter-spacing:2px;margin-bottom:14px}
+.quote p{font-size:.96rem;color:var(--ink);margin-bottom:20px;font-style:italic}
+.quote .who{display:flex;align-items:center;gap:12px}
+.quote .av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--gold-rose));display:grid;place-items:center;color:#fff;font-weight:700;font-family:var(--display);font-size:1.2rem}
+.quote .who strong{display:block;font-size:.92rem}.quote .who span{font-size:.78rem;color:var(--muted)}
+
+.team{background:var(--surface)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.member{text-align:center}
+.member .ph{aspect-ratio:1;border-radius:24px;overflow:hidden;margin-bottom:18px;background:linear-gradient(160deg,var(--nude),var(--gold-rose))}
+.member .ph img{width:100%;height:100%;object-fit:cover}
+.member h3{font-size:1.4rem}.member .role{color:var(--rose);font-size:.84rem;font-weight:600;letter-spacing:.04em}
+.member p{font-size:.88rem;color:var(--ink-soft);margin-top:8px}
+
+.cta-book{background:linear-gradient(120deg,var(--rose),var(--gold-rose));color:#fff;text-align:center;border-radius:34px;padding:64px 30px;margin:0 24px;max-width:var(--maxw);margin-left:auto;margin-right:auto}
+.cta-book h2{color:#fff;font-size:clamp(2.2rem,4.4vw,3.4rem);margin-bottom:12px}
+.cta-book p{max-width:520px;margin:0 auto 26px;opacity:.95}
+.cta-book .btn{background:#fff;color:var(--rose);border:0}.cta-book .btn:hover{background:var(--bg)}
+.cta-book .urg{margin-top:18px;font-size:.82rem;opacity:.9}
+
+.book{position:relative}
+.book-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center}
+.book-info h2{font-size:clamp(2rem,4vw,3rem);margin:14px 0 18px}
+.book-info p{color:var(--ink-soft);max-width:420px;margin-bottom:24px}
+.book-info ul{list-style:none;display:grid;gap:14px}
+.book-info li{display:flex;gap:12px;color:var(--ink);font-size:.95rem}
+.book-info li svg{width:22px;color:var(--rose);flex-shrink:0}
+form{background:#fff;border-radius:28px;padding:40px;box-shadow:var(--shadow);display:grid;gap:18px}
+.field{display:grid;gap:7px}
+.field label{font-size:.78rem;font-weight:600;color:var(--ink-soft)}
+.field input,.field select{border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;font-family:var(--body);font-size:.95rem;color:var(--ink);background:var(--bg);transition:.3s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--rose)}
+.field.err input,.field.err select{border-color:#c0563f}
+.field .msg{font-size:.74rem;color:#c0563f;display:none}.field.err .msg{display:block}
+.hp{position:absolute;left:-9999px}
+.form-ok{display:none;text-align:center;background:#fff;border-radius:28px;padding:46px;box-shadow:var(--shadow)}
+.form-ok.show{display:block}
+.form-ok .ic{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--gold-rose));display:grid;place-items:center;margin:0 auto 16px;color:#fff}
+.form-ok .ic svg{width:30px}.form-ok h3{font-size:1.8rem;margin-bottom:8px}.form-ok p{color:var(--ink-soft)}
+
+footer{background:var(--rose-deep);color:#f2e0e2;padding:64px 0 30px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:40px}
+.foot-grid .logo{color:#fff}.foot-grid p{font-size:.9rem;opacity:.8;max-width:300px;margin-top:14px}
+.foot-col h4{font-family:var(--body);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px;opacity:.7}
+.foot-col a{display:block;padding:5px 0;opacity:.85;font-size:.9rem}.foot-col a:hover{opacity:1}
+.foot-bot{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem;opacity:.75}
+
+.wa{position:fixed;right:22px;bottom:22px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.3s}
+.wa:hover{transform:scale(1.08)}.wa svg{width:30px;color:#fff}
+
+@media(max-width:880px){
+  .nav-links{position:fixed;inset:0 0 0 auto;width:78%;max-width:320px;flex-direction:column;background:#fff;padding:90px 34px;gap:6px;transform:translateX(100%);transition:.4s var(--ease);box-shadow:var(--shadow)}
+  .nav-links.open{transform:none}.nav-links a{padding:12px 0;font-size:1.05rem}
+  .burger{display:flex}.nav-cta .btn{display:none}
+  .hero-grid,.book-grid{grid-template-columns:1fr}.hero-photo{max-width:380px;margin:0 auto;order:-1}
+  .hero-float{display:none}
+  .proc-grid,.quotes-grid,.team-grid,.foot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="pf-bar"><div class="wrap"><span>Demonstração de portfólio · Projeto fictício</span><a href="../../index.html">← Voltar ao portfólio</a></div></div>
+
+<header id="top">
+  <nav class="nav">
+    <a href="#top" class="logo">Vivá<span class="dot"></span></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#proc">Procedimentos</a></li>
+      <li><a href="#ba">Resultados</a></li>
+      <li><a href="#depo">Depoimentos</a></li>
+      <li><a href="#team">Equipe</a></li>
+      <li><a href="#agendar">Agendar</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#agendar" class="btn btn--solid">Avaliação gratuita</a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow reveal">Estética avançada feminina</p>
+        <h1 class="reveal" style="transition-delay:.1s">Realce a sua beleza com <span class="it">ciência e delicadeza</span></h1>
+        <p class="reveal" style="transition-delay:.2s">Protocolos personalizados, tecnologia de ponta e um ambiente pensado para o seu bem-estar. Aqui, autocuidado é um ritual.</p>
+        <div class="hero-actions reveal" style="transition-delay:.3s">
+          <a href="#agendar" class="btn btn--solid">Quero minha avaliação gratuita</a>
+          <a href="#proc" class="btn">Ver procedimentos</a>
+        </div>
+        <div class="hero-badges reveal" style="transition-delay:.4s">
+          <div class="b"><div class="n" data-count="5000" data-suffix="+">0</div><span>Clientes atendidas</span></div>
+          <div class="b"><div class="n" data-count="12">0</div><span>Anos de cuidado</span></div>
+          <div class="b"><div class="n" data-count="4.9" data-dec="1">0</div><span>Avaliação média</span></div>
+        </div>
+      </div>
+      <div class="hero-photo reveal" style="transition-delay:.2s">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80" alt="Cuidado estético em ambiente de spa" loading="eager" decoding="async" onerror="this.style.opacity=0" />
+        <div class="hero-float top"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 6.9H22l-5.8 4.3 2.2 7L12 16.9 5.6 20.2l2.2-7L2 8.9h7.6z"/></svg></div>Protocolos sob medida</div>
+        <div class="hero-float bot"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg></div>Resultados reais</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proc" class="proc">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Procedimentos</p><h2>O cuidado que a sua pele <span class="rose">merece</span></h2><p>Tratamentos faciais e corporais conduzidos por profissionais especializadas.</p></div>
+    <div class="proc-grid">
+      <div class="proc-card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div><h3>Limpeza de Pele</h3><p>Profunda, com extração e hidratação para uma pele renovada e radiante.</p><span class="tag">A partir de R$ 180</span></div>
+      <div class="proc-card reveal" style="transition-delay:.06s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg></div><h3>Harmonização &amp; Botox</h3><p>Suavização de linhas de expressão com naturalidade e equilíbrio facial.</p><span class="tag">Avaliação personalizada</span></div>
+      <div class="proc-card reveal" style="transition-delay:.12s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c4 4 6 7 6 10a6 6 0 1 1-12 0c0-3 2-6 6-10z"/></svg></div><h3>Preenchimento</h3><p>Volume e contorno com ácido hialurônico de alta qualidade.</p><span class="tag">Avaliação personalizada</span></div>
+      <div class="proc-card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l6-6M14 4l6 6-10 10H4v-6z"/></svg></div><h3>Microagulhamento</h3><p>Estímulo de colágeno para textura, manchas e cicatrizes de acne.</p><span class="tag">A partir de R$ 320</span></div>
+      <div class="proc-card reveal" style="transition-delay:.06s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12c3-5 15-5 18 0-3 5-15 5-18 0z"/><circle cx="12" cy="12" r="2"/></svg></div><h3>Drenagem Linfática</h3><p>Reduz inchaço, melhora a circulação e modela o corpo.</p><span class="tag">A partir de R$ 150</span></div>
+      <div class="proc-card reveal" style="transition-delay:.12s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6M5 9l3 3M19 9l-3 3M4 16h16l-2 6H6z"/></svg></div><h3>Depilação a Laser</h3><p>Tecnologia de última geração, segura para todos os tons de pele.</p><span class="tag">Pacotes especiais</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="ba">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Antes &amp; depois</p><h2>Transformações que <span class="rose">falam por si</span></h2><p>Arraste para comparar. Resultados reais de clientes (imagens ilustrativas).</p></div>
+    <div class="ba-wrap">
+      <div class="ba reveal" data-ba>
+        <img class="before" src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=1000&q=80" alt="Antes do tratamento" loading="lazy" decoding="async" onerror="this.style.opacity=0" />
+        <img class="after" src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1000&q=80" alt="Depois do tratamento" loading="lazy" decoding="async" onerror="this.style.opacity=0" />
+        <span class="label l">Antes</span><span class="label r">Depois</span>
+        <div class="handle"><div class="grip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="depo">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Depoimentos</p><h2>Histórias de <span class="rose">autoestima</span></h2></div>
+    <div class="quotes-grid">
+      <div class="quote reveal"><div class="stars">★★★★★</div><p>“Saio de cada sessão me sentindo outra pessoa. O cuidado da equipe e o ambiente são de outro nível.”</p><div class="who"><div class="av">A</div><div><strong>Amanda Ribeiro</strong><span>Cliente há 2 anos</span></div></div></div>
+      <div class="quote reveal" style="transition-delay:.08s"><div class="stars">★★★★★</div><p>“Resultado natural e profissionais que realmente entendem do assunto. Minha pele nunca esteve tão bonita.”</p><div class="who"><div class="av">J</div><div><strong>Juliana Castro</strong><span>Microagulhamento</span></div></div></div>
+      <div class="quote reveal" style="transition-delay:.16s"><div class="stars">★★★★★</div><p>“A avaliação gratuita me ganhou. Foram honestas sobre o que eu precisava. Confiança total.”</p><div class="who"><div class="av">P</div><div><strong>Patrícia Lemos</strong><span>Harmonização</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="team" class="team">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Nossa equipe</p><h2>Mãos especializadas, <span class="rose">olhar atento</span></h2></div>
+    <div class="team-grid">
+      <div class="member reveal"><div class="ph"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80" alt="Profissional" loading="lazy" onerror="this.style.opacity=0" /></div><h3>Dra. Carolina Vianna</h3><div class="role">Biomédica esteta</div><p>Especialista em harmonização facial e protocolos avançados.</p></div>
+      <div class="member reveal" style="transition-delay:.08s"><div class="ph"><img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=600&q=80" alt="Profissional" loading="lazy" onerror="this.style.opacity=0" /></div><h3>Renata Souza</h3><div class="role">Esteticista sênior</div><p>12 anos dedicados a tratamentos faciais e corporais.</p></div>
+      <div class="member reveal" style="transition-delay:.16s"><div class="ph"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80" alt="Profissional" loading="lazy" onerror="this.style.opacity=0" /></div><h3>Beatriz Nunes</h3><div class="role">Terapeuta corporal</div><p>Drenagem e modelagem com técnica e sensibilidade.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-bottom:0">
+  <div class="cta-book reveal">
+    <h2>Sua melhor versão começa com um “sim”</h2>
+    <p>Agende sua avaliação gratuita esta semana e receba um plano de cuidados personalizado, sem compromisso.</p>
+    <a href="#agendar" class="btn">Agendar avaliação gratuita</a>
+    <div class="urg">⏳ Apenas 8 vagas de avaliação gratuita restantes este mês</div>
+  </div>
+</section>
+
+<section id="agendar" class="book">
+  <div class="wrap">
+    <div class="book-grid">
+      <div class="book-info reveal">
+        <p class="eyebrow">Agende agora</p>
+        <h2>Vamos cuidar de você</h2>
+        <p>Preencha e nossa recepção entra em contato para confirmar o melhor horário. Rápido, simples e acolhedor.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg> Avaliação inicial sem custo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg> Plano de cuidados personalizado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg> Ambiente exclusivo e reservado</li>
+        </ul>
+      </div>
+      <div>
+        <form id="lead" novalidate>
+          <div class="hp"><label>Não preencha<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+          <div class="field"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text" required /><span class="msg">Informe seu nome.</span></div>
+          <div class="field"><label for="tel">WhatsApp</label><input id="tel" name="tel" type="tel" required placeholder="(00) 00000-0000" /><span class="msg">Informe um telefone válido.</span></div>
+          <div class="field"><label for="proc">Procedimento de interesse</label><select id="proc" name="proc" required><option value="">Selecione</option><option>Limpeza de pele</option><option>Harmonização / Botox</option><option>Preenchimento</option><option>Microagulhamento</option><option>Drenagem</option><option>Depilação a laser</option><option>Ainda não sei</option></select><span class="msg">Selecione uma opção.</span></div>
+          <button type="submit" class="btn btn--solid" style="justify-content:center">Quero agendar minha avaliação</button>
+        </form>
+        <div class="form-ok" id="ok">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>Agendamento solicitado!</h3>
+          <p>Que alegria ter você com a gente. Nossa recepção vai te chamar no WhatsApp em instantes. 💗</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="logo">Vivá<span class="dot"></span></div><p>Estética avançada feminina. Cuidado, ciência e acolhimento em cada detalhe.</p></div>
+      <div class="foot-col"><h4>Procedimentos</h4><a href="#proc">Limpeza de pele</a><a href="#proc">Harmonização</a><a href="#proc">Microagulhamento</a><a href="#proc">Laser</a></div>
+      <div class="foot-col"><h4>Clínica</h4><a href="#team">Equipe</a><a href="#ba">Resultados</a><a href="#agendar">Agendar</a></div>
+    </div>
+    <div class="foot-bot"><span>Rua das Acácias, 240 · Curitiba/PR · Projeto fictício para fins de portfólio</span><span>CNPJ 00.000.000/0001-00</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5541996739803" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2a11.9 11.9 0 1 1 4.5 4.4zM6.6 20l.37.22a9.9 9.9 0 0 0 5.05 1.38 9.9 9.9 0 1 0-9.9-9.9c0 1.8.48 3.55 1.4 5.08l.24.4-1 3.65zM17.4 14.3c-.15-.25-.55-.4-1.15-.7s-1.77-.87-2.04-.97-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.1 8.1 0 0 1-2.4-1.48 9 9 0 0 1-1.65-2.06c-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5s.05-.37-.02-.52-.67-1.6-.92-2.2c-.24-.57-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.8.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08 2.1 3.2 5.08 4.48c.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42s.25-1.3.17-1.42z"/></svg></a>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
+  b&&b.addEventListener('click',function(){m.classList.toggle('open')});
+  m&&m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open')})});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  function animate(el){
+    var t=+el.dataset.count, dec=+(el.dataset.dec||0), suf=el.dataset.suffix||'', s=0, step=t/60;
+    var id=setInterval(function(){s+=step;if(s>=t){s=t;clearInterval(id)}el.textContent=(dec?s.toFixed(dec):Math.floor(s).toLocaleString('pt-BR'))+suf},18);
+  }
+  var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animate(e.target);co.unobserve(e.target)}})},{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el)});
+
+  // before/after slider
+  document.querySelectorAll('[data-ba]').forEach(function(ba){
+    var after=ba.querySelector('.after'),handle=ba.querySelector('.handle'),drag=false;
+    function set(x){var r=ba.getBoundingClientRect();var p=Math.max(0,Math.min(1,(x-r.left)/r.width));after.style.clipPath='inset(0 0 0 '+(p*100)+'%)';handle.style.left=(p*100)+'%'}
+    function down(e){drag=true;set((e.touches?e.touches[0].clientX:e.clientX))}
+    function move(e){if(drag)set((e.touches?e.touches[0].clientX:e.clientX))}
+    function up(){drag=false}
+    ba.addEventListener('mousedown',down);ba.addEventListener('touchstart',down,{passive:true});
+    window.addEventListener('mousemove',move);window.addEventListener('touchmove',move,{passive:true});
+    window.addEventListener('mouseup',up);window.addEventListener('touchend',up);
+  });
+
+  var tel=document.getElementById('tel');
+  tel&&tel.addEventListener('input',function(){
+    var v=this.value.replace(/\D/g,'').slice(0,11);
+    if(v.length>6)v=v.replace(/(\d{2})(\d{5})(\d{0,4}).*/,'($1) $2-$3');
+    else if(v.length>2)v=v.replace(/(\d{2})(\d{0,5})/,'($1) $2');
+    else if(v.length>0)v=v.replace(/(\d{0,2})/,'($1');
+    this.value=v;
+  });
+
+  var f=document.getElementById('lead');
+  f&&f.addEventListener('submit',function(e){
+    e.preventDefault();if(f.website.value)return;var ok=true;
+    function check(id,cond){var fl=document.getElementById(id).closest('.field');fl.classList.toggle('err',!cond);if(!cond)ok=false}
+    check('nome',f.nome.value.trim().length>1);
+    check('tel',f.tel.value.replace(/\D/g,'').length>=10);
+    check('proc',f.proc.value!=='');
+    if(ok){f.style.display='none';document.getElementById('ok').classList.add('show')}
+  });
+})();
+</script>
+</body>
+</html>

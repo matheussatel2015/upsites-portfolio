@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FORJA — High Performance Club | Treine como nunca treinou</title>
+<meta name="description" content="Academia premium de alta performance. Estrutura completa, treinos intensos e resultados reais. Matricule-se e forje a sua melhor versão." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#0A0A0A; --surface:#141414; --surface-2:#1C1C1C;
+  --ink:#FFFFFF; --ink-soft:#C4C4C4; --muted:#8A8A8A;
+  --red:#E10600; --red-deep:#B00500;
+  --line:rgba(255,255,255,.1);
+  --display:'Anton',Impact,sans-serif; --body:'Barlow',system-ui,sans-serif;
+  --maxw:1200px; --ease:cubic-bezier(.16,.84,.44,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.95;letter-spacing:.01em;text-transform:uppercase}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--body);font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--red);font-weight:700}
+.red{color:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:16px 34px;font-family:var(--display);font-size:1rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:.3s var(--ease);border:2px solid var(--ink);color:var(--ink);background:transparent;clip-path:polygon(0 0,100% 0,100% 100%,8px 100%)}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn--red{background:var(--red);border-color:var(--red);color:#fff}.btn--red:hover{background:var(--red-deep);border-color:var(--red-deep);color:#fff}
+
+.pf-bar{background:#000;color:var(--muted);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid #1a1a1a}
+.pf-bar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
+.pf-bar a{color:var(--red)}
+
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:var(--maxw);margin:0 auto}
+.logo{font-family:var(--display);font-size:1.7rem;letter-spacing:.04em;display:flex;align-items:center;gap:.3em}
+.logo .b{color:var(--red)}
+.nav-links{display:flex;gap:30px;list-style:none;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.nav-links a{color:var(--ink-soft);transition:.3s}.nav-links a:hover{color:var(--red)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2.5px;background:var(--red);transition:.3s}
+
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.35;filter:grayscale(.3) contrast(1.1)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 22%,rgba(10,10,10,.4) 70%),linear-gradient(0deg,var(--bg),transparent 55%)}
+.hero .stripe{position:absolute;top:0;left:0;bottom:0;width:8px;background:var(--red);z-index:1}
+.hero .wrap{position:relative;z-index:2;padding:50px 0}
+.hero h1{font-size:clamp(3.4rem,11vw,8.5rem);line-height:.86;margin:18px 0 20px}
+.hero h1 .out{-webkit-text-stroke:2px var(--red);color:transparent}
+.hero p{font-size:clamp(1.05rem,1.8vw,1.3rem);color:var(--ink-soft);max-width:480px;margin-bottom:34px;font-weight:500}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:50px;margin-top:54px;flex-wrap:wrap}
+.hero-stats .n{font-family:var(--display);font-size:3rem;color:var(--red);line-height:1}
+.hero-stats span{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+.reveal{opacity:0;transform:translateY(34px);transition:.85s var(--ease)}
+.reveal.in-view{opacity:1;transform:none}
+.reveal.left{transform:translateX(-40px)}.reveal.left.in-view{transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto!important}}
+
+section{padding:clamp(64px,9vw,120px) 0;position:relative}
+.section-head{margin-bottom:54px;max-width:640px}
+.section-head h2{font-size:clamp(2.4rem,6vw,4.6rem)}
+.section-head p{color:var(--ink-soft);margin-top:12px}
+
+/* marquee */
+.marq{background:var(--red);overflow:hidden;padding:14px 0;transform:rotate(-1.5deg);margin:-10px 0}
+.marq-track{display:flex;gap:40px;white-space:nowrap;animation:scroll 22s linear infinite;font-family:var(--display);font-size:1.4rem;text-transform:uppercase;letter-spacing:.04em;color:#fff}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marq-track{animation:none}}
+
+/* planos */
+.plan-toggle{display:flex;gap:8px;margin-bottom:36px;background:var(--surface);border:1px solid var(--line);padding:6px;border-radius:6px;width:fit-content}
+.plan-toggle button{background:transparent;border:0;color:var(--muted);font-family:var(--display);font-size:.95rem;letter-spacing:.05em;text-transform:uppercase;padding:10px 22px;cursor:pointer;transition:.3s;border-radius:4px}
+.plan-toggle button.active{background:var(--red);color:#fff}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.plan{background:var(--surface);border:1px solid var(--line);padding:36px 30px;display:flex;flex-direction:column;transition:.4s var(--ease);position:relative}
+.plan:hover{border-color:var(--red);transform:translateY(-6px)}
+.plan.pop{background:linear-gradient(180deg,var(--surface-2),var(--surface));border-color:var(--red)}
+.plan.pop::before{content:"Mais escolhido";position:absolute;top:0;right:0;background:var(--red);color:#fff;font-family:var(--display);font-size:.72rem;letter-spacing:.1em;padding:5px 14px}
+.plan h3{font-size:1.8rem}
+.plan .pr{font-family:var(--display);font-size:3.4rem;color:var(--red);margin:14px 0 4px;line-height:1}
+.plan .pr small{font-family:var(--body);font-size:.9rem;color:var(--muted);font-weight:500}
+.plan ul{list-style:none;margin:22px 0;display:grid;gap:12px;flex:1}
+.plan li{font-size:.92rem;color:var(--ink-soft);display:flex;gap:10px}
+.plan li svg{width:18px;color:var(--red);flex-shrink:0}
+
+/* estrutura */
+.estr{background:var(--surface)}
+.estr-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:200px;gap:14px}
+.estr-card{position:relative;overflow:hidden;background:var(--surface-2)}
+.estr-card img{width:100%;height:100%;object-fit:cover;transition:1s var(--ease);filter:grayscale(.2)}
+.estr-card:hover img{transform:scale(1.08);filter:none}
+.estr-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.8))}
+.estr-card span{position:absolute;left:18px;bottom:14px;z-index:1;font-family:var(--display);font-size:1.4rem;text-transform:uppercase}
+.estr-card.a{grid-column:span 7;grid-row:span 2}
+.estr-card.b{grid-column:span 5}
+.estr-card.c{grid-column:span 5}
+.estr-card.d{grid-column:span 4}
+.estr-card.e{grid-column:span 4}
+.estr-card.f{grid-column:span 4}
+
+/* resultados */
+.res-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.res .n{font-family:var(--display);font-size:clamp(3rem,7vw,5.5rem);color:var(--red);line-height:1}
+.res .lbl{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+/* depo */
+.depo{background:var(--surface)}
+.depo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.dcard{background:var(--bg);border:1px solid var(--line);padding:30px 26px;border-left:4px solid var(--red)}
+.dcard .q{font-size:1rem;color:var(--ink);font-weight:500;margin-bottom:18px;font-style:italic}
+.dcard .who{display:flex;align-items:center;gap:12px}
+.dcard .av{width:44px;height:44px;background:var(--red);display:grid;place-items:center;font-family:var(--display);color:#fff}
+.dcard .who strong{display:block;font-size:.92rem}.dcard .who span{font-size:.78rem;color:var(--muted)}
+
+/* cta matricula */
+.cta{background:var(--red);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cta h2{font-size:clamp(2.6rem,6vw,5rem);color:#fff}
+.cta p{max-width:540px;margin:14px auto 28px;font-weight:500}
+.cta .btn{border-color:#fff;color:#fff}.cta .btn:hover{background:#fff;color:var(--red)}
+.cta .urg{margin-top:18px;font-family:var(--display);font-size:1rem;letter-spacing:.06em}
+
+/* form */
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.contact-info h2{font-size:clamp(2.4rem,5vw,3.8rem)}
+.contact-info p{color:var(--ink-soft);margin:14px 0 0;max-width:400px}
+form{background:var(--surface);border:1px solid var(--line);padding:38px;display:grid;gap:18px}
+.field{display:grid;gap:7px}
+.field label{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.field input,.field select{background:var(--bg);border:1px solid var(--line);color:#fff;padding:14px 16px;font-family:var(--body);font-size:.95rem;transition:.3s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--red)}
+.field.err input,.field.err select{border-color:var(--red)}.field .msg{font-size:.74rem;color:var(--red);display:none}.field.err .msg{display:block}
+.hp{position:absolute;left:-9999px}
+.form-ok{display:none;text-align:center;background:var(--surface);border:1px solid var(--red);padding:44px}
+.form-ok.show{display:block}.form-ok .ic{width:60px;height:60px;background:var(--red);display:grid;place-items:center;margin:0 auto 14px;color:#fff}.form-ok .ic svg{width:30px}.form-ok h3{font-size:1.8rem}
+
+footer{background:#000;color:var(--muted);padding:60px 0 28px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:40px}
+.foot-grid .logo{color:#fff}.foot-grid p{font-size:.9rem;max-width:300px;margin-top:14px}
+.foot-col h4{font-family:var(--display);font-size:.95rem;letter-spacing:.08em;color:var(--red);margin-bottom:14px}
+.foot-col a{display:block;padding:5px 0;font-size:.9rem}.foot-col a:hover{color:#fff}
+.foot-bot{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem}
+
+.wa{position:fixed;right:22px;bottom:22px;z-index:60;width:56px;height:56px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 10px 30px rgba(225,6,0,.5);transition:.3s}
+.wa:hover{transform:scale(1.08)}.wa svg{width:28px;color:#fff}
+
+@media(max-width:900px){
+  .nav-links{position:fixed;inset:0 0 0 auto;width:80%;max-width:320px;flex-direction:column;background:var(--surface);padding:90px 34px;gap:8px;transform:translateX(100%);transition:.4s var(--ease);border-left:2px solid var(--red)}
+  .nav-links.open{transform:none}.nav-links a{padding:13px 0;font-size:1.1rem}
+  .burger{display:flex}.nav-cta .btn{display:none}
+  .plans,.res-grid,.depo-grid,.contact-grid,.foot-grid{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:1fr 1fr}
+  .estr-grid{grid-template-columns:1fr 1fr;grid-auto-rows:160px}
+  .estr-card.a,.estr-card.b,.estr-card.c,.estr-card.d,.estr-card.e,.estr-card.f{grid-column:span 1;grid-row:span 1}
+}
+</style>
+</head>
+<body>
+<div class="pf-bar"><div class="wrap"><span>Demonstração de portfólio · Projeto fictício</span><a href="../../index.html">← Voltar ao portfólio</a></div></div>
+
+<header id="top">
+  <nav class="nav">
+    <a href="#top" class="logo">FOR<span class="b">JA</span></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#estrutura">Estrutura</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#depo">Alunos</a></li>
+      <li><a href="#matricula">Matrícula</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#matricula" class="btn btn--red">Matricule-se</a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="stripe"></div>
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80" alt="Treino intenso na academia" loading="eager" decoding="async" onerror="this.style.opacity=0" /></div>
+  <div class="wrap">
+    <p class="eyebrow reveal">High Performance Club</p>
+    <h1 class="reveal" style="transition-delay:.08s">FORJE A SUA<br /><span class="out">MELHOR VERSÃO</span></h1>
+    <p class="reveal" style="transition-delay:.16s">Estrutura de elite, metodologia de resultado e uma comunidade que não aceita o comum. Aqui não existe meio-termo.</p>
+    <div class="hero-actions reveal" style="transition-delay:.24s">
+      <a href="#matricula" class="btn btn--red">Começar agora</a>
+      <a href="#planos" class="btn">Ver planos</a>
+    </div>
+    <div class="hero-stats reveal" style="transition-delay:.32s">
+      <div><div class="n" data-count="8000" data-suffix="+">0</div><span>Alunos ativos</span></div>
+      <div><div class="n" data-count="15">0</div><span>Anos de história</span></div>
+      <div><div class="n" data-count="24" data-suffix="h">0</div><span>Aberto todos os dias</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marq"><div class="marq-track"><span>SEM DESCULPAS</span><span>★</span><span>FORÇA</span><span>★</span><span>DISCIPLINA</span><span>★</span><span>RESULTADO</span><span>★</span><span>SUPERAÇÃO</span><span>★</span><span>SEM DESCULPAS</span><span>★</span><span>FORÇA</span><span>★</span><span>DISCIPLINA</span><span>★</span><span>RESULTADO</span><span>★</span><span>SUPERAÇÃO</span><span>★</span></div></div>
+
+<section id="planos">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Planos</p><h2>Escolha seu <span class="red">nível</span></h2><p>Sem fidelidade abusiva. Cancele quando quiser.</p></div>
+    <div class="plan-toggle reveal">
+      <button class="active" data-p="m">Mensal</button>
+      <button data-p="t">Trimestral</button>
+      <button data-p="a">Anual</button>
+    </div>
+    <div class="plans">
+      <div class="plan reveal">
+        <h3>Start</h3>
+        <div class="pr">R$ <span data-m="129" data-t="109" data-a="89">129</span><small>/mês</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Acesso à musculação</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Área de cardio completa</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Avaliação física inicial</li>
+        </ul>
+        <a href="#matricula" class="btn">Quero esse</a>
+      </div>
+      <div class="plan pop reveal" style="transition-delay:.08s">
+        <h3>Performance</h3>
+        <div class="pr">R$ <span data-m="199" data-t="169" data-a="139">199</span><small>/mês</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Tudo do Start</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Aulas coletivas ilimitadas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Studio de cross e funcional</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> App de treino personalizado</li>
+        </ul>
+        <a href="#matricula" class="btn btn--red">Quero esse</a>
+      </div>
+      <div class="plan reveal" style="transition-delay:.16s">
+        <h3>Elite</h3>
+        <div class="pr">R$ <span data-m="349" data-t="299" data-a="259">349</span><small>/mês</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Tudo do Performance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Personal trainer dedicado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Acompanhamento nutricional</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Acesso VIP e recovery</li>
+        </ul>
+        <a href="#matricula" class="btn">Quero esse</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="estrutura" class="estr">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Estrutura</p><h2>Feita para <span class="red">performar</span></h2></div>
+    <div class="estr-grid">
+      <div class="estr-card a reveal"><img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1000&q=80" alt="Área de musculação" loading="lazy" onerror="this.style.opacity=0" /><span>Musculação</span></div>
+      <div class="estr-card b reveal" style="transition-delay:.06s"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Cross training" loading="lazy" onerror="this.style.opacity=0" /><span>Cross &amp; Funcional</span></div>
+      <div class="estr-card c reveal" style="transition-delay:.12s"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80" alt="Área de pesos livres" loading="lazy" onerror="this.style.opacity=0" /><span>Pesos livres</span></div>
+      <div class="estr-card d reveal"><img src="https://images.unsplash.com/photo-1637666505754-e416d28d5e3?auto=format&fit=crop&w=600&q=80" alt="Studio de aulas" loading="lazy" onerror="this.style.opacity=0" /><span>Studio</span></div>
+      <div class="estr-card e reveal" style="transition-delay:.06s"><img src="https://images.unsplash.com/photo-1623874514711-0f321325f318?auto=format&fit=crop&w=600&q=80" alt="Vestiários" loading="lazy" onerror="this.style.opacity=0" /><span>Vestiários</span></div>
+      <div class="estr-card f reveal" style="transition-delay:.12s"><img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=600&q=80" alt="Avaliação física" loading="lazy" onerror="this.style.opacity=0" /><span>Avaliação</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="resultados">
+  <div class="wrap">
+    <div class="section-head reveal" style="text-align:center;margin-left:auto;margin-right:auto"><p class="eyebrow">Resultados</p><h2>Números que <span class="red">não mentem</span></h2></div>
+    <div class="res-grid">
+      <div class="res reveal"><div class="n" data-count="93" data-suffix="%">0</div><div class="lbl">Atingem a meta em 90 dias</div></div>
+      <div class="res reveal" style="transition-delay:.08s"><div class="n" data-count="12000" data-suffix="+">0</div><div class="lbl">Treinos por semana</div></div>
+      <div class="res reveal" style="transition-delay:.16s"><div class="n" data-count="40" data-suffix="+">0</div><div class="lbl">Modalidades e aulas</div></div>
+      <div class="res reveal" style="transition-delay:.24s"><div class="n" data-count="4.9">0</div><div class="lbl">Nota média dos alunos</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="depo" class="depo">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Depoimentos</p><h2>Quem treina, <span class="red">transforma</span></h2></div>
+    <div class="depo-grid">
+      <div class="dcard reveal"><p class="q">“Perdi 14kg em 5 meses. A estrutura e a energia daqui mudaram minha rotina e minha cabeça.”</p><div class="who"><div class="av">L</div><div><strong>Lucas Pereira</strong><span>Aluno há 1 ano</span></div></div></div>
+      <div class="dcard reveal" style="transition-delay:.08s"><p class="q">“Nunca me senti tão motivada. As aulas coletivas são viciantes e os professores são fora de série.”</p><div class="who"><div class="av">C</div><div><strong>Carla Mendes</strong><span>Plano Performance</span></div></div></div>
+      <div class="dcard reveal" style="transition-delay:.16s"><p class="q">“O personal do plano Elite montou um treino que respeitou minha lesão. Voltei mais forte que antes.”</p><div class="who"><div class="av">D</div><div><strong>Diego Rocha</strong><span>Plano Elite</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 class="reveal">Chega de “amanhã eu começo”</h2>
+    <p class="reveal" style="transition-delay:.08s">Matricule-se esta semana e ganhe sua avaliação física + 7 dias de acompanhamento personalizado.</p>
+    <a href="#matricula" class="btn reveal" style="transition-delay:.16s">Garantir minha matrícula</a>
+    <div class="urg reveal" style="transition-delay:.24s">🔥 Condição válida apenas para as próximas 20 matrículas</div>
+  </div>
+</section>
+
+<section id="matricula">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal left">
+        <p class="eyebrow">Bora pra cima</p>
+        <h2>Agende sua aula<br /><span class="red">experimental</span></h2>
+        <p>Preencha e nossa recepção te chama no WhatsApp para marcar seu primeiro treino. É de graça e sem compromisso.</p>
+      </div>
+      <div>
+        <form id="lead" novalidate class="reveal">
+          <div class="hp"><label>Não preencha<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+          <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" required /><span class="msg">Informe seu nome.</span></div>
+          <div class="field"><label for="tel">WhatsApp</label><input id="tel" name="tel" type="tel" required placeholder="(00) 00000-0000" /><span class="msg">Telefone inválido.</span></div>
+          <div class="field"><label for="plano">Plano de interesse</label><select id="plano" name="plano" required><option value="">Selecione</option><option>Start</option><option>Performance</option><option>Elite</option><option>Aula experimental</option></select><span class="msg">Selecione.</span></div>
+          <button type="submit" class="btn btn--red" style="justify-content:center">Quero treinar na FORJA</button>
+        </form>
+        <div class="form-ok" id="ok"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div><h3>É isso! 💪</h3><p>Recebemos seu contato. Nossa recepção vai te chamar no WhatsApp para agendar seu treino.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="logo">FOR<span class="b">JA</span></div><p>High Performance Club. Estrutura de elite e resultado de verdade, todos os dias.</p></div>
+      <div class="foot-col"><h4>Treine</h4><a href="#planos">Planos</a><a href="#estrutura">Estrutura</a><a href="#resultados">Resultados</a></div>
+      <div class="foot-col"><h4>FORJA</h4><a href="#depo">Alunos</a><a href="#matricula">Matrícula</a><a href="#top">Topo</a></div>
+    </div>
+    <div class="foot-bot"><span>Av. dos Atletas, 900 · Curitiba/PR · Projeto fictício para fins de portfólio</span><span>Aberto 24h · Todos os dias</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5541996739803" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2a11.9 11.9 0 1 1 4.5 4.4zM6.6 20l.37.22a9.9 9.9 0 0 0 5.05 1.38 9.9 9.9 0 1 0-9.9-9.9c0 1.8.48 3.55 1.4 5.08l.24.4-1 3.65zM17.4 14.3c-.15-.25-.55-.4-1.15-.7s-1.77-.87-2.04-.97-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.1 8.1 0 0 1-2.4-1.48 9 9 0 0 1-1.65-2.06c-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5s.05-.37-.02-.52-.67-1.6-.92-2.2c-.24-.57-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.8.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08 2.1 3.2 5.08 4.48c.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42s.25-1.3.17-1.42z"/></svg></a>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
+  b&&b.addEventListener('click',function(){m.classList.toggle('open')});
+  m&&m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open')})});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  function animate(el){
+    var t=+el.dataset.count, suf=el.dataset.suffix||'', dec=(t%1!==0)?1:0, s=0, step=t/55;
+    var id=setInterval(function(){s+=step;if(s>=t){s=t;clearInterval(id)}el.textContent=(dec?s.toFixed(1):Math.floor(s).toLocaleString('pt-BR'))+suf},20);
+  }
+  var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animate(e.target);co.unobserve(e.target)}})},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el)});
+
+  // plan toggle
+  var pbtns=document.querySelectorAll('.plan-toggle button');
+  pbtns.forEach(function(btn){btn.addEventListener('click',function(){
+    pbtns.forEach(function(x){x.classList.remove('active')});btn.classList.add('active');
+    var p=btn.dataset.p;
+    document.querySelectorAll('.plan .pr span[data-m]').forEach(function(el){el.textContent=el.dataset[p]});
+  })});
+
+  var tel=document.getElementById('tel');
+  tel&&tel.addEventListener('input',function(){
+    var v=this.value.replace(/\D/g,'').slice(0,11);
+    if(v.length>6)v=v.replace(/(\d{2})(\d{5})(\d{0,4}).*/,'($1) $2-$3');
+    else if(v.length>2)v=v.replace(/(\d{2})(\d{0,5})/,'($1) $2');
+    else if(v.length>0)v=v.replace(/(\d{0,2})/,'($1');
+    this.value=v;
+  });
+
+  var f=document.getElementById('lead');
+  f&&f.addEventListener('submit',function(e){
+    e.preventDefault();if(f.website.value)return;var ok=true;
+    function check(id,cond){var fl=document.getElementById(id).closest('.field');fl.classList.toggle('err',!cond);if(!cond)ok=false}
+    check('nome',f.nome.value.trim().length>1);
+    check('tel',f.tel.value.replace(/\D/g,'').length>=10);
+    check('plano',f.plano.value!=='');
+    if(ok){f.style.display='none';document.getElementById('ok').classList.add('show')}
+  });
+})();
+</script>
+</body>
+</html>

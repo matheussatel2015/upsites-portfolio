@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Solvi — Energia Solar | Reduza até 95% da sua conta de luz</title>
+<meta name="description" content="Energia solar para residências e empresas. Simule sua economia, reduza até 95% da conta de luz e valorize seu imóvel. Garantia de 25 anos." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --navy:#0A1F44; --navy-2:#15407A; --navy-deep:#071633;
+  --yellow:#FFC107; --yellow-2:#FFD95A; --green:#2BB673;
+  --bg:#FFFFFF; --surface:#F4F7FC; --ink:#0A1F44; --ink-soft:#4A5C77; --muted:#8A99B3;
+  --line:#E1E8F2;
+  --display:'Sora',system-ui,sans-serif; --body:'IBM Plex Sans',system-ui,sans-serif;
+  --maxw:1180px; --ease:cubic-bezier(.16,.84,.44,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.1;letter-spacing:-.02em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--navy-2);font-weight:600;font-family:var(--display)}
+.hl{color:var(--yellow)}
+.btn{display:inline-flex;align-items:center;gap:.55em;padding:15px 30px;font-family:var(--display);font-size:.9rem;font-weight:600;border-radius:12px;cursor:pointer;transition:.35s var(--ease);border:2px solid var(--navy);color:var(--navy);background:transparent}
+.btn:hover{transform:translateY(-2px)}
+.btn--solid{background:var(--yellow);border-color:var(--yellow);color:var(--navy);box-shadow:0 12px 28px -10px rgba(255,193,7,.7)}
+.btn--solid:hover{background:var(--yellow-2);border-color:var(--yellow-2)}
+.btn--light{border-color:#fff;color:#fff}.btn--light:hover{background:#fff;color:var(--navy)}
+
+.pf-bar{background:var(--navy-deep);color:#9fb3d6;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.pf-bar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
+.pf-bar a{color:var(--yellow)}
+
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:15px 24px;max-width:var(--maxw);margin:0 auto}
+.logo{font-family:var(--display);font-weight:800;font-size:1.4rem;display:flex;align-items:center;gap:.5em;color:var(--navy)}
+.logo .sun{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle,var(--yellow),var(--yellow-2));position:relative}
+.logo .sun::before{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px dashed var(--yellow);opacity:.5}
+.nav-links{display:flex;gap:30px;list-style:none;font-size:.9rem;font-weight:500}
+.nav-links a{color:var(--ink-soft);transition:.3s}.nav-links a:hover{color:var(--navy)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:24px;height:2px;background:var(--navy);border-radius:2px}
+
+.hero{position:relative;background:linear-gradient(135deg,var(--navy-deep),var(--navy) 55%,var(--navy-2));color:#fff;overflow:hidden;padding:80px 0 90px}
+.hero .hex{position:absolute;inset:0;opacity:.5;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 0l28 16v33L28 65 0 49V16z' fill='none' stroke='%23ffffff' stroke-opacity='.06'/%3E%3C/svg%3E")}
+.hero .glow{position:absolute;top:-100px;right:-60px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,193,7,.28),transparent 62%);z-index:0}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.4rem);font-weight:800;margin:18px 0 20px;color:#fff}
+.hero p{font-size:clamp(1.02rem,1.6vw,1.2rem);color:#c3d2ee;max-width:500px;margin-bottom:32px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.hero-badges{display:flex;gap:30px;margin-top:42px;flex-wrap:wrap}
+.hero-badges .n{font-family:var(--display);font-size:2rem;font-weight:800;color:var(--yellow)}
+.hero-badges span{font-size:.78rem;color:#9fb3d6}
+/* hero sim card */
+.simcard{background:#fff;color:var(--ink);border-radius:22px;padding:30px;box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+.simcard h3{font-size:1.3rem;margin-bottom:4px}
+.simcard .sub{font-size:.84rem;color:var(--muted);margin-bottom:20px}
+.simcard label{font-size:.8rem;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:8px}
+.range-val{font-family:var(--display);font-weight:800;font-size:1.8rem;color:var(--navy)}
+input[type=range]{width:100%;-webkit-appearance:none;height:6px;border-radius:6px;background:linear-gradient(90deg,var(--yellow),var(--navy-2));outline:none;margin:14px 0 22px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--navy);border:3px solid var(--yellow);cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.3)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--navy);border:3px solid var(--yellow);cursor:pointer}
+.sim-out{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.sim-out .o{background:var(--surface);border-radius:14px;padding:16px;text-align:center}
+.sim-out .o .k{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.sim-out .o .v{font-family:var(--display);font-weight:800;font-size:1.4rem;color:var(--green)}
+.sim-out .o.big{grid-column:1/-1;background:var(--navy);color:#fff}.sim-out .o.big .v{color:var(--yellow);font-size:1.9rem}
+
+.reveal{opacity:0;transform:translateY(28px);transition:.9s var(--ease)}
+.reveal.in-view{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto!important}}
+
+section{padding:clamp(64px,8vw,108px) 0;position:relative}
+.section-head{max-width:640px;margin:0 auto 54px;text-align:center}
+.section-head h2{font-size:clamp(2rem,4.2vw,3.2rem);margin:14px 0}
+.section-head p{color:var(--ink-soft)}
+
+/* economia stripe */
+.eco{background:var(--navy);color:#fff}
+.eco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:center}
+.eco .n{font-family:var(--display);font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;color:var(--yellow)}
+.eco .lbl{color:#9fb3d6;font-size:.9rem;margin-top:6px}
+
+/* benefits */
+.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ben{background:var(--surface);border-radius:20px;padding:32px 28px;transition:.4s var(--ease);border:1px solid transparent}
+.ben:hover{background:#fff;box-shadow:0 24px 50px -26px rgba(10,31,68,.4);border-color:var(--line);transform:translateY(-6px)}
+.ben .ic{width:54px;height:54px;border-radius:14px;background:var(--navy);display:grid;place-items:center;color:var(--yellow);margin-bottom:18px}
+.ben .ic svg{width:28px}
+.ben h3{font-size:1.25rem;margin-bottom:8px}
+.ben p{font-size:.92rem;color:var(--ink-soft)}
+
+/* how */
+.how{background:var(--surface)}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.step{position:relative;padding-top:20px}
+.step .num{font-family:var(--display);font-weight:800;font-size:2.4rem;color:var(--yellow);-webkit-text-stroke:1.5px var(--navy);}
+.step h3{font-size:1.15rem;margin:8px 0}.step p{font-size:.88rem;color:var(--ink-soft)}
+
+/* cases */
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.case{border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:0 16px 40px -28px rgba(10,31,68,.4);transition:.4s}
+.case:hover{transform:translateY(-6px)}
+.case .ph{aspect-ratio:16/10;background:linear-gradient(135deg,var(--navy-2),var(--navy));position:relative}
+.case .ph img{width:100%;height:100%;object-fit:cover}
+.case .tag{position:absolute;top:12px;left:12px;background:var(--yellow);color:var(--navy);font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:20px}
+.case .bd{padding:22px}
+.case h3{font-size:1.15rem;margin-bottom:6px}
+.case .eco-line{color:var(--green);font-weight:700;font-family:var(--display)}
+.case p{font-size:.86rem;color:var(--ink-soft);margin-top:8px}
+
+/* cta */
+.cta{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;text-align:center}
+.cta h2{color:#fff;font-size:clamp(2.2rem,4.4vw,3.3rem);margin-bottom:14px}
+.cta p{color:#c3d2ee;max-width:520px;margin:0 auto 28px}
+
+/* form */
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:start}
+.contact-info h2{font-size:clamp(2rem,4vw,2.8rem);margin:14px 0 16px}
+.contact-info p{color:var(--ink-soft);max-width:400px;margin-bottom:24px}
+.contact-info ul{list-style:none;display:grid;gap:14px}
+.contact-info li{display:flex;gap:12px;font-size:.95rem}.contact-info li svg{width:22px;color:var(--green);flex-shrink:0}
+form{background:var(--surface);border-radius:22px;padding:38px;display:grid;gap:18px;border:1px solid var(--line)}
+.field{display:grid;gap:7px}.field label{font-size:.8rem;font-weight:600;color:var(--ink-soft)}
+.field input,.field select{border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;font-family:var(--body);font-size:.95rem;background:#fff;transition:.3s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--navy-2)}
+.field.err input,.field.err select{border-color:#d9534f}.field .msg{font-size:.74rem;color:#d9534f;display:none}.field.err .msg{display:block}
+.hp{position:absolute;left:-9999px}
+.form-ok{display:none;text-align:center;background:var(--surface);border-radius:22px;padding:44px}
+.form-ok.show{display:block}.form-ok .ic{width:60px;height:60px;border-radius:50%;background:var(--green);display:grid;place-items:center;color:#fff;margin:0 auto 14px}.form-ok .ic svg{width:30px}.form-ok h3{font-size:1.6rem;margin-bottom:8px}
+
+/* faq */
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;text-align:left;background:none;border:0;color:var(--navy);padding:22px 0;font-family:var(--display);font-weight:600;font-size:1.1rem;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq-q .pm{color:var(--yellow);-webkit-text-stroke:1px var(--navy);font-size:1.5rem;transition:.3s}
+.faq-a{max-height:0;overflow:hidden;transition:.5s var(--ease);color:var(--ink-soft)}
+.faq-a p{padding-bottom:22px;max-width:740px}.faq-item.open .pm{transform:rotate(45deg)}
+
+footer{background:var(--navy-deep);color:#9fb3d6;padding:60px 0 28px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:38px}
+.foot-grid .logo{color:#fff}.foot-grid p{font-size:.9rem;max-width:300px;margin-top:14px}
+.foot-col h4{font-family:var(--display);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
+.foot-col a{display:block;padding:5px 0;font-size:.9rem}.foot-col a:hover{color:#fff}
+.foot-bot{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem}
+
+.wa{position:fixed;right:22px;bottom:22px;z-index:60;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.3s}
+.wa:hover{transform:scale(1.08)}.wa svg{width:30px;color:#fff}
+
+@media(max-width:880px){
+  .nav-links{position:fixed;inset:0 0 0 auto;width:78%;max-width:320px;flex-direction:column;background:#fff;padding:90px 34px;gap:6px;transform:translateX(100%);transition:.4s var(--ease);box-shadow:-10px 0 40px rgba(10,31,68,.15)}
+  .nav-links.open{transform:none}.nav-links a{padding:12px 0;font-size:1.05rem}
+  .burger{display:flex}.nav-cta .btn{display:none}
+  .hero-grid,.contact-grid{grid-template-columns:1fr}
+  .eco-grid,.ben-grid,.how-grid,.cases-grid,.foot-grid{grid-template-columns:1fr}
+  .how-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="pf-bar"><div class="wrap"><span>Demonstração de portfólio · Projeto fictício</span><a href="../../index.html">← Voltar ao portfólio</a></div></div>
+
+<header id="top">
+  <nav class="nav">
+    <a href="#top" class="logo"><span class="sun"></span>Solvi</a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#sim">Simulador</a></li>
+      <li><a href="#ben">Benefícios</a></li>
+      <li><a href="#how">Como funciona</a></li>
+      <li><a href="#cases">Cases</a></li>
+      <li><a href="#orcamento">Orçamento</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#orcamento" class="btn btn--solid">Solicitar orçamento</a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hex"></div><div class="glow"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow reveal" style="color:var(--yellow)">Energia solar fotovoltaica</p>
+        <h1 class="reveal" style="transition-delay:.1s">Reduza até <span class="hl">95%</span> da sua conta de luz</h1>
+        <p class="reveal" style="transition-delay:.2s">Gere sua própria energia, proteja-se dos aumentos na tarifa e valorize seu imóvel. Instalação completa com garantia de 25 anos.</p>
+        <div class="hero-actions reveal" style="transition-delay:.3s">
+          <a href="#sim" class="btn btn--solid">Simular minha economia</a>
+          <a href="#how" class="btn btn--light">Como funciona</a>
+        </div>
+        <div class="hero-badges reveal" style="transition-delay:.4s">
+          <div><div class="n" data-count="3200" data-suffix="+">0</div><span>Sistemas instalados</span></div>
+          <div><div class="n" data-count="25">0</div><span>Anos de garantia</span></div>
+          <div><div class="n" data-count="98" data-suffix="%">0</div><span>Clientes satisfeitos</span></div>
+        </div>
+      </div>
+      <div class="simcard reveal" id="sim" style="transition-delay:.2s">
+        <h3>Simulador de economia ☀️</h3>
+        <p class="sub">Arraste o valor médio da sua conta de luz</p>
+        <label for="conta">Conta mensal: <span class="range-val" id="contaVal">R$ 600</span></label>
+        <input type="range" id="conta" min="200" max="5000" step="50" value="600" />
+        <div class="sim-out">
+          <div class="o"><div class="k">Economia/mês</div><div class="v" id="oMes">R$ 540</div></div>
+          <div class="o"><div class="k">Economia/ano</div><div class="v" id="oAno">R$ 6.480</div></div>
+          <div class="o big"><div class="k">Economia em 25 anos</div><div class="v" id="o25">R$ 243.000</div></div>
+        </div>
+        <p style="font-size:.78rem;color:var(--muted);text-align:center">Payback estimado: <strong id="payback" style="color:var(--navy)">~4 anos</strong></p>
+        <a href="#orcamento" class="btn btn--solid" style="width:100%;justify-content:center;margin-top:14px">Quero esse orçamento</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="eco">
+  <div class="wrap">
+    <div class="eco-grid">
+      <div class="reveal"><div class="n" data-count="48" data-prefix="R$ " data-suffix=" mi">0</div><div class="lbl">Economizados pelos nossos clientes</div></div>
+      <div class="reveal" style="transition-delay:.1s"><div class="n" data-count="14" data-suffix=" GWh">0</div><div class="lbl">Energia limpa gerada</div></div>
+      <div class="reveal" style="transition-delay:.2s"><div class="n" data-count="9800" data-suffix=" t">0</div><div class="lbl">CO₂ evitado na atmosfera</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="ben">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Benefícios</p><h2>Mais que economia, um <span style="color:var(--navy-2)">investimento</span></h2><p>A energia solar se paga e continua rendendo por décadas.</p></div>
+    <div class="ben-grid">
+      <div class="ben reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Economia imediata</h3><p>Reduza a fatura já no primeiro mês após a instalação e ligação.</p></div>
+      <div class="ben reveal" style="transition-delay:.06s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/></svg></div><h3>Valoriza o imóvel</h3><p>Imóveis com energia solar valem mais e vendem mais rápido.</p></div>
+      <div class="ben reveal" style="transition-delay:.12s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 1 0 9 9M12 3v9l6 3"/></svg></div><h3>Proteção contra aumentos</h3><p>Fique livre dos reajustes constantes na tarifa de energia.</p></div>
+      <div class="ben reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C7 7 7 12 12 22 17 12 17 7 12 2z"/></svg></div><h3>100% sustentável</h3><p>Energia limpa e renovável que reduz sua pegada de carbono.</p></div>
+      <div class="ben reveal" style="transition-delay:.06s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H4zM2 20h20M9 8h6"/></svg></div><h3>Financiamento facilitado</h3><p>Parcelas que cabem no valor que você já paga de luz hoje.</p></div>
+      <div class="ben reveal" style="transition-delay:.12s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Garantia de 25 anos</h3><p>Painéis com garantia de performance por um quarto de século.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="how">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Como funciona</p><h2>Do orçamento à economia em <span style="color:var(--navy-2)">4 passos</span></h2></div>
+    <div class="how-grid">
+      <div class="step reveal"><div class="num">01</div><h3>Simulação</h3><p>Você simula sua economia e solicita um orçamento sem compromisso.</p></div>
+      <div class="step reveal" style="transition-delay:.08s"><div class="num">02</div><h3>Projeto</h3><p>Nossos engenheiros dimensionam o sistema ideal para o seu consumo.</p></div>
+      <div class="step reveal" style="transition-delay:.16s"><div class="num">03</div><h3>Instalação</h3><p>Equipe própria instala tudo em poucos dias, com segurança.</p></div>
+      <div class="step reveal" style="transition-delay:.24s"><div class="num">04</div><h3>Economia</h3><p>Sistema ligado à rede e sua conta despencando para sempre.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Cases reais</p><h2>Quem instalou, <span style="color:var(--navy-2)">recomenda</span></h2></div>
+    <div class="cases-grid">
+      <div class="case reveal"><div class="ph"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=700&q=80" alt="Painéis solares residenciais" loading="lazy" onerror="this.style.opacity=0" /><span class="tag">Residencial</span></div><div class="bd"><h3>Família Moretti</h3><div class="eco-line">-94% na conta de luz</div><p>Sistema de 6,5 kWp instalado em telhado residencial em Curitiba.</p></div></div>
+      <div class="case reveal" style="transition-delay:.1s"><div class="ph"><img src="https://images.unsplash.com/photo-1545208942-e1c4a87f17de?auto=format&fit=crop&w=700&q=80" alt="Usina solar comercial" loading="lazy" onerror="this.style.opacity=0" /><span class="tag">Comercial</span></div><div class="bd"><h3>Mercado São Jorge</h3><div class="eco-line">R$ 8.900/mês economizados</div><p>Usina de 80 kWp que zerou o custo de energia do supermercado.</p></div></div>
+      <div class="case reveal" style="transition-delay:.2s"><div class="ph"><img src="https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?auto=format&fit=crop&w=700&q=80" alt="Instalação de painéis" loading="lazy" onerror="this.style.opacity=0" /><span class="tag">Rural</span></div><div class="bd"><h3>Fazenda Vale Verde</h3><div class="eco-line">Payback em 3,2 anos</div><p>Energia para irrigação e galpões, com independência da rede.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 class="reveal">⚡ A tarifa só sobe. Sua economia pode começar hoje.</h2>
+    <p class="reveal" style="transition-delay:.1s">Solicite um orçamento gratuito e personalizado. Nossos especialistas retornam em até 24h.</p>
+    <a href="#orcamento" class="btn btn--solid reveal" style="transition-delay:.2s">Quero meu orçamento gratuito</a>
+  </div>
+</section>
+
+<section id="orcamento">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Orçamento gratuito</p>
+        <h2>Receba sua proposta personalizada</h2>
+        <p>Preencha seus dados e o valor médio da conta. Montamos o projeto ideal para o seu consumo.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg> Sem custo e sem compromisso</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg> Projeto dimensionado por engenheiros</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg> Opções de financiamento</li>
+        </ul>
+      </div>
+      <div>
+        <form id="lead" novalidate>
+          <div class="hp"><label>Não preencha<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+          <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" required /><span class="msg">Informe seu nome.</span></div>
+          <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" required /><span class="msg">E-mail inválido.</span></div>
+          <div class="field"><label for="tel">Telefone / WhatsApp</label><input id="tel" name="tel" type="tel" required placeholder="(00) 00000-0000" /><span class="msg">Telefone inválido.</span></div>
+          <div class="field"><label for="tipo">Tipo de imóvel</label><select id="tipo" name="tipo" required><option value="">Selecione</option><option>Residencial</option><option>Comercial</option><option>Industrial</option><option>Rural</option></select><span class="msg">Selecione.</span></div>
+          <button type="submit" class="btn btn--solid" style="justify-content:center">Solicitar orçamento gratuito</button>
+        </form>
+        <div class="form-ok" id="ok"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></div><h3>Pedido enviado! ☀️</h3><p>Nosso time de engenharia vai preparar sua proposta e retornar em até 24h.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" style="padding-top:0;background:var(--bg)">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:30px"><p class="eyebrow">Dúvidas frequentes</p><h2>Perguntas comuns</h2></div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q">Funciona em dias nublados? <span class="pm">+</span></button><div class="faq-a"><p>Sim. Os painéis captam a radiação solar mesmo em dias nublados, com geração proporcional. O dimensionamento já considera a média anual da sua região.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Quanto tempo dura a instalação? <span class="pm">+</span></button><div class="faq-a"><p>Para sistemas residenciais, normalmente de 1 a 3 dias. A ligação com a concessionária leva mais algumas semanas, conforme prazos da distribuidora.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Preciso de baterias? <span class="pm">+</span></button><div class="faq-a"><p>Na maioria dos casos não. O sistema é conectado à rede e o excedente vira créditos de energia que abatem sua conta nos meses seguintes.</p></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="logo"><span class="sun"></span>Solvi</div><p>Energia solar para residências, empresas e propriedades rurais. Economia que dura décadas.</p></div>
+      <div class="foot-col"><h4>Soluções</h4><a href="#ben">Residencial</a><a href="#ben">Comercial</a><a href="#ben">Rural</a><a href="#sim">Simulador</a></div>
+      <div class="foot-col"><h4>Empresa</h4><a href="#how">Como funciona</a><a href="#cases">Cases</a><a href="#orcamento">Orçamento</a></div>
+    </div>
+    <div class="foot-bot"><span>Solvi Energia · CNPJ 00.000.000/0001-00 · Projeto fictício para fins de portfólio</span><span>(41) 3000-0000</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5541996739803" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2a11.9 11.9 0 1 1 4.5 4.4zM6.6 20l.37.22a9.9 9.9 0 0 0 5.05 1.38 9.9 9.9 0 1 0-9.9-9.9c0 1.8.48 3.55 1.4 5.08l.24.4-1 3.65zM17.4 14.3c-.15-.25-.55-.4-1.15-.7s-1.77-.87-2.04-.97-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.1 8.1 0 0 1-2.4-1.48 9 9 0 0 1-1.65-2.06c-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5s.05-.37-.02-.52-.67-1.6-.92-2.2c-.24-.57-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.8.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08 2.1 3.2 5.08 4.48c.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42s.25-1.3.17-1.42z"/></svg></a>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
+  b&&b.addEventListener('click',function(){m.classList.toggle('open')});
+  m&&m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open')})});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  function brl(n){return n.toLocaleString('pt-BR',{maximumFractionDigits:0})}
+  function animate(el){
+    var t=+el.dataset.count, pre=el.dataset.prefix||'', suf=el.dataset.suffix||'', s=0, step=t/60;
+    var id=setInterval(function(){s+=step;if(s>=t){s=t;clearInterval(id)}el.textContent=pre+brl(Math.floor(s))+suf},18);
+  }
+  var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animate(e.target);co.unobserve(e.target)}})},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el)});
+
+  // SIMULADOR
+  var conta=document.getElementById('conta');
+  function sim(){
+    var v=+conta.value;
+    document.getElementById('contaVal').textContent='R$ '+brl(v);
+    var mes=Math.round(v*0.9);          // 90% de economia média
+    var ano=mes*12;
+    var total=ano*25*1.0;               // projeção 25 anos
+    // payback: custo estimado ~ R$ 5.000 por R$100 de conta, dividido pela economia anual
+    var custoSistema=v*45;
+    var payback=(custoSistema/ano);
+    document.getElementById('oMes').textContent='R$ '+brl(mes);
+    document.getElementById('oAno').textContent='R$ '+brl(ano);
+    document.getElementById('o25').textContent='R$ '+brl(total);
+    document.getElementById('payback').textContent='~'+payback.toFixed(1).replace('.',',')+' anos';
+  }
+  conta&&conta.addEventListener('input',sim); sim&&sim();
+
+  var tel=document.getElementById('tel');
+  tel&&tel.addEventListener('input',function(){
+    var v=this.value.replace(/\D/g,'').slice(0,11);
+    if(v.length>6)v=v.replace(/(\d{2})(\d{5})(\d{0,4}).*/,'($1) $2-$3');
+    else if(v.length>2)v=v.replace(/(\d{2})(\d{0,5})/,'($1) $2');
+    else if(v.length>0)v=v.replace(/(\d{0,2})/,'($1');
+    this.value=v;
+  });
+
+  document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){
+    var it=q.parentElement,open=it.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});
+    if(!open){it.classList.add('open');var a=it.querySelector('.faq-a');a.style.maxHeight=a.scrollHeight+'px'}
+  })});
+
+  var f=document.getElementById('lead');
+  f&&f.addEventListener('submit',function(e){
+    e.preventDefault();if(f.website.value)return;var ok=true;
+    function check(id,cond){var fl=document.getElementById(id).closest('.field');fl.classList.toggle('err',!cond);if(!cond)ok=false}
+    check('nome',f.nome.value.trim().length>1);
+    check('email',/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value));
+    check('tel',f.tel.value.replace(/\D/g,'').length>=10);
+    check('tipo',f.tipo.value!=='');
+    if(ok){f.style.display='none';document.getElementById('ok').classList.add('show')}
+  });
+})();
+</script>
+</body>
+</html>

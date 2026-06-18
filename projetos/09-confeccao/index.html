@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vesti Bem Uniformes | Uniformes infantis, camisetas promocionais e jalecos</title>
+<meta name="description" content="Confecção de uniformes escolares infantis, camisetas promocionais e jalecos sob medida. Tecido de qualidade, personalização completa e entrega no prazo. Peça seu orçamento!" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --cream:#FFFDF7; --surface:#FFF6E6; --ink:#27324E; --ink-soft:#5B6480; --muted:#9AA0B4;
+  --blue:#2F80ED; --blue-d:#1F66C7; --yellow:#FFC93C; --coral:#FF6B6B; --green:#1FC9A0; --purple:#9B6BFF;
+  --line:rgba(39,50,78,.1);
+  --display:'Fredoka',system-ui,sans-serif; --body:'Nunito',system-ui,sans-serif;
+  --maxw:1180px; --ease:cubic-bezier(.16,.84,.44,1);
+  --shadow:0 22px 50px -26px rgba(39,50,78,.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--display);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:15px 30px;font-family:var(--display);font-size:1rem;font-weight:600;border-radius:50px;cursor:pointer;transition:.3s var(--ease);border:3px solid var(--ink);color:var(--ink);background:#fff;box-shadow:4px 4px 0 var(--ink)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn--blue{background:var(--blue);color:#fff;border-color:var(--ink)}
+.btn--yellow{background:var(--yellow);color:var(--ink)}
+.btn--coral{background:var(--coral);color:#fff}
+
+.pf-bar{background:var(--ink);color:#c7ccdc;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.pf-bar .wrap{display:flex;justify-content:space-between;align-items:center;padding:8px 24px}
+.pf-bar a{color:var(--yellow)}
+
+header{position:sticky;top:0;z-index:50;background:rgba(255,253,247,.92);backdrop-filter:blur(10px);border-bottom:3px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--maxw);margin:0 auto}
+.logo{font-family:var(--display);font-weight:700;font-size:1.5rem;display:flex;align-items:center;gap:.45em;color:var(--ink)}
+.logo .mk{width:34px;height:34px;border-radius:12px;background:var(--yellow);border:2.5px solid var(--ink);display:grid;place-items:center;transform:rotate(-6deg)}
+.logo .mk svg{width:20px;color:var(--ink)}
+.nav-links{display:flex;gap:26px;list-style:none;font-weight:700;font-size:.95rem}
+.nav-links a{color:var(--ink-soft);transition:.3s}.nav-links a:hover{color:var(--blue)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:26px;height:3px;background:var(--ink);border-radius:3px;transition:.3s}
+
+.hero{position:relative;padding:60px 0 30px;overflow:hidden}
+.hero .blob{position:absolute;border-radius:50%;filter:blur(10px);opacity:.5;z-index:0}
+.hero .b1{width:280px;height:280px;background:var(--yellow);top:-60px;right:8%}
+.hero .b2{width:200px;height:200px;background:var(--coral);bottom:0;left:-40px;opacity:.35}
+.hero .b3{width:150px;height:150px;background:var(--green);top:40%;right:42%;opacity:.3}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative;z-index:1}
+.hero .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:2.5px solid var(--ink);border-radius:40px;padding:7px 16px;font-weight:700;font-size:.86rem;box-shadow:3px 3px 0 var(--ink);transform:rotate(-2deg);margin-bottom:20px}
+.hero .badge .star{color:var(--yellow)}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:700;margin-bottom:18px}
+.hero h1 .u{position:relative;color:var(--blue);white-space:nowrap}
+.hero h1 .u::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:10px;background:var(--yellow);z-index:-1;border-radius:4px}
+.hero p{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--ink-soft);max-width:480px;margin-bottom:28px;font-weight:600}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-trust{display:flex;gap:30px;margin-top:34px;flex-wrap:wrap}
+.hero-trust .n{font-family:var(--display);font-weight:700;font-size:2rem;color:var(--coral)}
+.hero-trust span{font-size:.82rem;color:var(--muted);font-weight:700}
+.hero-art{position:relative}
+.hero-art .card{position:relative;background:#fff;border:3px solid var(--ink);border-radius:28px;padding:24px;box-shadow:var(--shadow);overflow:hidden}
+.hero-art .card img{border-radius:18px;aspect-ratio:4/3;object-fit:cover;width:100%;background:var(--surface)}
+.hero-art .float{position:absolute;background:#fff;border:2.5px solid var(--ink);border-radius:16px;padding:10px 16px;font-family:var(--display);font-weight:600;font-size:.9rem;box-shadow:3px 3px 0 var(--ink);display:flex;align-items:center;gap:8px}
+.hero-art .f1{top:-16px;left:-16px;transform:rotate(-5deg);background:var(--green);color:#fff}
+.hero-art .f2{bottom:-16px;right:-12px;transform:rotate(4deg);background:var(--purple);color:#fff}
+
+/* wavy divider */
+.wave{display:block;width:100%;height:60px}
+
+.reveal{opacity:0;transform:translateY(28px);transition:.8s var(--ease)}
+.reveal.in-view{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto!important}}
+
+section{padding:clamp(56px,7vw,96px) 0;position:relative}
+.section-head{max-width:620px;margin:0 auto 48px;text-align:center}
+.section-head h2{font-size:clamp(2rem,4.4vw,3.2rem);margin:12px 0}
+.section-head p{color:var(--ink-soft);font-weight:600}
+
+/* produtos */
+.prod{background:var(--surface)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pcard{background:#fff;border:3px solid var(--ink);border-radius:24px;padding:30px 26px;transition:.3s var(--ease);box-shadow:6px 6px 0 var(--ink)}
+.pcard:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink)}
+.pcard .ic{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;color:#fff;margin-bottom:18px;transform:rotate(-4deg)}
+.pcard .ic svg{width:32px}
+.pcard:nth-child(1) .ic{background:var(--blue)}
+.pcard:nth-child(2) .ic{background:var(--coral)}
+.pcard:nth-child(3) .ic{background:var(--green)}
+.pcard:nth-child(4) .ic{background:var(--purple)}
+.pcard:nth-child(5) .ic{background:var(--yellow);color:var(--ink)}
+.pcard:nth-child(6) .ic{background:var(--blue-d)}
+.pcard h3{font-size:1.4rem;margin-bottom:8px}
+.pcard p{font-size:.94rem;color:var(--ink-soft);font-weight:600}
+.pcard .tag{display:inline-block;margin-top:14px;font-family:var(--display);font-weight:600;font-size:.82rem;color:var(--blue)}
+
+/* diferenciais */
+.diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.dcard{text-align:center;padding:20px}
+.dcard .ic{width:70px;height:70px;border-radius:50%;background:var(--yellow);border:3px solid var(--ink);display:grid;place-items:center;margin:0 auto 16px;color:var(--ink)}
+.dcard .ic svg{width:34px}
+.dcard:nth-child(2) .ic{background:var(--coral);color:#fff}
+.dcard:nth-child(3) .ic{background:var(--green);color:#fff}
+.dcard:nth-child(4) .ic{background:var(--purple);color:#fff}
+.dcard h3{font-size:1.2rem;margin-bottom:6px}
+.dcard p{font-size:.9rem;color:var(--ink-soft);font-weight:600}
+
+/* customizer */
+.custom{background:var(--blue);color:#fff;position:relative;overflow:hidden}
+.custom .section-head h2{color:#fff}.custom .section-head p{color:rgba(255,255,255,.85)}
+.custom-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:920px;margin:0 auto}
+.shirt-stage{background:#fff;border:3px solid var(--ink);border-radius:28px;padding:30px;box-shadow:var(--shadow);display:grid;place-items:center}
+.shirt-stage svg{width:100%;max-width:300px;height:auto}
+.customizer{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.3);border-radius:24px;padding:28px}
+.customizer h3{color:#fff;font-size:1.5rem;margin-bottom:6px}
+.customizer .lab{font-weight:700;font-size:.86rem;margin:18px 0 10px;display:block}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.swatch{width:42px;height:42px;border-radius:12px;border:3px solid #fff;cursor:pointer;transition:.2s;box-shadow:2px 2px 0 rgba(0,0,0,.25)}
+.swatch:hover{transform:scale(1.08)}
+.swatch.active{outline:3px solid var(--yellow);outline-offset:2px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opt{background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.4);color:#fff;font-family:var(--display);font-weight:500;padding:9px 16px;border-radius:30px;cursor:pointer;transition:.2s}
+.opt.active{background:#fff;color:var(--blue)}
+.customizer .btn{margin-top:24px;width:100%;justify-content:center}
+
+/* processo */
+.proc{background:var(--surface)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:#fff;border:3px solid var(--ink);border-radius:22px;padding:26px;position:relative}
+.step .num{position:absolute;top:-16px;left:22px;width:38px;height:38px;border-radius:50%;background:var(--coral);color:#fff;border:3px solid var(--ink);display:grid;place-items:center;font-family:var(--display);font-weight:700}
+.step h3{font-size:1.15rem;margin:10px 0 6px}.step p{font-size:.88rem;color:var(--ink-soft);font-weight:600}
+
+/* galeria */
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gal-item{border:3px solid var(--ink);border-radius:18px;overflow:hidden;aspect-ratio:1;background:var(--surface);transition:.3s var(--ease)}
+.gal-item:hover{transform:rotate(-2deg) scale(1.03)}
+.gal-item img{width:100%;height:100%;object-fit:cover}
+.gal-item.tall{grid-row:span 2;aspect-ratio:auto}
+
+/* numeros */
+.nums{background:var(--coral);color:#fff}
+.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.nums .n{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,5vw,3.6rem)}
+.nums .lbl{font-weight:700;opacity:.92;font-size:.9rem}
+
+/* depo */
+.depo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.qcard{background:#fff;border:3px solid var(--ink);border-radius:24px;padding:28px;box-shadow:5px 5px 0 var(--ink)}
+.stars{color:var(--yellow);font-size:1.1rem;margin-bottom:12px}
+.qcard p{font-weight:600;color:var(--ink);margin-bottom:16px}
+.qcard .who{display:flex;align-items:center;gap:12px}
+.qcard .av{width:46px;height:46px;border-radius:50%;border:2.5px solid var(--ink);display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#fff}
+.qcard .who strong{display:block;font-size:.92rem}.qcard .who span{font-size:.8rem;color:var(--muted);font-weight:700}
+
+/* faq */
+.faq{max-width:780px;margin:0 auto}
+.faq-item{background:#fff;border:3px solid var(--ink);border-radius:18px;margin-bottom:14px;overflow:hidden}
+.faq-q{width:100%;text-align:left;background:none;border:0;color:var(--ink);padding:20px 24px;font-family:var(--display);font-weight:600;font-size:1.05rem;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center}
+.faq-q .pm{color:var(--blue);font-size:1.5rem;transition:.3s;flex-shrink:0}
+.faq-a{max-height:0;overflow:hidden;transition:.4s var(--ease);color:var(--ink-soft);font-weight:600}
+.faq-a p{padding:0 24px 20px}.faq-item.open .pm{transform:rotate(45deg)}
+
+/* form */
+.contact{background:var(--surface)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:50px;align-items:center}
+.contact-info h2{font-size:clamp(2rem,4vw,2.9rem);margin:12px 0 16px}
+.contact-info p{color:var(--ink-soft);font-weight:600;max-width:400px;margin-bottom:22px}
+.contact-info ul{list-style:none;display:grid;gap:12px}
+.contact-info li{display:flex;gap:12px;align-items:center;font-weight:700;color:var(--ink)}
+.contact-info li .ic{width:40px;height:40px;border-radius:12px;background:#fff;border:2.5px solid var(--ink);display:grid;place-items:center;color:var(--blue);flex-shrink:0}
+.contact-info li .ic svg{width:20px}
+form{background:#fff;border:3px solid var(--ink);border-radius:26px;padding:34px;display:grid;gap:16px;box-shadow:var(--shadow)}
+.field{display:grid;gap:6px}.field label{font-weight:700;font-size:.85rem;color:var(--ink)}
+.field input,.field select{border:2.5px solid var(--ink);border-radius:12px;padding:13px 16px;font-family:var(--body);font-weight:600;font-size:.95rem;background:var(--cream);transition:.2s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--blue);background:#fff}
+.field.err input,.field.err select{border-color:var(--coral)}
+.field .msg{font-size:.76rem;color:var(--coral);font-weight:700;display:none}.field.err .msg{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hp{position:absolute;left:-9999px}
+.form-ok{display:none;text-align:center;background:#fff;border:3px solid var(--ink);border-radius:26px;padding:42px;box-shadow:var(--shadow)}
+.form-ok.show{display:block}
+.form-ok .ic{width:64px;height:64px;border-radius:50%;background:var(--green);border:3px solid var(--ink);display:grid;place-items:center;color:#fff;margin:0 auto 14px}.form-ok .ic svg{width:32px}
+.form-ok h3{font-size:1.7rem;margin-bottom:8px}.form-ok p{color:var(--ink-soft);font-weight:600}
+
+footer{background:var(--ink);color:#c7ccdc;padding:56px 0 26px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.foot-grid .logo{color:#fff}.foot-grid p{font-size:.9rem;margin-top:12px;max-width:300px;font-weight:600}
+.foot-col h4{font-family:var(--display);font-size:.9rem;color:var(--yellow);margin-bottom:14px}
+.foot-col a{display:block;padding:5px 0;font-size:.9rem;font-weight:600}.foot-col a:hover{color:#fff}
+.foot-bot{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem}
+
+.wa{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;border:3px solid var(--ink);display:grid;place-items:center;box-shadow:4px 4px 0 var(--ink);transition:.2s}
+.wa:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}.wa svg{width:30px;color:#fff}
+
+@media(max-width:880px){
+  .nav-links{position:fixed;inset:0 0 0 auto;width:80%;max-width:320px;flex-direction:column;background:var(--cream);padding:90px 34px;gap:6px;transform:translateX(100%);transition:.4s var(--ease);border-left:3px solid var(--ink)}
+  .nav-links.open{transform:none}.nav-links a{padding:12px 0;font-size:1.1rem}
+  .burger{display:flex}.nav-cta .btn{display:none}
+  .hero-grid,.custom-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-art{max-width:420px;margin:0 auto}
+  .prod-grid,.diff-grid,.proc-grid,.gal-grid,.nums-grid,.depo-grid,.foot-grid{grid-template-columns:1fr}
+  .prod-grid,.diff-grid,.proc-grid,.nums-grid,.depo-grid{grid-template-columns:1fr 1fr}
+  .gal-grid{grid-template-columns:1fr 1fr}.gal-item.tall{grid-row:span 1}
+}
+@media(max-width:520px){.prod-grid,.diff-grid,.proc-grid,.nums-grid,.depo-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="pf-bar"><div class="wrap"><span>Demonstração de portfólio · Projeto fictício</span><a href="../../index.html">← Voltar ao portfólio</a></div></div>
+
+<header id="top">
+  <nav class="nav">
+    <a href="#top" class="logo"><span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l3 2 3 1 3-1 3-2 3 4-3 2v11H6V9L3 7z"/></svg></span>Vesti Bem</a>
+    <ul class="nav-links" id="menu">
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#monte">Personalize</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#depo">Clientes</a></li>
+      <li><a href="#orcamento">Orçamento</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#orcamento" class="btn btn--blue">Pedir orçamento</a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="badge reveal"><span class="star">★</span> +300 escolas e empresas vestidas</div>
+        <h1 class="reveal" style="transition-delay:.08s">Uniformes que as crianças <span class="u">amam vestir</span></h1>
+        <p class="reveal" style="transition-delay:.16s">Uniformes escolares infantis, camisetas promocionais e jalecos sob medida. Tecido durável, personalização completa e entrega no prazo combinado.</p>
+        <div class="hero-actions reveal" style="transition-delay:.24s">
+          <a href="#orcamento" class="btn btn--coral">Quero meu orçamento</a>
+          <a href="#monte" class="btn btn--yellow">Personalizar camiseta</a>
+        </div>
+        <div class="hero-trust reveal" style="transition-delay:.32s">
+          <div><div class="n" data-count="300" data-suffix="+">0</div><span>Escolas &amp; empresas</span></div>
+          <div><div class="n" data-count="500" data-suffix="mil+">0</div><span>Peças produzidas</span></div>
+          <div><div class="n" data-count="18">0</div><span>Anos costurando</span></div>
+        </div>
+      </div>
+      <div class="hero-art reveal" style="transition-delay:.2s">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80" alt="Crianças felizes de uniforme" loading="eager" decoding="async" onerror="this.style.opacity=0" />
+          <div class="float f1">🧵 Bordado incluso</div>
+          <div class="float f2">🚚 Entrega no prazo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path fill="#FFF6E6" d="M0,30 C240,60 480,0 720,20 C960,40 1200,60 1440,25 L1440,60 L0,60 Z"></path></svg>
+
+<section id="produtos" class="prod">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">O que produzimos</p><h2>Pra cada ocasião, o uniforme certo</h2><p>Do berçário à empresa, da escola à clínica — a gente veste todo mundo bem.</p></div>
+    <div class="prod-grid">
+      <div class="pcard reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l3 2h6l3-2 3 4-3 2v10H6V10L3 8z"/></svg></div><h3>Uniformes Infantis</h3><p>Camisetas, regatas, shorts, calças e agasalhos escolares com tecido confortável e resistente a lavagens.</p><span class="tag">Berçário ao fundamental →</span></div>
+      <div class="pcard reveal" style="transition-delay:.06s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 4l2 2h6l2-2 4 3-3 3v9H6v-9L3 7z"/><circle cx="12" cy="13" r="2.5"/></svg></div><h3>Camisetas Promocionais</h3><p>Para eventos, campanhas e equipes. Estampa ou bordado da sua marca, em qualquer quantidade.</p><span class="tag">A partir de 10 peças →</span></div>
+      <div class="pcard reveal" style="transition-delay:.12s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3l4 3 4-3 3 4v14H5V7z"/><path d="M12 6v15"/></svg></div><h3>Jalecos &amp; Avental</h3><p>Jalecos para clínicas, laboratórios e escolas técnicas. Tecido leve, bolsos reforçados e bordado do nome.</p><span class="tag">Personalização inclusa →</span></div>
+      <div class="pcard reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7l8-4 8 4-8 4z"/><path d="M4 7v6l8 4 8-4V7"/></svg></div><h3>Uniformes Profissionais</h3><p>Camisas polo, coletes e uniformes corporativos para times e estabelecimentos comerciais.</p><span class="tag">Sob medida →</span></div>
+      <div class="pcard reveal" style="transition-delay:.06s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.5 5 5.5.5-4 4 1 5.5L12 20l-5 2.5 1-5.5-4-4 5.5-.5z"/></svg></div><h3>Formatura &amp; Eventos</h3><p>Camisetas de formandos, abadás e kits comemorativos com arte exclusiva da turma.</p><span class="tag">Arte grátis →</span></div>
+      <div class="pcard reveal" style="transition-delay:.12s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18v13H3z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg></div><h3>Acessórios</h3><p>Mochilas, bonés, sacochilas e necessaires combinando com o uniforme da escola.</p><span class="tag">Kit completo →</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="diferenciais">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Por que a Vesti Bem</p><h2>Feito com capricho (de verdade)</h2></div>
+    <div class="diff-grid">
+      <div class="dcard reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.5 6H21l-5 4 2 7-6-4-6 4 2-7-5-4h6.5z"/></svg></div><h3>Tecido de qualidade</h3><p>Malhas que resistem às lavagens e ao recreio mais agitado.</p></div>
+      <div class="dcard reveal" style="transition-delay:.06s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l5-5M14 4l6 6L9 21H3v-6z"/></svg></div><h3>Personalização total</h3><p>Bordado, estampa, cores e tamanhos do jeito que você precisa.</p></div>
+      <div class="dcard reveal" style="transition-delay:.12s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3>Prazo que cumprimos</h3><p>Cronograma combinado e respeitado. Sem volta às aulas no aperto.</p></div>
+      <div class="dcard reveal" style="transition-delay:.18s"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z"/><circle cx="7" cy="18" r="1.5"/><circle cx="18" cy="18" r="1.5"/></svg></div><h3>Pequeno ou grande</h3><p>Atendemos de 10 a 10.000 peças com o mesmo cuidado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="monte" class="custom">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow" style="color:var(--yellow)">Brinque um pouco</p><h2>Monte sua camiseta 🎨</h2><p>Escolha a cor e o tipo. É só pra dar uma ideia — o orçamento final tem muito mais opções!</p></div>
+    <div class="custom-grid">
+      <div class="shirt-stage reveal">
+        <svg id="shirt" viewBox="0 0 240 240" aria-label="Prévia da camiseta">
+          <path id="shirtBody" d="M60 40 L90 28 Q120 44 150 28 L180 40 L210 70 L188 92 L172 78 L172 210 L68 210 L68 78 L52 92 L30 70 Z" fill="#2F80ED" stroke="#27324E" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M90 28 Q120 60 150 28" fill="none" stroke="#27324E" stroke-width="5" stroke-linejoin="round"/>
+          <circle id="shirtLogo" cx="120" cy="120" r="22" fill="#ffffff" stroke="#27324E" stroke-width="4"/>
+          <text id="shirtTxt" x="120" y="127" font-family="Fredoka, sans-serif" font-size="16" font-weight="700" text-anchor="middle" fill="#27324E">VB</text>
+        </svg>
+      </div>
+      <div class="customizer reveal" style="transition-delay:.1s">
+        <h3>Personalizador</h3>
+        <span class="lab">Cor do tecido</span>
+        <div class="swatches" id="swatches">
+          <span class="swatch active" data-c="#2F80ED" style="background:#2F80ED" title="Azul"></span>
+          <span class="swatch" data-c="#FF6B6B" style="background:#FF6B6B" title="Coral"></span>
+          <span class="swatch" data-c="#1FC9A0" style="background:#1FC9A0" title="Verde"></span>
+          <span class="swatch" data-c="#FFC93C" style="background:#FFC93C" title="Amarelo"></span>
+          <span class="swatch" data-c="#9B6BFF" style="background:#9B6BFF" title="Roxo"></span>
+          <span class="swatch" data-c="#27324E" style="background:#27324E" title="Marinho"></span>
+          <span class="swatch" data-c="#FFFFFF" style="background:#FFFFFF" title="Branco"></span>
+        </div>
+        <span class="lab">Tipo de peça</span>
+        <div class="opts" id="types">
+          <button class="opt active" data-t="Camiseta">Camiseta</button>
+          <button class="opt" data-t="Polo">Polo</button>
+          <button class="opt" data-t="Jaleco">Jaleco</button>
+          <button class="opt" data-t="Regata">Regata</button>
+        </div>
+        <span class="lab">Personalização</span>
+        <div class="opts" id="perso">
+          <button class="opt active" data-p="Bordado">Bordado</button>
+          <button class="opt" data-p="Estampa">Estampa</button>
+          <button class="opt" data-p="Sem">Lisa</button>
+        </div>
+        <a href="#orcamento" class="btn btn--yellow" id="custCta">Pedir orçamento desta 👆</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="processo" class="proc">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Como funciona</p><h2>Do pedido à entrega, sem dor de cabeça</h2></div>
+    <div class="proc-grid">
+      <div class="step reveal"><div class="num">1</div><h3>Você pede</h3><p>Conta o que precisa: produto, quantidade e prazo. A gente orça grátis.</p></div>
+      <div class="step reveal" style="transition-delay:.08s"><div class="num">2</div><h3>Aprova a arte</h3><p>Criamos o mockup com sua logo. Você aprova antes de qualquer produção.</p></div>
+      <div class="step reveal" style="transition-delay:.16s"><div class="num">3</div><h3>A gente costura</h3><p>Produção com controle de qualidade peça por peça.</p></div>
+      <div class="step reveal" style="transition-delay:.24s"><div class="num">4</div><h3>Recebe em casa</h3><p>Entrega no prazo combinado, embalado e conferido.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Nossos trabalhos</p><h2>Um pouquinho do que já vestimos</h2></div>
+    <div class="gal-grid">
+      <div class="gal-item tall reveal"><img src="https://images.unsplash.com/photo-1564859228273-274232fdb516?auto=format&fit=crop&w=600&q=80" alt="Camisetas coloridas" loading="lazy" onerror="this.style.opacity=0" /></div>
+      <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80" alt="Camiseta lisa" loading="lazy" onerror="this.style.opacity=0" /></div>
+      <div class="gal-item reveal" style="transition-delay:.06s"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80" alt="Camisetas em arara" loading="lazy" onerror="this.style.opacity=0" /></div>
+      <div class="gal-item reveal" style="transition-delay:.12s"><img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=500&q=80" alt="Camiseta estampada" loading="lazy" onerror="this.style.opacity=0" /></div>
+      <div class="gal-item reveal"><img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=500&q=80" alt="Jaleco branco" loading="lazy" onerror="this.style.opacity=0" /></div>
+      <div class="gal-item reveal" style="transition-delay:.06s"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=500&q=80" alt="Costura e tecido" loading="lazy" onerror="this.style.opacity=0" /></div>
+      <div class="gal-item reveal" style="transition-delay:.12s"><img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=500&q=80" alt="Camisetas dobradas" loading="lazy" onerror="this.style.opacity=0" /></div>
+    </div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap">
+    <div class="nums-grid">
+      <div class="reveal"><div class="n" data-count="300" data-suffix="+">0</div><div class="lbl">Escolas &amp; empresas</div></div>
+      <div class="reveal" style="transition-delay:.08s"><div class="n" data-count="500" data-suffix=" mil+">0</div><div class="lbl">Peças entregues</div></div>
+      <div class="reveal" style="transition-delay:.16s"><div class="n" data-count="98" data-suffix="%">0</div><div class="lbl">Pedidos no prazo</div></div>
+      <div class="reveal" style="transition-delay:.24s"><div class="n" data-count="18">0</div><div class="lbl">Anos de costura</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="depo">
+  <div class="wrap">
+    <div class="section-head reveal"><p class="eyebrow">Quem confia</p><h2>O que dizem por aí</h2></div>
+    <div class="depo-grid">
+      <div class="qcard reveal"><div class="stars">★★★★★</div><p>“Os uniformes chegaram antes do prazo e a qualidade do tecido impressionou os pais. Já é nosso terceiro ano com a Vesti Bem.”</p><div class="who"><div class="av" style="background:var(--blue)">M</div><div><strong>Márcia Lopes</strong><span>Diretora · Escola Pequenos Passos</span></div></div></div>
+      <div class="qcard reveal" style="transition-delay:.08s"><div class="stars">★★★★★</div><p>“Pedimos 500 camisetas para um evento e ficaram perfeitas. Atendimento atencioso e arte feita rapidinho.”</p><div class="who"><div class="av" style="background:var(--coral)">R</div><div><strong>Rodrigo Sá</strong><span>Marketing · Supermercados União</span></div></div></div>
+      <div class="qcard reveal" style="transition-delay:.16s"><div class="stars">★★★★★</div><p>“Nossos jalecos ficaram lindos e confortáveis. O bordado do nome de cada aluno foi um detalhe que encantou todo mundo.”</p><div class="who"><div class="av" style="background:var(--green)">C</div><div><strong>Camila Reis</strong><span>Coord. · Curso Técnico VidaSaúde</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:28px"><p class="eyebrow">Dúvidas comuns</p><h2>Perguntas frequentes</h2></div>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q">Qual a quantidade mínima de pedido? <span class="pm">+</span></button><div class="faq-a"><p>Para camisetas promocionais e uniformes, o pedido mínimo é de 10 peças. Para escolas e empresas, montamos kits completos sem limite máximo.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Vocês criam a arte/logo pra mim? <span class="pm">+</span></button><div class="faq-a"><p>Sim! Nossa equipe monta o mockup com a sua marca e você aprova antes da produção. A criação da arte é gratuita no orçamento.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Qual o prazo de entrega? <span class="pm">+</span></button><div class="faq-a"><p>Depende da quantidade e da personalização, mas a média é de 10 a 20 dias úteis após a aprovação da arte. Prazos de volta às aulas são planejados com antecedência.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Atendem fora da cidade? <span class="pm">+</span></button><div class="faq-a"><p>Sim, enviamos para todo o Brasil. O frete é calculado conforme a quantidade e o endereço de entrega.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="orcamento" class="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Orçamento grátis</p>
+        <h2>Bora vestir o seu time? 👕</h2>
+        <p>Conta pra gente o que você precisa. Respondemos rapidinho com um orçamento e um mockup sem compromisso.</p>
+        <ul>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg></span> Orçamento e arte gratuitos</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-3 2a14 14 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 2 6a2 2 0 0 1 2-2"/></svg></span> (41) 99673-9803</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h18v14H3zM3 7l9 6 9-6"/></svg></span> contato@vestibem.com.br</li>
+        </ul>
+      </div>
+      <div>
+        <form id="lead" novalidate>
+          <div class="hp"><label>Não preencha<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+          <div class="field"><label for="nome">Seu nome / instituição</label><input id="nome" name="nome" type="text" required /><span class="msg">Informe seu nome.</span></div>
+          <div class="row2">
+            <div class="field"><label for="tel">WhatsApp</label><input id="tel" name="tel" type="tel" required placeholder="(00) 00000-0000" /><span class="msg">Telefone inválido.</span></div>
+            <div class="field"><label for="prod">Produto</label><select id="prod" name="prod" required><option value="">Selecione</option><option>Uniforme infantil/escolar</option><option>Camiseta promocional</option><option>Jaleco / avental</option><option>Uniforme profissional</option><option>Formatura / evento</option><option>Outro</option></select><span class="msg">Selecione.</span></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="qtd">Quantidade aprox.</label><input id="qtd" name="qtd" type="number" min="1" placeholder="Ex: 50" /></div>
+            <div class="field"><label for="prazo">Prazo desejado</label><select id="prazo" name="prazo"><option value="">Selecione</option><option>Sem pressa</option><option>Até 1 mês</option><option>Volta às aulas</option><option>Urgente</option></select></div>
+          </div>
+          <button type="submit" class="btn btn--coral" style="justify-content:center">Quero meu orçamento grátis</button>
+        </form>
+        <div class="form-ok" id="ok"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div><h3>Recebido! 🎉</h3><p>Obrigada! Vamos preparar seu orçamento e te chamar no WhatsApp pertinho. 💙</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="logo" style="color:#fff"><span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="#27324E" stroke-width="2"><path d="M6 3l3 2 3 1 3-1 3-2 3 4-3 2v11H6V9L3 7z"/></svg></span>Vesti Bem</div><p>Confecção de uniformes infantis, camisetas promocionais e jalecos. Capricho em cada ponto.</p></div>
+      <div class="foot-col"><h4>Produtos</h4><a href="#produtos">Uniformes infantis</a><a href="#produtos">Camisetas promocionais</a><a href="#produtos">Jalecos</a><a href="#produtos">Profissionais</a></div>
+      <div class="foot-col"><h4>A Vesti Bem</h4><a href="#monte">Personalizar</a><a href="#galeria">Galeria</a><a href="#depo">Clientes</a><a href="#orcamento">Orçamento</a></div>
+    </div>
+    <div class="foot-bot"><span>Vesti Bem Uniformes · CNPJ 00.000.000/0001-00 · Projeto fictício para fins de portfólio</span><span>Curitiba/PR · (41) 99673-9803</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5541996739803" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2a11.9 11.9 0 1 1 4.5 4.4zM6.6 20l.37.22a9.9 9.9 0 0 0 5.05 1.38 9.9 9.9 0 1 0-9.9-9.9c0 1.8.48 3.55 1.4 5.08l.24.4-1 3.65zM17.4 14.3c-.15-.25-.55-.4-1.15-.7s-1.77-.87-2.04-.97-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.1 8.1 0 0 1-2.4-1.48 9 9 0 0 1-1.65-2.06c-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5s.05-.37-.02-.52-.67-1.6-.92-2.2c-.24-.57-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.8.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08 2.1 3.2 5.08 4.48c.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42s.25-1.3.17-1.42z"/></svg></a>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
+  b&&b.addEventListener('click',function(){m.classList.toggle('open')});
+  m&&m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open')})});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  function animate(el){
+    var t=+el.dataset.count, suf=el.dataset.suffix||'', s=0, step=t/55;
+    var id=setInterval(function(){s+=step;if(s>=t){s=t;clearInterval(id)}el.textContent=Math.floor(s).toLocaleString('pt-BR')+suf},20);
+  }
+  var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){animate(e.target);co.unobserve(e.target)}})},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el)});
+
+  // shirt customizer
+  var body=document.getElementById('shirtBody'), logo=document.getElementById('shirtLogo'), txt=document.getElementById('shirtTxt');
+  var state={color:'#2F80ED', type:'Camiseta', perso:'Bordado'};
+  document.querySelectorAll('#swatches .swatch').forEach(function(sw){sw.addEventListener('click',function(){
+    document.querySelectorAll('#swatches .swatch').forEach(function(x){x.classList.remove('active')});sw.classList.add('active');
+    state.color=sw.dataset.c; body.setAttribute('fill',state.color);
+    var dark=['#FFC93C','#FFFFFF'].indexOf(state.color)<0; txt.setAttribute('fill', dark?'#27324E':'#27324E');
+  })});
+  function pick(sel,key,attr){document.querySelectorAll(sel+' .opt').forEach(function(o){o.addEventListener('click',function(){
+    document.querySelectorAll(sel+' .opt').forEach(function(x){x.classList.remove('active')});o.classList.add('active');state[key]=o.dataset[attr];
+    if(key==='perso'){logo.style.display=(state.perso==='Sem')?'none':'';txt.style.display=(state.perso==='Sem')?'none':''}
+  })})}
+  pick('#types','type','t'); pick('#perso','perso','p');
+  var cta=document.getElementById('custCta');
+  cta&&cta.addEventListener('click',function(){
+    var p=document.getElementById('prod'); if(p){ if(state.type==='Jaleco')p.value='Jaleco / avental'; else p.value='Camiseta promocional'; }
+  });
+
+  // faq
+  document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){
+    var it=q.parentElement,open=it.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});
+    if(!open){it.classList.add('open');var a=it.querySelector('.faq-a');a.style.maxHeight=a.scrollHeight+'px'}
+  })});
+
+  var tel=document.getElementById('tel');
+  tel&&tel.addEventListener('input',function(){
+    var v=this.value.replace(/\D/g,'').slice(0,11);
+    if(v.length>6)v=v.replace(/(\d{2})(\d{5})(\d{0,4}).*/,'($1) $2-$3');
+    else if(v.length>2)v=v.replace(/(\d{2})(\d{0,5})/,'($1) $2');
+    else if(v.length>0)v=v.replace(/(\d{0,2})/,'($1');
+    this.value=v;
+  });
+
+  var f=document.getElementById('lead');
+  f&&f.addEventListener('submit',function(e){
+    e.preventDefault();if(f.website.value)return;var ok=true;
+    function check(id,cond){var fl=document.getElementById(id).closest('.field');fl.classList.toggle('err',!cond);if(!cond)ok=false}
+    check('nome',f.nome.value.trim().length>1);
+    check('tel',f.tel.value.replace(/\D/g,'').length>=10);
+    check('prod',f.prod.value!=='');
+    if(ok){f.style.display='none';document.getElementById('ok').classList.add('show')}
+  });
+})();
+</script>
+</body>
+</html>

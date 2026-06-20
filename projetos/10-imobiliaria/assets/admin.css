@@ -9,6 +9,8 @@
   --radius:16px; --shadow:0 20px 50px -28px rgba(28,43,39,.45);
 }
 *{margin:0;padding:0;box-sizing:border-box}
+/* o atributo hidden precisa vencer regras de display (ex.: .login-wrap{display:grid}) */
+[hidden]{display:none!important}
 body.admin{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit}

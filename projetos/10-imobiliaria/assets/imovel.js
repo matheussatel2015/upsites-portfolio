@@ -1,6 +1,6 @@
 /* Lar & Co. — página de detalhe do imóvel */
 (function(){
-  var DADOS = window.IMOVEIS || [];
+  var DADOS = (window.Store ? window.Store.getAll() : (window.IMOVEIS || []));
   var WA = "5541996739803";
   var app = document.getElementById('app');
 

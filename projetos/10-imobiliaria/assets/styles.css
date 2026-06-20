@@ -172,3 +172,7 @@ footer.site{background:var(--ink);color:#aeb9b3;padding:54px 0 26px;margin-top:6
   .foot-grid{grid-template-columns:1fr}
 }
 @media(max-width:560px){.filtros-grid{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.feat-list{grid-template-columns:1fr}}
+
+/* aviso de alterações locais (overlay do admin) */
+.local-banner{margin:0 0 18px;padding:10px 16px;border-radius:12px;border:1px solid #d9c8a8;background:#fbf4e6;color:#6b5326;font-size:.9rem;font-weight:500}
+.local-banner a{color:#0f6b4f;font-weight:700;text-decoration:underline;margin-left:6px}

@@ -1,7 +1,20 @@
 /* Lar & Co. — listagem + filtros */
 (function(){
-  var DADOS = window.IMOVEIS || [];
+  var DADOS = (window.Store ? window.Store.getAll() : (window.IMOVEIS || []));
   var state = { fin:"", q:"", tipo:"", bairro:"", quartos:0, preco:0, sort:"destaque" };
+
+  // aviso discreto quando há alterações locais não publicadas (feitas no admin)
+  if (window.Store && window.Store.hasOverlay && window.Store.hasOverlay()) {
+    var sec = document.getElementById('imoveis');
+    if (sec) {
+      var w = sec.querySelector('.wrap') || sec;
+      var b = document.createElement('div');
+      b.className = 'local-banner';
+      b.innerHTML = '✎ Exibindo <b>alterações locais</b> (não publicadas) feitas no painel admin. ' +
+        '<a href="admin.html">Abrir admin</a>';
+      w.insertBefore(b, w.firstChild);
+    }
+  }
 
   // ícones
   var ic = {

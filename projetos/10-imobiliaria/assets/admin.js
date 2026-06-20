@@ -12,14 +12,14 @@
   var CRED_PASS = 'admin';
   var SESSION_KEY = 'larco_admin_session';
 
-  /* ---- elementos DOM ---- */
-  var elLogin    = document.getElementById('login');
-  var elApp      = document.getElementById('app');
-  var elForm     = document.getElementById('loginForm');
-  var elUser     = document.getElementById('user');
-  var elPass     = document.getElementById('pass');
-  var elLoginErr = document.getElementById('loginErr');
-  var elLogout   = document.getElementById('logout');
+  /* ---- referências DOM (preenchidas em init, após DOMContentLoaded) ---- */
+  var elLogin    = null;
+  var elApp      = null;
+  var elForm     = null;
+  var elUser     = null;
+  var elPass     = null;
+  var elLoginErr = null;
+  var elLogout   = null;
 
   /* ---- helpers de sessão ---- */
   function sessionStart() {
@@ -48,6 +48,10 @@
   /* ---- login ---- */
   function handleLogin(e) {
     e.preventDefault();
+    // Username is trimmed to ignore accidental leading/trailing spaces;
+    // password is intentionally NOT trimmed — spaces are part of the secret.
+    // NOTE: credential check is client-side only (demo purposes).
+    //       A real application must authenticate server-side.
     var user = elUser.value.trim();
     var pass = elPass.value;
 
@@ -74,6 +78,16 @@
 
   /* ---- inicialização ---- */
   function init() {
+    /* Capture DOM elements here so this works regardless of script placement
+       (not just when the script tag is at end of <body>). */
+    elLogin    = document.getElementById('login');
+    elApp      = document.getElementById('app');
+    elForm     = document.getElementById('loginForm');
+    elUser     = document.getElementById('user');
+    elPass     = document.getElementById('pass');
+    elLoginErr = document.getElementById('loginErr');
+    elLogout   = document.getElementById('logout');
+
     elForm.addEventListener('submit', handleLogin);
     elLogout.addEventListener('click', handleLogout);
 
@@ -92,5 +106,10 @@
 
   window.Admin = Admin;
 
-  init();
+  /* Run init immediately if the DOM is already ready, otherwise wait. */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

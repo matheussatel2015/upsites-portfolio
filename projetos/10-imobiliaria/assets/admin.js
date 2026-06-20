@@ -144,7 +144,7 @@
     let tagsArr = (isEdit && im.caracteristicas) ? im.caracteristicas.slice() : [];
 
     /* fotos — lista em memória; EDIT semeia as fotos existentes */
-    var fotosArr = (isEdit && im.fotos) ? im.fotos.slice() : [];
+    let fotosArr = (isEdit && im.fotos) ? im.fotos.slice() : [];
 
     /* ---- monta HTML ---- */
     elView.innerHTML =
@@ -337,6 +337,7 @@
         var imgEl = document.createElement('img');
         imgEl.src = src;
         imgEl.alt = 'Foto ' + (idx + 1);
+        imgEl.loading = 'lazy';
         ph.appendChild(imgEl);
 
         /* Capa label — apenas no primeiro item */
@@ -404,6 +405,11 @@
     /* ---- processamento de arquivos de imagem ---- */
     function processFiles(files) {
       var arr = Array.prototype.slice.call(files);
+      arr.forEach(function (f) {
+        if (f.type.indexOf('image/') !== 0) {
+          toast('Arquivo ignorado (não é imagem): ' + f.name, true);
+        }
+      });
       var imageFiles = arr.filter(function (f) { return f.type.indexOf('image/') === 0; });
       if (!imageFiles.length) return;
       var pending = imageFiles.length;
@@ -429,7 +435,8 @@
     var dropzone = document.getElementById('fotosDropzone');
     var fotosInput = document.getElementById('fotosInput');
 
-    dropzone.addEventListener('click', function () {
+    dropzone.addEventListener('click', function (e) {
+      if (e.target === fotosInput) return;
       fotosInput.click();
     });
     dropzone.addEventListener('keydown', function (e) {
@@ -445,8 +452,8 @@
       e.preventDefault();
       dropzone.classList.add('over');
     });
-    dropzone.addEventListener('dragleave', function () {
-      dropzone.classList.remove('over');
+    dropzone.addEventListener('dragleave', function (e) {
+      if (!dropzone.contains(e.relatedTarget)) dropzone.classList.remove('over');
     });
     dropzone.addEventListener('drop', function (e) {
       e.preventDefault();

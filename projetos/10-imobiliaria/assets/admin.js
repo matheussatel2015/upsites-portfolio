@@ -94,6 +94,45 @@
     toast('Exportação chega na Task 8');
   }
 
+  /* ---- compressImage — redimensiona (máx 1280px) e converte para JPEG 0.8 ---- */
+  function compressImage(file) {
+    return new Promise(function (resolve, reject) {
+      if (!file || !file.type || file.type.indexOf('image/') !== 0) {
+        reject(new Error('Arquivo não é uma imagem: ' + (file ? file.name : '?')));
+        return;
+      }
+      var reader = new FileReader();
+      reader.onerror = function () { reject(new Error('Falha ao ler ' + file.name)); };
+      reader.onload = function (evt) {
+        var img = new Image();
+        img.onerror = function () { reject(new Error('Imagem inválida: ' + file.name)); };
+        img.onload = function () {
+          var MAX = 1280;
+          var w = img.naturalWidth;
+          var h = img.naturalHeight;
+          /* never upscale; shrink only when longest side > MAX */
+          if (w > MAX || h > MAX) {
+            if (w >= h) { h = Math.round(h * MAX / w); w = MAX; }
+            else        { w = Math.round(w * MAX / h); h = MAX; }
+          }
+          var canvas = document.createElement('canvas');
+          canvas.width  = w;
+          canvas.height = h;
+          var ctx = canvas.getContext('2d');
+          if (!ctx) { reject(new Error('Canvas não disponível')); return; }
+          ctx.drawImage(img, 0, 0, w, h);
+          try {
+            resolve(canvas.toDataURL('image/jpeg', 0.8));
+          } catch (e) {
+            reject(new Error('Erro ao exportar canvas: ' + e.message));
+          }
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
   /* ---- renderForm — formulário CRUD (Task 6b) ---- */
   function renderForm(im) {
     if (!elView) return;
@@ -103,6 +142,9 @@
 
     /* tags (características) — lista em memória, sincronizada com o DOM */
     let tagsArr = (isEdit && im.caracteristicas) ? im.caracteristicas.slice() : [];
+
+    /* fotos — lista em memória; EDIT semeia as fotos existentes */
+    var fotosArr = (isEdit && im.fotos) ? im.fotos.slice() : [];
 
     /* ---- monta HTML ---- */
     elView.innerHTML =
@@ -246,11 +288,17 @@
         '</div>' +
       '</div>' +
 
-      /* ===== Fotos — placeholder Task 7 ===== */
-      '<div class="card">' +
+      /* ===== Fotos — Task 7 ===== */
+      '<div class="card" id="card-fotos">' +
         '<h3>Fotos</h3>' +
-        '<!-- Task 7: upload de fotos -->' +
-        '<p style="color:var(--muted);font-size:.88rem">O upload de fotos será implementado na Task 7.</p>' +
+        '<div class="field" id="fld-fotos">' +
+          '<div class="dropzone" id="fotosDropzone" role="button" tabindex="0" aria-label="Clique ou arraste imagens aqui">' +
+            '<input type="file" id="fotosInput" accept="image/*" multiple style="display:none">' +
+            '<span id="dropzoneTxt">📷 Clique ou arraste imagens aqui</span>' +
+          '</div>' +
+          '<div class="gallery" id="fotosGallery"></div>' +
+          '<span class="msg" id="msg-fotos"></span>' +
+        '</div>' +
       '</div>' +
 
       /* ===== Ações ===== */
@@ -276,6 +324,135 @@
       });
     }
     renderTags();
+
+    /* ---- renderiza galeria de fotos ---- */
+    function renderGallery() {
+      var gallery = document.getElementById('fotosGallery');
+      if (!gallery) return;
+      gallery.innerHTML = '';
+      fotosArr.forEach(function (src, idx) {
+        var ph = document.createElement('div');
+        ph.className = 'ph';
+
+        var imgEl = document.createElement('img');
+        imgEl.src = src;
+        imgEl.alt = 'Foto ' + (idx + 1);
+        ph.appendChild(imgEl);
+
+        /* Capa label — apenas no primeiro item */
+        if (idx === 0) {
+          var cap = document.createElement('span');
+          cap.className = 'cap';
+          cap.textContent = 'Capa';
+          ph.appendChild(cap);
+        }
+
+        /* Controles: mover esquerda / mover direita / remover */
+        var ops = document.createElement('div');
+        ops.className = 'ops';
+
+        var btnLeft = document.createElement('button');
+        btnLeft.type = 'button';
+        btnLeft.textContent = '←';
+        btnLeft.title = 'Mover para esquerda';
+        btnLeft.disabled = idx === 0;
+        btnLeft.addEventListener('click', function () {
+          if (idx === 0) return;
+          var next = fotosArr.slice();
+          var tmp = next[idx - 1];
+          next[idx - 1] = next[idx];
+          next[idx] = tmp;
+          fotosArr = next;
+          renderGallery();
+        });
+
+        var btnRight = document.createElement('button');
+        btnRight.type = 'button';
+        btnRight.textContent = '→';
+        btnRight.title = 'Mover para direita';
+        btnRight.disabled = idx === fotosArr.length - 1;
+        btnRight.addEventListener('click', function () {
+          if (idx === fotosArr.length - 1) return;
+          var next = fotosArr.slice();
+          var tmp = next[idx + 1];
+          next[idx + 1] = next[idx];
+          next[idx] = tmp;
+          fotosArr = next;
+          renderGallery();
+        });
+
+        var btnRm = document.createElement('button');
+        btnRm.type = 'button';
+        btnRm.className = 'rm';
+        btnRm.textContent = '✕';
+        btnRm.title = 'Remover foto';
+        btnRm.addEventListener('click', function () {
+          fotosArr = fotosArr.filter(function (_, i) { return i !== idx; });
+          renderGallery();
+        });
+
+        ops.appendChild(btnLeft);
+        ops.appendChild(btnRight);
+        ops.appendChild(btnRm);
+        ph.appendChild(ops);
+
+        gallery.appendChild(ph);
+      });
+    }
+    renderGallery();
+
+    /* ---- processamento de arquivos de imagem ---- */
+    function processFiles(files) {
+      var arr = Array.prototype.slice.call(files);
+      var imageFiles = arr.filter(function (f) { return f.type.indexOf('image/') === 0; });
+      if (!imageFiles.length) return;
+      var pending = imageFiles.length;
+      var results = new Array(imageFiles.length);
+      imageFiles.forEach(function (file, i) {
+        compressImage(file).then(function (dataUrl) {
+          results[i] = dataUrl;
+        }).catch(function (err) {
+          toast('Erro na foto "' + file.name + '": ' + err.message, true);
+          results[i] = null;
+        }).then(function () {
+          pending -= 1;
+          if (pending === 0) {
+            var valid = results.filter(function (r) { return r !== null; });
+            fotosArr = fotosArr.concat(valid);
+            renderGallery();
+          }
+        });
+      });
+    }
+
+    /* ---- dropzone: clique abre o file picker ---- */
+    var dropzone = document.getElementById('fotosDropzone');
+    var fotosInput = document.getElementById('fotosInput');
+
+    dropzone.addEventListener('click', function () {
+      fotosInput.click();
+    });
+    dropzone.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fotosInput.click(); }
+    });
+    fotosInput.addEventListener('change', function () {
+      processFiles(this.files);
+      this.value = '';
+    });
+
+    /* ---- drag-and-drop ---- */
+    dropzone.addEventListener('dragover', function (e) {
+      e.preventDefault();
+      dropzone.classList.add('over');
+    });
+    dropzone.addEventListener('dragleave', function () {
+      dropzone.classList.remove('over');
+    });
+    dropzone.addEventListener('drop', function (e) {
+      e.preventDefault();
+      dropzone.classList.remove('over');
+      processFiles(e.dataTransfer.files);
+    });
 
     /* ---- auto-slug a partir do título (somente no modo CREATE) ---- */
     if (!isEdit) {
@@ -328,7 +505,7 @@
         resumo:         document.getElementById('fi-resumo').value.trim(),
         descricao:      document.getElementById('fi-descricao').value.trim(),
         caracteristicas: tagsArr.slice(),
-        fotos:          isEdit ? im.fotos.slice() : []
+        fotos:          fotosArr.slice()
       };
 
       /* 2. Calcula existingIds — no edit remove o id atual para não auto-conflitar */

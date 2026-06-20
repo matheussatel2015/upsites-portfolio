@@ -1,9 +1,9 @@
 /* ============================================================
    Lar & Co. Imóveis — Admin JS
    ------------------------------------------------------------
-   Task 5: login, sessão e logout.
-   Task 6a: dashboard — tabela, badges, busca, uso, restaurar/excluir.
-   Tasks 7-8 ampliarão este módulo (form CRUD, fotos, export).
+   Task 5: login, sessão e logout. (concluída)
+   Task 6: dashboard + formulário CRUD. (concluída)
+   Tasks 7 (fotos) e 8 (export) ainda pendentes.
    ============================================================ */
 (function () {
   'use strict';
@@ -102,7 +102,7 @@
     var headTxt = isEdit ? 'Editar imóvel' : 'Novo imóvel';
 
     /* tags (características) — lista em memória, sincronizada com o DOM */
-    var tagsArr = (isEdit && im.caracteristicas) ? im.caracteristicas.slice() : [];
+    let tagsArr = (isEdit && im.caracteristicas) ? im.caracteristicas.slice() : [];
 
     /* ---- monta HTML ---- */
     elView.innerHTML =
@@ -269,7 +269,7 @@
         chip.className = 'tag-chip';
         chip.innerHTML = escHtml(tag) + '<button type="button" aria-label="Remover ' + escAttr(tag) + '">✕</button>';
         chip.querySelector('button').addEventListener('click', function () {
-          tagsArr.splice(idx, 1);
+          tagsArr = tagsArr.filter(function (_, i) { return i !== idx; });
           renderTags();
         });
         container.appendChild(chip);
@@ -386,7 +386,7 @@
     var status = computeStatus(item);
     var thumbHtml;
     if (item.fotos && item.fotos.length) {
-      thumbHtml = '<img class="thumb" src="' + item.fotos[0] + '" alt="" loading="lazy">';
+      thumbHtml = '<img class="thumb" src="' + escAttr(item.fotos[0]) + '" alt="" loading="lazy">';
     } else {
       thumbHtml = '<div class="thumb" aria-hidden="true" style="background:var(--surface-2);width:54px;height:40px;border-radius:8px;"></div>';
     }
@@ -398,7 +398,7 @@
       '<td class="hide-sm">' + escHtml(item.tipo) + '</td>' +
       '<td class="hide-sm">' + escHtml(item.bairro) + '</td>' +
       '<td>' + brl.format(item.preco) + '</td>' +
-      '<td><span class="badge ' + status.cls + '">' + status.label + '</span></td>' +
+      '<td><span class="badge ' + escAttr(status.cls) + '">' + escHtml(status.label) + '</span></td>' +
       '<td><div class="row-actions">' +
         '<button class="icon-btn" data-action="edit" data-id="' + escAttr(item.id) + '">✏ Editar</button>' +
         '<button class="icon-btn del" data-action="del" data-id="' + escAttr(item.id) + '">✕ Excluir</button>' +

@@ -15,10 +15,11 @@
     var a    = document.createElement('a');
     a.href     = url;
     a.download = filename;
-    document.body.appendChild(a);
+    var target = document.body || document.documentElement;
+    target.appendChild(a);
     a.click();
     URL.revokeObjectURL(url);
-    document.body.removeChild(a);
+    target.removeChild(a);
   }
 
   /* ---- gerar texto do manifesto de fotos ---- */
@@ -84,6 +85,7 @@
       fileInput.value = '';
     };
     reader.onload = function (evt) {
+      if (!window.Store) { opts.toast('Store não disponível.', true); return; }
       try {
         window.Store.importBackup(evt.target.result);
         opts.toast('Backup importado.');

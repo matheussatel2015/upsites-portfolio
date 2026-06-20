@@ -89,11 +89,6 @@
     return { label: 'Seed', cls: 'seed' };
   }
 
-  /* ---- exportar imoveis.js (stub — Task 8) ---- */
-  function exportImoveis() {
-    toast('Exportação chega na Task 8');
-  }
-
   /* ---- compressImage — redimensiona (máx 1280px) e converte para JPEG 0.8 ---- */
   function compressImage(file) {
     return new Promise(function (resolve, reject) {
@@ -653,7 +648,6 @@
       '<div class="toolbar">' +
         '<div class="search"><input type="search" id="searchBox" placeholder="Buscar por título, bairro ou tipo…" autocomplete="off"></div>' +
         '<button class="btn btn--emerald btn--sm" id="btnNovo">+ Novo imóvel</button>' +
-        '<button class="btn btn--ghost btn--sm" id="btnExport">Exportar imoveis.js</button>' +
         '<button class="btn btn--ghost btn--sm" id="btnRestore">Restaurar seed</button>' +
       '</div>' +
 
@@ -688,8 +682,6 @@
     /* -- eventos -- */
     document.getElementById('btnNovo').addEventListener('click', function () { renderForm(); });
 
-    document.getElementById('btnExport').addEventListener('click', exportImoveis);
-
     document.getElementById('btnRestore').addEventListener('click', function () {
       if (!window.Store) return;
       if (!window.Store.hasOverlay()) {
@@ -702,6 +694,12 @@
         renderDashboard();
       }
     });
+
+    /* -- módulo de exportação (Task 8a) -- */
+    if (window.AdminExport) {
+      var toolbarEl = elView.querySelector('.toolbar');
+      window.AdminExport.mountToolbar(toolbarEl, { toast: toast, refresh: renderDashboard });
+    }
 
     document.getElementById('searchBox').addEventListener('input', function (e) {
       filterRows(tbody, items, e.target.value);

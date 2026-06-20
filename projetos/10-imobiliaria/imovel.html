@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Imóvel | Lar & Co. Imóveis</title>
+<meta name="description" content="Detalhes do imóvel — Lar & Co. Imóveis, Curitiba/PR." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<div class="pf-bar"><div class="wrap"><span>Demonstração de portfólio · Projeto fictício</span><a href="../../index.html">← Voltar ao portfólio</a></div></div>
+
+<header class="site" id="top">
+  <nav class="nav">
+    <a href="index.html" class="logo"><span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/></svg></span>Lar <b>&amp; Co.</b></a>
+    <ul class="nav-links" id="menu">
+      <li><a href="index.html#imoveis">Imóveis</a></li>
+      <li><a href="index.html?fin=venda">Comprar</a></li>
+      <li><a href="index.html?fin=aluguel">Alugar</a></li>
+      <li><a href="index.html#contato-rodape">Contato</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html" class="btn btn--emerald">Ver todos os imóveis</a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main class="detalhe"><div class="wrap" id="app"><p class="muted" style="padding:60px 0">Carregando imóvel…</p></div></main>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="x" id="lbClose" aria-label="Fechar">&times;</button>
+  <button class="nav prev" id="lbPrev" aria-label="Anterior">&#8249;</button>
+  <img id="lbImg" src="" alt="" />
+  <button class="nav next" id="lbNext" aria-label="Próxima">&#8250;</button>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="logo"><span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/></svg></span>Lar <b>&amp; Co.</b></div><p>Imobiliária em Curitiba/PR. Compra, venda e locação com atendimento próximo e transparente.</p></div>
+      <div class="foot-col"><h4>Imóveis</h4><a href="index.html?fin=venda">Comprar</a><a href="index.html?fin=aluguel">Alugar</a><a href="index.html">Ver todos</a></div>
+      <div class="foot-col"><h4>Contato</h4><a href="https://wa.me/5541996739803" target="_blank" rel="noopener">(41) 99673-9803</a><a href="mailto:contato@larco.com.br">contato@larco.com.br</a><a href="#top">Voltar ao topo</a></div>
+    </div>
+    <div class="foot-bot"><span>Lar &amp; Co. Imóveis · CRECI/PR 00000-J · Projeto fictício para fins de portfólio</span><span>Av. Sete de Setembro, 3000 · Curitiba/PR</span></div>
+  </div>
+</footer>
+
+<script src="data/imoveis.js"></script>
+<script src="assets/imovel.js"></script>
+</body>
+</html>

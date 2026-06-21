@@ -61,4 +61,84 @@ preço máximo e ordenação (destaques, menor/maior preço, maior área).
 
 ---
 
+## Painel administrativo (`admin.html`)
+
+> **Demonstração de portfólio.** Tudo acontece no navegador — sem backend, sem servidor de arquivos,
+> sem custo. O painel existe para mostrar o conceito de gestão de conteúdo 100% estático.
+
+### Acesso
+
+Não há link público no site; acesse diretamente pela URL:
+
+```
+http://localhost:8000/admin.html
+```
+
+Serve **obrigatoriamente** via HTTP (não `file://`) para que `localStorage` e scripts funcionem
+sem restrições. Use o mesmo servidor do item "Como rodar":
+
+```bash
+python -m http.server 8000
+```
+
+A página tem `<meta name="robots" content="noindex,nofollow">` — não será indexada por buscadores.
+
+### Login (demonstrativo)
+
+| Campo | Valor |
+|-------|-------|
+| Usuário | `admin` |
+| Senha | `admin` |
+
+A autenticação é **ilustrativa e client-side**: nenhuma credencial é validada em servidor.
+A sessão dura enquanto a aba estiver aberta (`sessionStorage`); fechar a aba desloga automaticamente.
+
+### O que é possível fazer
+
+- **Cadastrar, editar e excluir imóveis** pelo formulário do painel.
+- **Gerenciar fotos:** upload com compressão automática via `<canvas>` — redimensiona para no máximo
+  1280 px e exporta em JPEG com qualidade ~0,8; fotos são armazenadas como Data URLs.
+- **Badge de status:** cada imóvel exibe `Seed` (dados originais), `Editado` ou `Novo`.
+- **Busca** em tempo real na listagem de imóveis do painel.
+- **Indicador de uso do `localStorage`** (KB usados vs. limite do navegador).
+- **Restaurar seed:** descarta todas as alterações locais e volta ao conjunto original de imóveis.
+
+### Persistência (como os dados ficam salvos)
+
+O painel salva as alterações no **`localStorage` do navegador** como um overlay — a "camada" local
+fica sobre o arquivo versionado `data/imoveis.js`, que **não é alterado em runtime**.
+
+- No mesmo navegador onde você editou, as páginas públicas (`index.html`, `imovel.html`) refletem
+  as alterações e exibem um aviso sutil de "alterações locais".
+- Em outro navegador ou em aba anônima, só o seed (dados originais) é exibido.
+
+### Exportar / publicar (tornar as alterações permanentes)
+
+Para que as alterações apareçam para todos os visitantes, é preciso incorporá-las ao projeto e
+fazer deploy. O painel oferece três botões de exportação:
+
+| Botão | O que faz |
+|-------|-----------|
+| **Exportar imoveis.js** | Baixa o arquivo `imoveis.js` final (seed + overlay mesclados) pronto para substituir `data/imoveis.js` no projeto. Junto com ele, baixa um **`fotos-manifest.txt`** com os caminhos esperados para todas as fotos (`fotos/<id>/1.jpg`, `fotos/<id>/2.jpg`, …). |
+| **Exportar backup** | Baixa um JSON com o overlay atual (útil para transportar o trabalho entre máquinas). |
+| **Importar backup** | Carrega um JSON de backup salvo anteriormente, restaurando o overlay neste navegador. |
+
+### Fluxo de publicação real (passo a passo)
+
+1. No painel, clique em **Exportar imoveis.js** — dois arquivos são baixados:
+   `imoveis.js` e `fotos-manifest.txt`.
+2. Substitua `data/imoveis.js` no projeto pelo arquivo baixado.
+3. Para cada imóvel com fotos novas, crie a pasta `fotos/<id>/` e coloque as imagens conforme
+   os caminhos listados no `fotos-manifest.txt` (`1.jpg`, `2.jpg`, …).
+4. Faça commit e push:
+   ```bash
+   git add data/imoveis.js fotos/
+   git commit -m "feat: atualiza imóveis e fotos"
+   git push
+   ```
+5. O GitHub Pages (ou seu host estático) fará o deploy automaticamente.
+   A partir daí, todos os visitantes verão os dados atualizados.
+
+---
+
 > Imóveis, fotos e dados são **fictícios**, para fins de demonstração de portfólio.

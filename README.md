@@ -1,6 +1,6 @@
 # UPsites — Portfólio de Landing Pages de Alta Conversão
 
-Portfólio premium com **8 landing pages comerciais fictícias** + uma página principal de apresentação. Cada projeto tem identidade visual única, layout exclusivo e estratégia de conversão própria para seu segmento.
+Portfólio premium com **10 landing pages comerciais + 1 projeto externo no GitHub** + uma página principal de apresentação. Cada projeto tem identidade visual única, layout exclusivo e estratégia de conversão própria para seu segmento.
 
 🔗 **Demo online:** _(GitHub Pages — link na aba "Pages" do repositório)_
 
@@ -16,6 +16,9 @@ Portfólio premium com **8 landing pages comerciais fictícias** + uma página p
 | 06 | FORJA | Academia premium | Preto + vermelho · Anton |
 | 07 | Brask | Construtora e reformas | Navy + laranja · Oswald · timeline |
 | 08 | Reverso | Agência de marketing | Off-black + chartreuse · Syne · layout assimétrico |
+| 09 | Vesti Bem | Confecção e uniformes | Azul + amarelo + coral · visual vibrante |
+| 10 | Lar & Co. Imóveis | Imobiliária com área administrativa | Verde profundo · filtros e páginas |
+| 11 | SAISO | Projeto externo (GitHub) | Detalhes visuais e técnicos no repositório |
 
 ## Tecnologia
 
@@ -46,7 +49,11 @@ projetos/
   06-academia/index.html
   07-construtora/index.html
   08-marketing/index.html
+  09-confeccao/index.html
+  10-imobiliaria/index.html
 ```
+Projeto externo adicional:
+- SAISO (GitHub): https://github.com/matheussatel2015/v0-landing-page-saiso
 
 ---
 

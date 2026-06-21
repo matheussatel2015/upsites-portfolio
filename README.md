@@ -51,8 +51,9 @@ projetos/
   08-marketing/index.html
   09-confeccao/index.html
   10-imobiliaria/index.html
-  11-saiso (link externo no GitHub)
 ```
+Projeto externo adicional:
+- SAISO (GitHub): https://github.com/matheussatel2015/v0-landing-page-saiso
 
 ---
 

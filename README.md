@@ -18,7 +18,7 @@ Portfólio premium com **10 landing pages comerciais + 1 projeto externo no GitH
 | 08 | Reverso | Agência de marketing | Off-black + chartreuse · Syne · layout assimétrico |
 | 09 | Vesti Bem | Confecção e uniformes | Azul + amarelo + coral · visual vibrante |
 | 10 | Lar & Co. Imóveis | Imobiliária com área administrativa | Verde profundo · filtros e páginas |
-| 11 | SAISO | Projeto externo (GitHub) | Projeto externo · ver repositório para detalhes |
+| 11 | SAISO | Projeto externo (GitHub) | Detalhes visuais e técnicos no repositório |
 
 ## Tecnologia
 

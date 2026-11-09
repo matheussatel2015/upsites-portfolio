@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crepêra — Crepes franceses feitos na hora para eventos</title>
+<meta name="description" content="Estação de crepes franceses para casamentos, aniversários e eventos corporativos. Massa fina, recheios escolhidos pelo convidado e preparo na hora.">
+<meta name="theme-color" content="#FEF3E1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FEF3E1;
+  --paper-2:#F8E8CC;
+  --ink:#3E1D0F;
+  --brown:#6B2E17;
+  --muted:#7D5B49;
+  --mustard:#EBA628;
+  --red:#C9432F;
+  --line:rgba(62,29,15,.16);
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Figtree",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img,svg{display:block}
+a{color:inherit}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;letter-spacing:-.01em}
+em{font-style:italic}
+.kicker{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid transparent;transition:border-color .2s}
+header.scrolled{border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.nav .brand img{height:56px;width:auto}
+.nav ul{display:flex;gap:34px;list-style:none;font-size:15px;font-weight:500}
+.nav ul a{text-decoration:none;padding:6px 0;background:linear-gradient(var(--ink),var(--ink)) left bottom/0 1px no-repeat;transition:background-size .25s}
+.nav ul a:hover{background-size:100% 1px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px var(--sans);text-decoration:none;border:0;cursor:pointer;padding:14px 22px;border-radius:999px;background:var(--brown);color:var(--paper);transition:background .2s,transform .2s}
+.btn:hover{background:var(--ink)}
+.btn--ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--paper)}
+.nav .btn{padding:11px 18px}
+.menu-toggle{display:none;background:none;border:0;cursor:pointer;width:40px;height:40px}
+.menu-toggle span{display:block;width:22px;height:1.5px;background:var(--ink);margin:6px auto}
+
+/* ---------- hero ---------- */
+.hero{padding:56px 0 90px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(46px,6.6vw,86px);margin:18px 0 26px}
+.hero h1 em{color:var(--brown)}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:30em}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.hero .facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:36px;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);flex-wrap:wrap}
+.hero .facts div{font-size:14px;color:var(--muted)}
+.hero .facts strong{display:block;font:400 30px/1.1 var(--serif);color:var(--ink);margin-bottom:2px}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto}
+.hero-art .note{position:absolute;font:italic 400 19px var(--serif);color:var(--brown)}
+.hero-art .note.n1{top:6%;right:4%;transform:rotate(4deg)}
+.hero-art .note.n2{bottom:-2%;left:8%;transform:rotate(-3deg)}
+
+/* ---------- strip ---------- */
+.strip{border-block:1px solid var(--line);padding:18px 0;overflow:hidden;white-space:nowrap}
+.strip .track{display:inline-flex;gap:44px;animation:slide 40s linear infinite;font:italic 400 22px var(--serif);color:var(--brown)}
+.strip .track span::after{content:"·";margin-left:44px;color:var(--mustard);font-style:normal}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- section ---------- */
+section{padding:110px 0}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}
+.sec-head h2{font-size:clamp(38px,4.8vw,60px);margin-top:14px}
+.sec-head p{color:var(--muted);max-width:32em}
+
+/* ---------- cardápio ---------- */
+#cardapio{background:var(--paper-2)}
+.tabs{display:inline-flex;padding:5px;border-radius:999px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);margin-bottom:34px}
+.tabs button{font:600 15px var(--sans);color:var(--muted);background:none;border:0;padding:12px 22px;border-radius:999px;cursor:pointer;transition:color .2s,background .2s}
+.tabs button[aria-selected="true"]{background:var(--brown);color:var(--paper)}
+.menu{background:var(--paper);border-radius:6px;padding:56px clamp(22px,5vw,64px);box-shadow:0 1px 0 var(--line),0 30px 60px -40px rgba(62,29,15,.35);position:relative}
+.menu::before{content:"";position:absolute;inset:12px;border:1px solid var(--line);border-radius:3px;pointer-events:none}
+.menu-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.menu-top h3{font-size:clamp(34px,4vw,48px)}
+.menu-top p{font:italic 400 19px var(--serif);color:var(--muted);margin-top:6px}
+.price{text-align:right}
+.price .old{font-size:14px;color:var(--muted)}
+.price .old s{text-decoration-thickness:1px}
+.price .now{font:400 52px/1 var(--serif);color:var(--brown)}
+.price .now small{font:500 14px var(--sans);color:var(--muted);margin-left:6px}
+.price .tag{display:inline-block;margin-top:10px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--mustard);color:var(--ink);padding:5px 10px;border-radius:3px}
+.groups{display:grid;grid-template-columns:1.6fr 1fr;gap:52px}
+.group h4{font:600 13px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--brown);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.group h4::after{content:"";flex:1;height:1px;background:var(--line)}
+.items{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:26px 18px}
+.items li{text-align:center;font-size:15px;line-height:1.3;position:relative}
+.items li svg{width:72px;height:72px;margin:0 auto 8px;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.items li:hover svg{transform:rotate(-6deg) scale(1.06)}
+.items li .only{display:block;font:italic 400 13px var(--serif);color:var(--red);margin-top:2px}
+.items li.new{animation:pop .5s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}}
+.side{display:flex;flex-direction:column;gap:44px}
+.menu-foot{margin-top:46px;padding-top:24px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.menu-foot strong{color:var(--ink);font-weight:600}
+
+/* ---------- como funciona ---------- */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink)}
+.steps li{padding:28px 26px 0 0}
+.steps li + li{padding-left:26px;border-left:1px solid var(--line)}
+.steps .n{font:italic 400 54px/1 var(--serif);color:var(--mustard)}
+.steps h3{font-size:25px;margin:18px 0 10px}
+.steps p{font-size:15.5px;color:var(--muted)}
+
+/* ---------- ocasiões ---------- */
+.occasions{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+.occasions h2{font-size:clamp(38px,4.8vw,60px);margin:14px 0 22px}
+.occasions p{color:var(--muted)}
+.occ-list{list-style:none;border-top:1px solid var(--line)}
+.occ-list li{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.occ-list b{font:400 30px var(--serif)}
+.occ-list span{font-size:15px;color:var(--muted);text-align:right}
+
+/* ---------- orçamento ---------- */
+#orcamento{background:var(--brown);color:var(--paper)}
+#orcamento .kicker{color:var(--mustard)}
+#orcamento .sec-head p{color:rgba(254,243,225,.75)}
+.quote{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.card{background:rgba(254,243,225,.06);border:1px solid rgba(254,243,225,.18);border-radius:6px;padding:36px}
+.card h3{font-size:28px;margin-bottom:24px}
+label{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;color:rgba(254,243,225,.8)}
+.field{margin-bottom:22px}
+input,select{width:100%;font:500 16px var(--sans);color:var(--paper);background:transparent;border:0;border-bottom:1.5px solid rgba(254,243,225,.35);padding:10px 0;border-radius:0;outline:none;transition:border-color .2s}
+input:focus,select:focus{border-color:var(--mustard)}
+select option{color:var(--ink)}
+input::placeholder{color:rgba(254,243,225,.4)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.guests{display:flex;align-items:center;gap:18px}
+.guests input[type=range]{flex:1;accent-color:var(--mustard);border:0;padding:0}
+.guests output{font:400 34px var(--serif);min-width:3ch;text-align:right}
+.seg{display:flex;gap:10px;flex-wrap:wrap;position:relative}
+.seg label{margin:0;text-transform:none;letter-spacing:0;font:500 15px var(--sans);padding:10px 16px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(254,243,225,.35);cursor:pointer;color:var(--paper)}
+.seg input{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
+.seg input:checked + label{background:var(--paper);color:var(--brown)}
+.seg input:focus-visible + label{outline:2px solid var(--mustard);outline-offset:2px}
+.estimate{margin-top:30px;padding-top:26px;border-top:1px dashed rgba(254,243,225,.3)}
+.estimate .big{font:400 clamp(44px,5vw,60px)/1 var(--serif);color:var(--mustard)}
+.estimate .sub{font-size:15px;color:rgba(254,243,225,.75);margin-top:10px}
+.estimate .sub s{opacity:.8}
+.fineprint{font-size:13px;color:rgba(254,243,225,.6);margin-top:18px}
+.card .btn{background:var(--mustard);color:var(--ink);width:100%;justify-content:center;margin-top:6px}
+.card .btn:hover{background:var(--paper)}
+.err{font-size:13px;color:#FFB4A6;margin-top:6px;min-height:1em}
+
+/* ---------- faq ---------- */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.faq h2{font-size:clamp(38px,4.8vw,60px);margin-top:14px}
+details{border-bottom:1px solid var(--line)}
+details:first-child{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:24px 40px 24px 0;font:400 22px var(--serif);position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:18px;font:300 30px var(--sans);color:var(--brown);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 40px 26px 0;color:var(--muted)}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:56px 0 40px}
+.foot{display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center}
+.foot img{height:84px}
+.foot p{font:italic 400 22px var(--serif);color:var(--brown)}
+.foot .meta{font-size:14px;color:var(--muted);text-align:right}
+.foot .meta a{text-decoration:none;border-bottom:1px solid var(--line)}
+.copy{margin-top:38px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+.wa{position:fixed;right:20px;bottom:20px;z-index:30;width:56px;height:56px;border-radius:50%;background:var(--brown);color:var(--paper);display:grid;place-items:center;box-shadow:0 10px 24px -8px rgba(62,29,15,.6);transition:transform .2s}
+.wa:hover{transform:scale(1.06)}
+.wa svg{width:26px;height:26px}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.strip .track{animation:none}html{scroll-behavior:auto}}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .hero .wrap,.sec-head,.occasions,.faq,.quote,.groups{grid-template-columns:1fr}
+  .hero-art{max-width:520px;margin:0 auto}
+  .steps{grid-template-columns:1fr 1fr;border-top:0}
+  .steps li,.steps li + li{padding:26px 0 0;border-left:0;border-top:1px solid var(--ink)}
+  .steps li:nth-child(even){padding-left:22px}
+  .sec-head{gap:16px}
+  .occasions,.faq{gap:40px}
+  .foot{grid-template-columns:1fr;text-align:left}
+  .foot .meta{text-align:left}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  section{padding:76px 0}
+  .nav ul,.nav .btn{display:none}
+  .menu-toggle{display:block}
+  .nav.open ul{display:flex;flex-direction:column;gap:6px;position:absolute;top:76px;left:0;right:0;background:var(--paper);padding:14px 20px 24px;border-bottom:1px solid var(--line);font-size:18px}
+  .hero{padding:28px 0 64px}
+  .hero .facts{gap:18px;grid-template-columns:repeat(3,1fr)}
+  .hero .facts strong{font-size:24px}
+  .steps{grid-template-columns:1fr}
+  .steps li:nth-child(even){padding-left:0}
+  .menu{padding:40px 20px}
+  .menu::before{inset:8px}
+  .price{text-align:left}
+  .items{grid-template-columns:repeat(3,1fr);gap:22px 10px}
+  .items li{font-size:14px}
+  .items li svg{width:60px;height:60px}
+  .row{grid-template-columns:1fr}
+  .card{padding:26px 20px}
+  .tabs{display:flex}
+  .tabs button{flex:1;padding:12px 10px}
+  .occ-list b{font-size:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Ilustrações (traço de nanquim + mancha de cor deslocada) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-frango" viewBox="0 0 64 64">
+      <path d="M27 35C19 27 25 13 37 14s17 15 7 23c-6 4-12 3-17-2Z" fill="#EBA628" opacity=".55" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M26 36C16 27 23 11 37 12c14 1 19 17 8 25-6 5-13 4-19-1Z"/><path d="M26 37l-9 9"/><circle cx="13.5" cy="45" r="3.2"/><circle cx="18" cy="50.5" r="3.2"/><path d="M33 20c3-2 7-1 9 2M30 27c2 1 4 1 6 0"/>
+      </g>
+    </symbol>
+    <symbol id="i-presunto" viewBox="0 0 64 64">
+      <path d="M10 34C10 21 26 13 40 15s18 15 10 25c-8 10-32 10-40-6Z" fill="#E8A09B" opacity=".6" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 33C9 20 25 12 39 14s18 15 10 25c-8 10-32 10-40-6Z"/><path d="M15 33c2-9 13-15 25-13"/><path d="M28 31c4 3 9 3 13 0M24 39c3 1 6 1 9 0"/>
+      </g>
+    </symbol>
+    <symbol id="i-mucarela" viewBox="0 0 64 64">
+      <path d="M8 38 40 17l16 13v16L8 52Z" fill="#F4D27A" opacity=".75" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 37 39 16l16 13M7 37l48-8v16L7 51Z"/><circle cx="20" cy="44" r="2.6"/><circle cx="40" cy="39" r="2"/><ellipse cx="35" cy="25" rx="3" ry="1.6"/><circle cx="29" cy="46" r="1.4"/>
+      </g>
+    </symbol>
+    <symbol id="i-calabresa" viewBox="0 0 64 64">
+      <g fill="#C9432F" opacity=".55" transform="translate(2 2)"><circle cx="21" cy="37" r="12"/><circle cx="40" cy="27" r="12"/><circle cx="44" cy="45" r="9"/></g>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="20" cy="36" r="12"/><path d="M29.5 28.5A12 12 0 1 1 49 34"/><path d="M50 40a9 9 0 1 1-13 3"/>
+      </g>
+      <g fill="#3E1D0F"><circle cx="16" cy="33" r="1.3"/><circle cx="23" cy="39" r="1.3"/><circle cx="18" cy="41" r="1"/><circle cx="24" cy="31" r="1"/><circle cx="40" cy="22" r="1.3"/><circle cx="45" cy="27" r="1"/><circle cx="43" cy="46" r="1.2"/></g>
+    </symbol>
+    <symbol id="i-requeijao" viewBox="0 0 64 64">
+      <path d="M16 27l4 25q12 4 24 0l4-25Z" fill="#EBA628" opacity=".4" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 26l4 25q12 4 24 0l4-25"/><ellipse cx="32" cy="26" rx="16" ry="4.5"/><path d="M23 25c3-9 15-9 18-1-5-4-10-3-12 1"/><path d="M22 36h20"/>
+      </g>
+    </symbol>
+    <symbol id="i-milho" viewBox="0 0 64 64">
+      <path d="M24 46C17 34 27 13 41 11c8 10 5 30-11 40Z" fill="#F2C443" opacity=".7" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 45C16 33 26 12 40 10c8 10 5 30-11 40Z"/><path d="M27 20l11 4M25 28l12 4M24 36l11 3M33 13l-4 34"/><path d="M23 45c-4 3-9 6-13 6 6-2 9-8 13-14M29 50c7 2 15 0 22-7-7 2-13 2-18 0"/>
+      </g>
+    </symbol>
+    <symbol id="i-tomate" viewBox="0 0 64 64">
+      <path d="M32 19c16-2 24 12 20 24-4 12-34 14-40 0-4-12 6-24 20-24Z" fill="#C9432F" opacity=".6" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M32 18c16-2 24 12 20 24-4 12-34 14-40 0-4-12 6-24 20-24Z"/><path d="M32 19l-7-4M32 19l7-4M32 19v-9M32 19l-9 2M32 19l9 2"/><path d="M42 26c3 2 4 5 4 8"/>
+      </g>
+    </symbol>
+    <symbol id="i-cebola" viewBox="0 0 64 64">
+      <path d="M32 13c-2 10-18 15-18 27 0 10 8 14 18 14s18-4 18-14c0-12-16-17-18-27Z" fill="#D8A1B6" opacity=".6" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M32 12c-2 10-18 15-18 27 0 10 8 14 18 14s18-4 18-14c0-12-16-17-18-27Z"/><path d="M31 16c-5 12-8 23-4 37M33 16c5 12 7 24 3 37"/><path d="M28 53l-2 5M32 53v5M36 53l2 5"/>
+      </g>
+    </symbol>
+    <symbol id="i-carne" viewBox="0 0 64 64">
+      <path d="M12 30c0-12 18-18 32-14s12 20 2 26c-6 4-6 10-16 10-12 0-18-10-18-22Z" fill="#B5533C" opacity=".6" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 29c0-12 18-18 32-14s12 20 2 26c-6 4-6 10-16 10-12 0-18-10-18-22Z"/><path d="M17 29c0-8 12-12 24-10"/><circle cx="36" cy="32" r="4"/><path d="M22 40c3 2 6 2 8 1"/>
+      </g>
+    </symbol>
+    <symbol id="i-chocolate" viewBox="0 0 64 64">
+      <path d="M17 12h31v40H17Z" fill="#7A3B1E" opacity=".5" transform="rotate(-10 32 32) translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-10 32 32)">
+        <path d="M16 11h31v35l-6 5H16Z"/><path d="M26.5 11v41M37 11v38M16 23.5h31M16 36h31"/><path d="M41 51c0-3 2-5 6-5"/>
+      </g>
+    </symbol>
+    <symbol id="i-banana" viewBox="0 0 64 64">
+      <path d="M12 22c2 22 22 32 42 20-14 2-30-4-36-22Z" fill="#F2C443" opacity=".75" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 21c2 22 22 32 42 20-14 2-30-4-36-22Z"/><path d="M11 21l-2-5 6 1"/><path d="M15 26c6 13 18 18 32 16"/><path d="M53 41l3 1"/>
+      </g>
+    </symbol>
+    <symbol id="i-morango" viewBox="0 0 64 64">
+      <path d="M32 54C18 46 12 30 18 22c6-6 22-6 28 0 6 8 0 24-14 32Z" fill="#C9432F" opacity=".65" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M32 53C18 45 12 29 18 21c6-6 22-6 28 0 6 8 0 24-14 32Z"/><path d="M20 21l5-8 7 6 7-6 5 8M32 19v-9"/>
+        <path d="M24 29v2M32 28v2M40 29v2M27 37v2M37 37v2M32 45v2"/>
+      </g>
+    </symbol>
+    <symbol id="i-doce" viewBox="0 0 64 64">
+      <path d="M18 24v26q0 4 4 4h20q4 0 4-4V24Z" fill="#C9813A" opacity=".6" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 24v26q0 4 4 4h20q4 0 4-4V24"/><rect x="15" y="15" width="34" height="9" rx="2"/><path d="M22 24v6q2 3 4 0v-2q2 3 4 0v-4"/><path d="M23 37h18v10H23Z"/>
+      </g>
+    </symbol>
+    <symbol id="i-canela" viewBox="0 0 64 64">
+      <path d="M12 42 42 14l8 8-30 28Z" fill="#A65A2E" opacity=".55" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 41 40 13M18 49 48 21"/><ellipse cx="44" cy="17" rx="3.4" ry="5.6" transform="rotate(45 44 17)"/><path d="M44 17c1-2 3-1 2 1"/><path d="M10 41l8 8"/>
+        <path d="M20 54 50 26M26 59l26-24" opacity=".55"/>
+      </g>
+    </symbol>
+    <symbol id="i-molho" viewBox="0 0 64 64">
+      <path d="M10 34q4 12 20 12h12q10-2 12-12Z" fill="var(--acc,#F7EEDC)" opacity=".85" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 33q4 12 20 12h12q10-2 12-12Z"/><path d="M10 33 4 29l9 1"/><path d="M54 35q8-2 6-10-2-4-7-1"/><path d="M24 45l-2 6h20l-2-6"/><path d="M16 33c6-3 14-3 20 0s10 2 14 0"/>
+      </g>
+    </symbol>
+    <symbol id="i-oregano" viewBox="0 0 64 64">
+      <g fill="#8A9A4B" opacity=".55" transform="translate(2 2)"><ellipse cx="24" cy="40" rx="8" ry="4.5" transform="rotate(-30 24 40)"/><ellipse cx="40" cy="30" rx="8" ry="4.5" transform="rotate(30 40 30)"/><ellipse cx="26" cy="22" rx="7" ry="4" transform="rotate(-35 26 22)"/></g>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M32 57c0-16-2-32 2-49"/><path d="M32 46c-6 0-13-3-15-8 6-1 12 2 15 8ZM32 36c6 0 13-3 15-8-6-1-12 2-15 8ZM33 26c-6 0-12-3-14-8 6-1 11 2 14 8ZM33 17c4-1 8-4 9-8-4 0-8 3-9 8Z"/>
+      </g>
+    </symbol>
+    <symbol id="i-ralado" viewBox="0 0 64 64">
+      <path d="M44 55q6-10 15 0Z" fill="#F2C443" opacity=".8"/>
+      <path d="M20 54l4-40h16l4 40Z" fill="#D9C7B0" opacity=".55" transform="translate(2 2)"/>
+      <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 53l4-40h16l4 40Z"/><path d="M27 13q4-9 8 0"/><path d="M26 22h3M33 22h3M25 30h3M33 30h3M24 38h3M34 38h3M24 46h3M34 46h3"/><path d="M48 50l2-4M53 51l1-5M57 52l-1-4"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header id="top">
+  <nav class="wrap nav" aria-label="Principal">
+    <a href="#top" class="brand" aria-label="Crepêra — início"><img src="logo.jpg" alt="Crepêra" width="84" height="56"></a>
+    <ul>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#como-funciona">Como funciona</a></li>
+      <li><a href="#eventos">Eventos</a></li>
+      <li><a href="#duvidas">Dúvidas</a></li>
+    </ul>
+    <a href="#orcamento" class="btn">Pedir orçamento</a>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker reveal">Crepes franceses · para eventos</p>
+        <h1 class="reveal">Massa fina,<br>feita na hora,<br><em>na frente</em> dos seus convidados.</h1>
+        <p class="lead reveal">Levamos a chapa, os ingredientes e quem sabe virar um crepe. Cada convidado escolhe o próprio recheio — doce, salgado ou os dois.</p>
+        <div class="ctas reveal">
+          <a href="#orcamento" class="btn">Simular orçamento <span aria-hidden="true">→</span></a>
+          <a href="#cardapio" class="btn btn--ghost">Ver o cardápio</a>
+        </div>
+        <div class="facts reveal">
+          <div><strong>R$ 42,90</strong>por pessoa, a partir de</div>
+          <div><strong>18</strong>ingredientes para montar</div>
+          <div><strong>50+</strong>convidados no preço de lançamento</div>
+        </div>
+      </div>
+
+      <div class="hero-art reveal" aria-hidden="true">
+        <svg viewBox="0 0 440 400">
+          <defs>
+            <g id="sh">
+              <path d="M0-15C11-15 15-4 11 6 8 12 3 15 0 16-3 15-8 12-11 6-15-4-11-15 0-15Z" fill="#C9432F"/>
+              <path d="M0-9C6-9 8-3 6 3 4 7 1 9 0 9-1 9-4 7-6 3-8-3-6-9 0-9Z" fill="#F2A99C"/>
+              <path d="M0-15C11-15 15-4 11 6 8 12 3 15 0 16-3 15-8 12-11 6-15-4-11-15 0-15Z" fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M-6-15l6-6 6 6M0-15v-3" fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <g fill="#3E1D0F"><circle cx="-4" cy="-3" r="1"/><circle cx="4" cy="-3" r="1"/><circle cx="0" cy="4" r="1"/></g>
+            </g>
+          </defs>
+          <!-- prato -->
+          <ellipse cx="228" cy="272" rx="196" ry="92" fill="#F8E8CC"/>
+          <g fill="none" stroke="#3E1D0F" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="220" cy="266" rx="196" ry="92" stroke-width="2"/>
+            <ellipse cx="220" cy="262" rx="150" ry="66" stroke-width="1.2" opacity=".4"/>
+          </g>
+          <!-- crepe (mancha de cor deslocada) -->
+          <path d="M96 300 L352 262 A258 258 0 0 0 212 64 Z" fill="#EBA628" opacity=".8" transform="translate(8 7)"/>
+          <g fill="none" stroke="#3E1D0F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M96 300 L352 262 A258 258 0 0 0 212 64 Z"/>
+            <path d="M352 262 q4 8 -2 14 L104 308 q-8 -2 -8 -8"/>
+            <path d="M96 300 L318 168" opacity=".55"/>
+            <path d="M150 262c40-14 80-40 110-72" opacity=".3"/>
+            <path d="M136 222c20-30 40-60 56-112" opacity=".3"/>
+          </g>
+          <!-- calda de chocolate -->
+          <path d="M150 270c20-40 40-20 52-50s34-10 46-44 30-14 40-42 22-20 30-24" fill="none" stroke="#6B2E17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- morangos -->
+          <use href="#sh" transform="translate(262 116) rotate(-18) scale(1.5)"/>
+          <use href="#sh" transform="translate(304 166) rotate(12) scale(1.5)"/>
+          <use href="#sh" transform="translate(236 206) rotate(-30) scale(1.3)"/>
+          <use href="#sh" transform="translate(376 304) rotate(28) scale(1.3)"/>
+          <!-- açúcar -->
+          <g fill="#FEF3E1" stroke="#3E1D0F" stroke-width=".8"><circle cx="190" cy="180" r="2"/><circle cx="214" cy="232" r="1.6"/><circle cx="280" cy="210" r="2"/><circle cx="170" cy="250" r="1.6"/><circle cx="320" cy="230" r="1.8"/><circle cx="230" cy="150" r="1.6"/></g>
+          <!-- espátula -->
+          <g fill="none" stroke="#3E1D0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M58 104l58 58"/><rect x="26" y="68" width="34" height="46" rx="5" transform="rotate(-45 43 91)"/><path d="M36 80l14 14M32 88l12 12M42 76l12 12" opacity=".6"/>
+          </g>
+          <!-- vapor -->
+          <g fill="none" stroke="#EBA628" stroke-width="3" stroke-linecap="round"><path d="M150 150c-8-10 6-16-2-28M120 186c-8-10 6-16-2-28"/></g>
+        </svg>
+        <span class="note n1">morango + chocolate</span>
+        <span class="note n2">massa fina, dobrada em quatro</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip" aria-hidden="true">
+    <div class="track">
+      <span>Casamentos</span><span>Aniversários</span><span>Festas de 15 anos</span><span>Eventos corporativos</span><span>Formaturas</span><span>Chás e batizados</span><span>Confraternizações</span>
+      <span>Casamentos</span><span>Aniversários</span><span>Festas de 15 anos</span><span>Eventos corporativos</span><span>Formaturas</span><span>Chás e batizados</span><span>Confraternizações</span>
+    </div>
+  </div>
+
+  <!-- ===== CARDÁPIO ===== -->
+  <section id="cardapio">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="reveal"><p class="kicker">Cardápio</p><h2>Dois cardápios.<br><em>O recheio</em> é o convidado que escolhe.</h2></div>
+        <p class="reveal">Todos os ingredientes ficam à vista na estação. Cada pessoa monta o seu crepe como quiser e a gente prepara ali mesmo, na chapa.</p>
+      </div>
+
+      <div class="tabs reveal" role="tablist" aria-label="Escolha o cardápio">
+        <button role="tab" aria-selected="true" aria-controls="menu" data-menu="tradicional">Tradicional</button>
+        <button role="tab" aria-selected="false" aria-controls="menu" data-menu="especial">Especial com carne</button>
+      </div>
+
+      <article class="menu reveal" id="menu" role="tabpanel" aria-live="polite">
+        <div class="menu-top">
+          <div>
+            <h3 data-f="title">Cardápio Tradicional</h3>
+            <p data-f="tagline">O clássico que agrada a todos.</p>
+          </div>
+          <div class="price">
+            <div class="old">Valor normal <s data-f="old">R$ 44,90</s></div>
+            <div class="now"><span data-f="now">R$ 42,90</span><small>por pessoa</small></div>
+            <span class="tag">Preço de lançamento · 50+ pessoas</span>
+          </div>
+        </div>
+
+        <div class="groups">
+          <div class="group">
+            <h4>Recheios salgados</h4>
+            <ul class="items" data-f="salgados"></ul>
+          </div>
+          <div class="side">
+            <div class="group">
+              <h4>Recheios doces</h4>
+              <ul class="items" data-f="doces"></ul>
+            </div>
+            <div class="group">
+              <h4>Molhos e extras</h4>
+              <ul class="items" data-f="extras"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-foot">
+          <span><strong>Crepes preparados na hora</strong> para tornar seu evento ainda mais saboroso.</span>
+          <span>Eventos com menos de 50 convidados: orçamento personalizado.</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== COMO FUNCIONA ===== -->
+  <section id="como-funciona">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="reveal"><p class="kicker">Como funciona</p><h2>Do primeiro contato<br>ao último crepe.</h2></div>
+        <p class="reveal">Você cuida da festa. A estação de crepes chega pronta para servir.</p>
+      </div>
+      <ol class="steps">
+        <li class="reveal"><span class="n">01</span><h3>Conte sobre o evento</h3><p>Data, local, número de convidados e o cardápio que mais combina com a festa.</p></li>
+        <li class="reveal"><span class="n">02</span><h3>Receba o orçamento</h3><p>Confirmamos valores conforme data, local, duração e formato de serviço.</p></li>
+        <li class="reveal"><span class="n">03</span><h3>Montamos a estação</h3><p>Chegamos antes, com chapa, massa fresca e todos os recheios organizados.</p></li>
+        <li class="reveal"><span class="n">04</span><h3>Crepe na hora</h3><p>Cada convidado escolhe os ingredientes e recebe o crepe quentinho.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== EVENTOS ===== -->
+  <section id="eventos" style="padding-top:0">
+    <div class="wrap occasions">
+      <div class="reveal">
+        <p class="kicker">Para quais eventos</p>
+        <h2>Funciona na festa <em>e</em> no escritório.</h2>
+        <p>A estação vira ponto de encontro: as pessoas param, conversam enquanto esperam e voltam para o segundo. Doce e salgado no mesmo cardápio resolvem o jantar e a sobremesa.</p>
+      </div>
+      <ul class="occ-list reveal">
+        <li><b>Casamentos</b><span>na pista ou no fim da noite</span></li>
+        <li><b>Aniversários e 15 anos</b><span>agrada adulto e criança</span></li>
+        <li><b>Corporativo</b><span>confraternizações, lançamentos, feiras</span></li>
+        <li><b>Formaturas</b><span>servido ao longo da festa</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== ORÇAMENTO ===== -->
+  <section id="orcamento">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="reveal"><p class="kicker">Orçamento</p><h2>Quanto fica<br>o seu evento?</h2></div>
+        <p class="reveal">Faça uma simulação rápida e mande os detalhes pelo WhatsApp. A gente responde com o valor confirmado.</p>
+      </div>
+
+      <div class="quote">
+        <div class="card reveal">
+          <h3>Simulação</h3>
+          <div class="field">
+            <label for="g">Convidados</label>
+            <div class="guests"><input type="range" id="g" min="20" max="400" step="5" value="100"><output id="gOut" for="g">100</output></div>
+          </div>
+          <div class="field">
+            <label>Cardápio</label>
+            <div class="seg" role="radiogroup">
+              <input type="radio" name="m" id="m1" value="tradicional" checked><label for="m1">Tradicional</label>
+              <input type="radio" name="m" id="m2" value="especial"><label for="m2">Especial com carne</label>
+            </div>
+          </div>
+          <div class="estimate" aria-live="polite">
+            <div class="big" id="est">R$ 4.290,00</div>
+            <div class="sub" id="estSub"></div>
+          </div>
+          <p class="fineprint">Estimativa. Valores sujeitos à confirmação conforme data, local, duração e formato de serviço.</p>
+        </div>
+
+        <form class="card reveal" id="form" novalidate>
+          <h3>Seus dados</h3>
+          <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="name" placeholder="Como podemos te chamar?"><div class="err"></div></div>
+          <div class="row">
+            <div class="field"><label for="data">Data do evento</label><input id="data" name="data" type="date"><div class="err"></div></div>
+            <div class="field"><label for="tipo">Tipo de evento</label>
+              <select id="tipo" name="tipo"><option>Casamento</option><option>Aniversário</option><option>Festa de 15 anos</option><option>Corporativo</option><option>Formatura</option><option>Outro</option></select>
+            </div>
+          </div>
+          <div class="field"><label for="local">Cidade / local</label><input id="local" name="local" placeholder="Ex.: Curitiba — salão de festas"><div class="err"></div></div>
+          <button class="btn" type="submit">Enviar pelo WhatsApp <span aria-hidden="true">→</span></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DÚVIDAS ===== -->
+  <section id="duvidas">
+    <div class="wrap faq">
+      <div class="reveal"><p class="kicker">Dúvidas</p><h2>Antes de fechar.</h2></div>
+      <div class="reveal">
+        <details open><summary>O valor é por pessoa ou por crepe?</summary><p>Por pessoa. O Tradicional sai a R$ 42,90 e o Especial com carne a R$ 49,90 no preço de lançamento, para eventos a partir de 50 convidados.</p></details>
+        <details><summary>E se o meu evento tiver menos de 50 convidados?</summary><p>A gente atende também — só que o valor é calculado caso a caso. Mande os detalhes pelo formulário e enviamos um orçamento personalizado.</p></details>
+        <details><summary>Qual a diferença entre os dois cardápios?</summary><p>O Especial inclui carne bovina desfiada entre os salgados e morango entre os doces. O restante dos ingredientes é o mesmo do Tradicional.</p></details>
+        <details><summary>O preço pode mudar?</summary><p>Os valores são confirmados conforme data, local, duração e formato de serviço. Por isso o simulador mostra uma estimativa e o valor final vem no orçamento.</p></details>
+        <details><summary>Os convidados escolhem o recheio?</summary><p>Sim. Os ingredientes ficam expostos na estação e cada pessoa monta o seu crepe — dá para misturar doce e salgado no mesmo evento.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <img src="logo.jpg" alt="Crepêra" width="126" height="84">
+      <p>Seu evento com mais sabor.</p>
+      <div class="meta">Crepes franceses para eventos<br><a href="#" data-wa>WhatsApp</a> · <a href="#">@crepera</a></div>
+    </div>
+    <div class="copy"><span>© <span id="y"></span> Crepêra</span><a href="#top" style="text-decoration:none">Voltar ao topo ↑</a></div>
+  </div>
+</footer>
+
+<a class="wa" href="#" data-wa target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2a11.9 11.9 0 1 1 4.5 4.4zM6.6 20l.37.22a9.9 9.9 0 0 0 5.05 1.38 9.9 9.9 0 1 0-9.9-9.9c0 1.8.48 3.55 1.4 5.08l.24.4-1 3.65zM17.4 14.3c-.15-.25-.55-.4-1.15-.7s-1.77-.87-2.04-.97-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.1 8.1 0 0 1-2.4-1.48 9 9 0 0 1-1.65-2.06c-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5s.05-.37-.02-.52-.67-1.6-.92-2.2c-.24-.57-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.8.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08 2.1 3.2 5.08 4.48c.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42s.25-1.3.17-1.42z"/></svg></a>
+
+<script>
+const WHATS = "5541996739803";
+const MENUS = {
+  tradicional:{
+    title:"Cardápio Tradicional", tagline:"O clássico que agrada a todos.", old:44.9, now:42.9,
+    salgados:["frango","presunto","mucarela","calabresa","requeijao","milho","tomate","cebola"],
+    doces:["chocolate","banana","doce","canela"]
+  },
+  especial:{
+    title:"Especial com Carne", tagline:"Uma seleção especial para impressionar.", old:52.9, now:49.9,
+    salgados:["carne","frango","presunto","mucarela","calabresa","requeijao","milho","tomate","cebola"],
+    doces:["chocolate","banana","morango","doce","canela"]
+  }
+};
+const EXTRAS = ["molho-branco","molho-tomate","oregano","ralado"];
+const ITEMS = {
+  frango:["Frango desfiado","i-frango"], presunto:["Presunto","i-presunto"], mucarela:["Muçarela","i-mucarela"],
+  calabresa:["Calabresa","i-calabresa"], requeijao:["Requeijão cremoso","i-requeijao"], milho:["Milho","i-milho"],
+  tomate:["Tomate","i-tomate"], cebola:["Cebola","i-cebola"], carne:["Carne bovina desfiada","i-carne"],
+  chocolate:["Chocolate","i-chocolate"], banana:["Banana","i-banana"], morango:["Morango","i-morango"],
+  doce:["Doce de leite","i-doce"], canela:["Canela","i-canela"],
+  "molho-branco":["Molho branco","i-molho","#F7EEDC"], "molho-tomate":["Molho de tomate","i-molho","#C9432F"],
+  oregano:["Orégano","i-oregano"], ralado:["Queijo ralado","i-ralado"]
+};
+const brl = v => v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const $ = (s,c=document) => c.querySelector(s);
+const $$ = (s,c=document) => [...c.querySelectorAll(s)];
+
+function li(key, onlyHere, animate){
+  const [name,icon,acc] = ITEMS[key];
+  const style = acc ? ` style="--acc:${acc}"` : "";
+  return `<li${animate && onlyHere ? ' class="new"' : ""}><svg aria-hidden="true"${style}><use href="#${icon}"/></svg>${name}${onlyHere ? '<span class="only">só no Especial</span>' : ""}</li>`;
+}
+function renderMenu(id, animate){
+  const m = MENUS[id], menu = $("#menu");
+  const exclusive = k => id === "especial" && !MENUS.tradicional.salgados.includes(k) && !MENUS.tradicional.doces.includes(k);
+  $('[data-f=title]',menu).textContent = m.title;
+  $('[data-f=tagline]',menu).textContent = m.tagline;
+  $('[data-f=old]',menu).textContent = brl(m.old);
+  $('[data-f=now]',menu).textContent = brl(m.now);
+  $('[data-f=salgados]',menu).innerHTML = m.salgados.map(k=>li(k,exclusive(k),animate)).join("");
+  $('[data-f=doces]',menu).innerHTML = m.doces.map(k=>li(k,exclusive(k),animate)).join("");
+  $('[data-f=extras]',menu).innerHTML = EXTRAS.map(k=>li(k,false)).join("");
+}
+$$(".tabs button").forEach(b=>b.addEventListener("click",()=>{
+  $$(".tabs button").forEach(x=>x.setAttribute("aria-selected", x===b));
+  renderMenu(b.dataset.menu, true);
+  const r = $(`.seg input[value=${b.dataset.menu}]`); if(r){ r.checked = true; calc(); }
+}));
+renderMenu("tradicional");
+
+/* simulador */
+const g = $("#g"), gOut = $("#gOut");
+function calc(){
+  const n = +g.value, id = $(".seg input:checked").value, m = MENUS[id];
+  gOut.textContent = n;
+  if(n < 50){
+    $("#est").textContent = "Sob consulta";
+    $("#estSub").innerHTML = "Eventos com menos de 50 convidados recebem orçamento personalizado.";
+  } else {
+    $("#est").textContent = brl(n*m.now);
+    $("#estSub").innerHTML = `${n} × ${brl(m.now)} por pessoa · economia de ${brl(n*(m.old-m.now))} sobre o valor normal (<s>${brl(n*m.old)}</s>)`;
+  }
+}
+g.addEventListener("input",calc); $$(".seg input").forEach(r=>r.addEventListener("change",calc)); calc();
+
+/* formulário → WhatsApp */
+$("#form").addEventListener("submit",e=>{
+  e.preventDefault();
+  const f = e.target, req = ["nome","data","local"]; let ok = true;
+  req.forEach(n=>{ const i=f[n], err=i.parentElement.querySelector(".err") || i.closest(".field").querySelector(".err");
+    const bad = !i.value.trim(); err.textContent = bad ? "Preencha este campo." : ""; if(bad && ok){ i.focus(); ok=false; } });
+  if(!ok) return;
+  const id = $(".seg input:checked").value, n = +g.value;
+  const dt = f.data.value.split("-").reverse().join("/");
+  const msg = `Olá! Quero um orçamento da Crepêra.\n\nNome: ${f.nome.value.trim()}\nEvento: ${f.tipo.value}\nData: ${dt}\nLocal: ${f.local.value.trim()}\nConvidados: ${n}\nCardápio: ${MENUS[id].title}`;
+  window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
+});
+$$("[data-wa]").forEach(a=>a.href=`https://wa.me/${WHATS}?text=${encodeURIComponent("Olá! Gostaria de saber mais sobre a estação de crepes da Crepêra.")}`);
+
+/* header, menu mobile, reveal */
+const header = $("header");
+addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>8),{passive:true});
+const nav = $(".nav"), tg = $(".menu-toggle");
+tg.addEventListener("click",()=>{ const o = nav.classList.toggle("open"); tg.setAttribute("aria-expanded",o); });
+$$(".nav ul a").forEach(a=>a.addEventListener("click",()=>{ nav.classList.remove("open"); tg.setAttribute("aria-expanded",false); }));
+const io = new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }),{threshold:.12});
+$$(".reveal").forEach(el=>io.observe(el));
+$("#y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

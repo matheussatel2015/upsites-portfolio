@@ -16,6 +16,7 @@ Portfólio premium com **8 landing pages comerciais fictícias** + uma página p
 | 06 | FORJA | Academia premium | Preto + vermelho · Anton |
 | 07 | Brask | Construtora e reformas | Navy + laranja · Oswald · timeline |
 | 08 | Reverso | Agência de marketing | Off-black + chartreuse · Syne · layout assimétrico |
+| 11 | Crepêra | Crepes franceses para eventos | Creme + marrom + mostarda · Fraunces · cardápio ilustrado e simulador de orçamento |
 
 ## Tecnologia
 

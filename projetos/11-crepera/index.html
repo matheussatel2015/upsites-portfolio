@@ -153,6 +153,31 @@ input::placeholder{color:rgba(254,243,225,.4)}
 .card .btn{background:var(--mustard);color:var(--ink);width:100%;justify-content:center;margin-top:6px}
 .card .btn:hover{background:var(--paper)}
 .err{font-size:13px;color:#FFB4A6;margin-top:6px;min-height:1em}
+.card p.copy-txt{color:rgba(254,243,225,.75);margin-bottom:26px}
+.card ul.check{list-style:none;display:grid;gap:12px;margin-bottom:30px;font-size:15.5px}
+.card ul.check li{display:flex;gap:12px}
+.card ul.check li::before{content:"";flex:none;width:8px;height:8px;margin-top:8px;border-radius:50%;background:var(--mustard)}
+
+/* ---------- modal WhatsApp ---------- */
+dialog.modal{margin:auto;border:0;padding:0;border-radius:8px;background:var(--paper);color:var(--ink);width:min(460px,calc(100% - 32px));box-shadow:0 40px 80px -30px rgba(62,29,15,.55)}
+dialog.modal::backdrop{background:rgba(62,29,15,.55);backdrop-filter:blur(2px)}
+dialog.modal[open]{animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(14px)}}
+.modal form{padding:34px 30px 30px;position:relative}
+.modal h3{font-size:30px;margin:8px 0 8px}
+.modal .intro{color:var(--muted);font-size:15.5px;margin-bottom:24px}
+.modal label{color:var(--brown)}
+.modal input{color:var(--ink);border-bottom-color:var(--line)}
+.modal input:focus{border-color:var(--brown)}
+.modal input::placeholder{color:#B59A88}
+.modal .err{color:var(--red)}
+.modal .preview{background:var(--paper-2);border-radius:6px;padding:14px 16px;font-size:14.5px;line-height:1.5;color:var(--ink);margin:4px 0 22px}
+.modal .preview small{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.modal .btn{width:100%;justify-content:center;background:var(--brown);color:var(--paper)}
+.modal .btn:hover{background:var(--ink)}
+.modal .x{position:absolute;top:12px;right:12px;width:38px;height:38px;border:0;background:none;cursor:pointer;font:300 28px/1 var(--sans);color:var(--muted);border-radius:50%}
+.modal .x:hover{background:var(--paper-2);color:var(--ink)}
+.modal .phone{margin-top:14px;text-align:center;font-size:13px;color:var(--muted)}
 
 /* ---------- faq ---------- */
 .faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
@@ -342,7 +367,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px}
       <li><a href="#eventos">Eventos</a></li>
       <li><a href="#duvidas">Dúvidas</a></li>
     </ul>
-    <a href="#orcamento" class="btn">Pedir orçamento</a>
+    <button type="button" class="btn" data-open-wa>Pedir orçamento</button>
     <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
   </nav>
 </header>
@@ -533,18 +558,16 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px}
           <p class="fineprint">Estimativa. Valores sujeitos à confirmação conforme data, local, duração e formato de serviço.</p>
         </div>
 
-        <form class="card reveal" id="form" novalidate>
-          <h3>Seus dados</h3>
-          <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="name" placeholder="Como podemos te chamar?"><div class="err"></div></div>
-          <div class="row">
-            <div class="field"><label for="data">Data do evento</label><input id="data" name="data" type="date"><div class="err"></div></div>
-            <div class="field"><label for="tipo">Tipo de evento</label>
-              <select id="tipo" name="tipo"><option>Casamento</option><option>Aniversário</option><option>Festa de 15 anos</option><option>Corporativo</option><option>Formatura</option><option>Outro</option></select>
-            </div>
-          </div>
-          <div class="field"><label for="local">Cidade / local</label><input id="local" name="local" placeholder="Ex.: Curitiba — salão de festas"><div class="err"></div></div>
-          <button class="btn" type="submit">Enviar pelo WhatsApp <span aria-hidden="true">→</span></button>
-        </form>
+        <div class="card reveal">
+          <h3>Peça seu orçamento</h3>
+          <p class="copy-txt">Mande seu nome e o número de convidados pelo WhatsApp. A gente responde com o valor confirmado para a data do seu evento.</p>
+          <ul class="check">
+            <li>Resposta direto no seu WhatsApp</li>
+            <li>Valor confirmado conforme data, local e duração</li>
+            <li>Eventos com menos de 50 convidados: orçamento personalizado</li>
+          </ul>
+          <button class="btn" type="button" data-open-wa>Pedir orçamento pelo WhatsApp <span aria-hidden="true">→</span></button>
+        </div>
       </div>
     </div>
   </section>
@@ -569,16 +592,30 @@ footer{border-top:1px solid var(--line);padding:56px 0 40px}
     <div class="foot">
       <img src="logo.jpg" alt="Crepêra" width="126" height="84">
       <p>Seu evento com mais sabor.</p>
-      <div class="meta">Crepes franceses para eventos<br><a href="#" data-wa>WhatsApp</a> · <a href="#">@crepera</a></div>
+      <div class="meta">Crepes franceses para eventos<br><a href="#" data-open-wa>(41) 99697-9853</a> · <a href="#">@crepera</a></div>
     </div>
     <div class="copy"><span>© <span id="y"></span> Crepêra</span><a href="#top" style="text-decoration:none">Voltar ao topo ↑</a></div>
   </div>
 </footer>
 
-<a class="wa" href="#" data-wa target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2a11.9 11.9 0 1 1 4.5 4.4zM6.6 20l.37.22a9.9 9.9 0 0 0 5.05 1.38 9.9 9.9 0 1 0-9.9-9.9c0 1.8.48 3.55 1.4 5.08l.24.4-1 3.65zM17.4 14.3c-.15-.25-.55-.4-1.15-.7s-1.77-.87-2.04-.97-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.1 8.1 0 0 1-2.4-1.48 9 9 0 0 1-1.65-2.06c-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5s.05-.37-.02-.52-.67-1.6-.92-2.2c-.24-.57-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.8.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08 2.1 3.2 5.08 4.48c.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42s.25-1.3.17-1.42z"/></svg></a>
+<a class="wa" href="#" data-open-wa aria-label="Pedir orçamento pelo WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2a11.9 11.9 0 1 1 4.5 4.4zM6.6 20l.37.22a9.9 9.9 0 0 0 5.05 1.38 9.9 9.9 0 1 0-9.9-9.9c0 1.8.48 3.55 1.4 5.08l.24.4-1 3.65zM17.4 14.3c-.15-.25-.55-.4-1.15-.7s-1.77-.87-2.04-.97-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.1 8.1 0 0 1-2.4-1.48 9 9 0 0 1-1.65-2.06c-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5s.05-.37-.02-.52-.67-1.6-.92-2.2c-.24-.57-.49-.5-.67-.5l-.57-.01c-.2 0-.52.07-.8.37s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08 2.1 3.2 5.08 4.48c.71.3 1.26.49 1.7.63.71.22 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42s.25-1.3.17-1.42z"/></svg></a>
+
+<dialog class="modal" id="waModal" aria-labelledby="waTitle">
+  <form method="dialog" id="waForm" novalidate>
+    <button type="button" class="x" data-close aria-label="Fechar">×</button>
+    <p class="kicker">WhatsApp</p>
+    <h3 id="waTitle">Pedir orçamento</h3>
+    <p class="intro">Preencha os dois campos e a mensagem já vai pronta para o nosso WhatsApp.</p>
+    <div class="field"><label for="waNome">Seu nome</label><input id="waNome" name="nome" autocomplete="name" placeholder="Ex.: Mariana Souza"><div class="err"></div></div>
+    <div class="field"><label for="waPessoas">Quantas pessoas no evento?</label><input id="waPessoas" name="pessoas" type="number" inputmode="numeric" min="1" step="1" placeholder="Ex.: 80"><div class="err"></div></div>
+    <div class="preview" aria-live="polite"><small>Mensagem</small><span id="waMsg"></span></div>
+    <button class="btn" type="submit">Enviar no WhatsApp <span aria-hidden="true">→</span></button>
+    <p class="phone">(41) 99697-9853</p>
+  </form>
+</dialog>
 
 <script>
-const WHATS = "5541996739803";
+const WHATS = "5541996979853";
 const MENUS = {
   tradicional:{
     title:"Cardápio Tradicional", tagline:"O clássico que agrada a todos.", old:44.9, now:42.9,
@@ -643,19 +680,33 @@ function calc(){
 }
 g.addEventListener("input",calc); $$(".seg input").forEach(r=>r.addEventListener("change",calc)); calc();
 
-/* formulário → WhatsApp */
-$("#form").addEventListener("submit",e=>{
+/* modal → WhatsApp */
+const modal = $("#waModal"), waForm = $("#waForm"), waNome = $("#waNome"), waPessoas = $("#waPessoas");
+const waText = () => `Olá, meu nome é ${waNome.value.trim() || "…"}, gostaria de um orçamento para ter crepes franceses em meu evento com ${waPessoas.value || "…"} pessoas.`;
+const updMsg = () => { $("#waMsg").textContent = waText(); };
+function openModal(e){
+  if(e) e.preventDefault();
+  if(!waPessoas.value) waPessoas.value = g.value;
+  $$(".err", waForm).forEach(x => x.textContent = "");
+  updMsg();
+  modal.showModal();
+  (waNome.value ? waPessoas : waNome).focus();
+}
+$$("[data-open-wa]").forEach(b => b.addEventListener("click", openModal));
+$("[data-close]", modal).addEventListener("click", () => modal.close());
+modal.addEventListener("click", e => { if(e.target === modal) modal.close(); });
+[waNome, waPessoas].forEach(i => i.addEventListener("input", () => { i.closest(".field").querySelector(".err").textContent = ""; updMsg(); }));
+waForm.addEventListener("submit", e => {
   e.preventDefault();
-  const f = e.target, req = ["nome","data","local"]; let ok = true;
-  req.forEach(n=>{ const i=f[n], err=i.parentElement.querySelector(".err") || i.closest(".field").querySelector(".err");
-    const bad = !i.value.trim(); err.textContent = bad ? "Preencha este campo." : ""; if(bad && ok){ i.focus(); ok=false; } });
-  if(!ok) return;
-  const id = $(".seg input:checked").value, n = +g.value;
-  const dt = f.data.value.split("-").reverse().join("/");
-  const msg = `Olá! Quero um orçamento da Crepêra.\n\nNome: ${f.nome.value.trim()}\nEvento: ${f.tipo.value}\nData: ${dt}\nLocal: ${f.local.value.trim()}\nConvidados: ${n}\nCardápio: ${MENUS[id].title}`;
-  window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
+  const checks = [[waNome, !waNome.value.trim(), "Digite seu nome."], [waPessoas, !(+waPessoas.value >= 1), "Informe quantas pessoas."]];
+  let first = null;
+  checks.forEach(([i, bad, msg]) => { i.closest(".field").querySelector(".err").textContent = bad ? msg : ""; if(bad && !first) first = i; });
+  if(first){ first.focus(); return; }
+  const url = `https://wa.me/${WHATS}?text=${encodeURIComponent(waText())}`;
+  const w = window.open(url, "_blank");
+  if(w) w.opener = null; else location.href = url;
+  modal.close();
 });
-$$("[data-wa]").forEach(a=>a.href=`https://wa.me/${WHATS}?text=${encodeURIComponent("Olá! Gostaria de saber mais sobre a estação de crepes da Crepêra.")}`);
 
 /* header, menu mobile, reveal */
 const header = $("header");
